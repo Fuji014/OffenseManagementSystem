@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentPageController">
+   <children>
+      <TableView fx:id="studentTableView" layoutX="24.0" layoutY="105.0" prefHeight="350.0" prefWidth="707.0">
+        <columns>
+          <TableColumn fx:id="idCol" minWidth="0.0" prefWidth="0.0" text="ID" />
+          <TableColumn fx:id="rfidCol" minWidth="0.0" prefWidth="0.0" text="RFID ID" />
+            <TableColumn fx:id="studidCol" prefWidth="76.0" text="STUDENT ID" />
+            <TableColumn fx:id="studnameCol" prefWidth="111.0" text="STUDENT NAME" />
+            <TableColumn fx:id="studyearCol" prefWidth="52.0" text="YEAR" />
+            <TableColumn fx:id="sectionCol" prefWidth="73.0" text="SECTION" />
+            <TableColumn fx:id="courseCol" prefWidth="56.0" text="COURSE" />
+            <TableColumn fx:id="strandCol" prefWidth="61.0" text="STRAND" />
+            <TableColumn fx:id="departmentCol" prefWidth="102.0" text="DEPARTMENT" />
+            <TableColumn fx:id="parentnameCol" prefWidth="100.0" text="PARENT NAME" />
+            <TableColumn fx:id="parentcontactCol" minWidth="0.0" prefWidth="76.0" text="CONTACT" />
+            <TableColumn fx:id="studentcontactCol" minWidth="0.0" prefWidth="74.0" text="STUDENT CONTACT" />
+            <TableColumn fx:id="parentaddressCol" prefWidth="75.0" text="PARENT ADDRESS" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                  <MenuItem fx:id="updateBtn" mnemonicParsing="false" text="Update" />
+                  <MenuItem fx:id="deleteBtn" mnemonicParsing="false" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <Label layoutX="24.0" layoutY="40.0" text="Manage Student" textFill="#3f3f3f">
+         <font>
+            <Font name="Segoe UI Black" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="newBtn" layoutX="24.0" layoutY="528.0" minHeight="26.0" minWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-add-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="searchBtn" layoutX="118.0" layoutY="528.0" minHeight="26.0" minWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-search-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="cancelBtn" layoutX="214.0" layoutY="528.0" minHeight="26.0" minWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-close-window-52.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="refreshBtn" layoutX="647.0" layoutY="44.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI Black" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-refresh-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXComboBox fx:id="searchComboBox" layoutX="340.0" layoutY="45.0" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #F0F0F0; -jfx-unfocus-color: transparent; -fx-border-color: #C1C1C1;" unFocusColor="#c1c1c1" />
+      <JFXTextField fx:id="searchTxt" layoutX="497.0" layoutY="45.0" prefWidth="140.0" promptText=" Search" unFocusColor="#b1b1b1">
+         <font>
+            <Font name="Segoe UI Light" size="12.0" />
+         </font>
+      </JFXTextField>
+   </children>
+</AnchorPane>

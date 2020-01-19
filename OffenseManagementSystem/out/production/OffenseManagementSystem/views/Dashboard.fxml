@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+   <children>
+      <Label layoutX="24.0" layoutY="14.0" text="Dashboard" textFill="#3f3f3f">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="19.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+         <children>
+            <Label layoutX="10.0" layoutY="79.0" text="STUDENT CURRENTLY IN THE SYSTEM" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="8.0" />
+               </font>
+            </Label>
+            <Line endX="99.0" layoutX="68.0" layoutY="75.0" startX="-65.0" stroke="#b1b1b1" />
+            <Label layoutX="67.0" layoutY="4.0" text="STUDENT COUNT" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="16.0" text="5" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="24.0" layoutY="107.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #8E44AD;">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="43.0">
+               <image>
+                  <Image url="@../resources/icons8-student-male-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <AnchorPane layoutX="203.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+         <children>
+            <Label layoutX="10.0" layoutY="79.0" text="OFFENSE CURRENTLY IN THE SYSTEM" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="8.0" />
+               </font>
+            </Label>
+            <Line endX="99.0" layoutX="68.0" layoutY="75.0" startX="-65.0" stroke="#b1b1b1" />
+            <Label layoutX="67.0" layoutY="4.0" text="OFFENSE COUNT" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="16.0" text="5" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="-35.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #16A085;">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../resources/icons8-soccer-yellow-card-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="387.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+         <children>
+            <Label layoutX="10.0" layoutY="79.0" text="RECORD CURRENTLY IN THE SYSTEM" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="8.0" />
+               </font>
+            </Label>
+            <Line endX="99.0" layoutX="68.0" layoutY="75.0" startX="-65.0" stroke="#b1b1b1" />
+            <Label layoutX="67.0" layoutY="4.0" text="RECORD COUNT" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="16.0" text="5" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="-35.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #C0392B;">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../resources/icons8-save-archive-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="571.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+         <children>
+            <Label layoutX="10.0" layoutY="79.0" text="STUDENT CURRENTLY IN THE SYSTEM" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="8.0" />
+               </font>
+            </Label>
+            <Line endX="99.0" layoutX="68.0" layoutY="75.0" startX="-65.0" stroke="#b1b1b1" />
+            <Label layoutX="67.0" layoutY="4.0" text="STUDENT COUNT" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="100.0" layoutY="16.0" text="5" textFill="#707070">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
