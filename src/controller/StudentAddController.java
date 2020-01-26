@@ -137,10 +137,11 @@ public class StudentAddController implements Initializable {
         try{
             dao.student("create");
             StudentPageController.getStudentPageController().refreshTable();
-            alc.alertSuccess(null, "User Added Successfully ");
             clearFields();
         }catch (Exception e){
             alc.alertErr(null,"Exception Err"+e);
+        }finally {
+            alc.alertSuccess(null, "User Added Successfully ");
         }
 
 

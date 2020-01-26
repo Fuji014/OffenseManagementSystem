@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="636.0" style="-fx-background-color: #F0F0F0;" stylesheets="@../styles/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ScheduleAddController">
+   <children>
+      <Pane prefHeight="26.0" prefWidth="636.0" style="-fx-background-color: #151928;">
+         <children>
+            <Label layoutX="10.0" layoutY="5.0" text="Add Schedule" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="closeBtn" layoutX="614.0" layoutY="-2.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="10.0" layoutY="40.0" prefHeight="327.0" prefWidth="616.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #d2d2d2;">
+         <children>
+            <JFXButton fx:id="saveBtn" layoutX="423.0" layoutY="281.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-save-archive-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="13.0" layoutY="12.0" text="Schedule Information" />
+            <AnchorPane layoutX="13.0" layoutY="46.0" prefHeight="115.0" prefWidth="256.0" style="-fx-border-color: #d2d2d2; -fx-background-color: f0f0f0;">
+               <children>
+                  <JFXComboBox fx:id="departmentComboBox" labelFloat="true" layoutX="18.0" layoutY="45.0" prefHeight="27.0" prefWidth="219.0" promptText=" Department" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+                  <Label layoutX="11.0" layoutY="7.0" text="Choose Department" textFill="#a19a9a" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="13.0" layoutY="171.0" prefHeight="141.0" prefWidth="256.0" style="-fx-border-color: #d2d2d2; -fx-background-color: f0f0f0;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Direction" textFill="#a19a9a" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="288.0" layoutY="46.0" prefHeight="215.0" prefWidth="308.0" style="-fx-border-color: #d2d2d2; -fx-background-color: f0f0f0;">
+               <children>
+                  <Label layoutX="12.0" layoutY="8.0" text="Choose Time" textFill="#a19a9a" />
+                  <JFXTimePicker id="jfx-date-picker" fx:id="mondayTimer" defaultColor="#616161" layoutX="15.0" layoutY="45.0" prefHeight="30.0" prefWidth="130.0" promptText=" Monday" style="-fx-border-color: #d2d2d2;" />
+                  <JFXTimePicker id="jfx-date-picker" fx:id="tuesdayTimer" defaultColor="#616161" layoutX="164.0" layoutY="45.0" prefHeight="30.0" prefWidth="130.0" promptText=" Tuesday" style="-fx-border-color: #d2d2d2;" />
+                  <JFXTimePicker id="jfx-date-picker" fx:id="wednesdayTimer" defaultColor="#616161" layoutX="15.0" layoutY="93.0" prefHeight="30.0" prefWidth="130.0" promptText=" Wednesday" style="-fx-border-color: #d2d2d2;" />
+                  <JFXTimePicker id="jfx-date-picker" fx:id="thursdayTimer" defaultColor="#616161" layoutX="164.0" layoutY="93.0" prefHeight="30.0" prefWidth="130.0" promptText=" Thursday" style="-fx-border-color: #d2d2d2;" />
+                  <JFXTimePicker id="jfx-date-picker" fx:id="fridayTimer" defaultColor="#616161" layoutX="164.0" layoutY="138.0" prefHeight="30.0" prefWidth="130.0" promptText=" Friday" style="-fx-border-color: #d2d2d2;" />
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="cancelBtn" layoutX="509.0" layoutY="281.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-close-window-52.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

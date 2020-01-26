@@ -42,6 +42,10 @@ public class HomePageController implements Initializable {
     @FXML
     private JFXButton departmentBtn;
 
+    @FXML
+    private JFXButton scheduleBtn;
+
+
     // Declare var below;
     AnchorPane home;
 
@@ -66,6 +70,9 @@ public class HomePageController implements Initializable {
         });
         offenseListBtn.setOnAction(event -> {
             createPage(home, "/views/OffensePage.fxml");
+        });
+        scheduleBtn.setOnAction(event -> {
+            createPage(home, "/views/SchedulePage.fxml");
         });
     }
 

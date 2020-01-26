@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OffensePageController">
    <children>
       <TableView fx:id="offenseTableView" layoutX="24.0" layoutY="112.0" prefHeight="350.0" prefWidth="707.0">
@@ -32,13 +31,13 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXComboBox layoutX="332.0" layoutY="34.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #C1C1C1;" />
+      <JFXComboBox fx:id="searchComboBox" layoutX="332.0" layoutY="34.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #C1C1C1;" />
       <Label layoutX="24.0" layoutY="28.0" text="Manage Offense">
          <font>
             <Font name="Segoe UI Black" size="25.0" />
          </font>
       </Label>
-      <JFXButton layoutX="640.0" layoutY="34.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
+      <JFXButton fx:id="refreshBtn" layoutX="640.0" layoutY="34.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -47,7 +46,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="24.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
+      <JFXButton fx:id="newBtn" layoutX="24.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,7 +55,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="119.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
+      <JFXButton fx:id="searchBtn" layoutX="119.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,7 +64,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton layoutX="214.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+      <JFXButton fx:id="cancelBtn" layoutX="214.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -74,6 +73,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField layoutX="490.0" layoutY="35.0" prefWidth="140.0" unFocusColor="#b1b1b1" />
+      <JFXTextField fx:id="searchTxt" layoutX="490.0" layoutY="35.0" prefWidth="140.0" unFocusColor="#b1b1b1" />
    </children>
 </AnchorPane>

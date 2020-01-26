@@ -13,14 +13,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OffensePageController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SchedulePageController">
    <children>
-      <TableView fx:id="offenseTableView" layoutX="24.0" layoutY="112.0" prefHeight="350.0" prefWidth="707.0">
+      <Label layoutX="20.0" layoutY="30.0" text="Manage Schedule" textFill="#3f3f3f">
+         <font>
+            <Font name="Segoe UI Black" size="25.0" />
+         </font>
+      </Label>
+      <TableView fx:id="scheduleTableView" layoutX="20.0" layoutY="93.0" prefHeight="361.0" prefWidth="699.0">
         <columns>
-          <TableColumn fx:id="idCol" prefWidth="88.0" text="ID" />
-          <TableColumn fx:id="descriptionCol" prefWidth="345.0" text="DESCRIPTION" />
-            <TableColumn fx:id="severityCol" prefWidth="144.0" text="SEVERITY" />
-            <TableColumn fx:id="deptnameCol" prefWidth="129.0" text="DEPT NAME" />
+          <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="deptnameCol" prefWidth="109.0" text="DEPT NAME" />
+            <TableColumn fx:id="modayCol" prefWidth="103.0" text="MONDAY" />
+            <TableColumn fx:id="tuesdayCol" prefWidth="103.0" text="TUESDAY" />
+            <TableColumn fx:id="wednesdayCol" prefWidth="103.0" text="WEDNESDAY" />
+            <TableColumn fx:id="thurdayCol" prefWidth="103.0" text="THURSDAY" />
+            <TableColumn fx:id="fridayCol" prefWidth="103.0" text="FRIDAY" />
         </columns>
          <contextMenu>
             <ContextMenu>
@@ -31,13 +40,8 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXComboBox fx:id="searchComboBox" layoutX="332.0" layoutY="34.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #C1C1C1;" />
-      <Label layoutX="24.0" layoutY="28.0" text="Manage Offense">
-         <font>
-            <Font name="Segoe UI Black" size="25.0" />
-         </font>
-      </Label>
-      <JFXButton fx:id="refreshBtn" layoutX="640.0" layoutY="34.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
+      <JFXComboBox fx:id="searchComboBox" layoutX="328.0" layoutY="35.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" />
+      <JFXButton fx:id="refreshBtn" layoutX="632.0" layoutY="35.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -46,7 +50,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="newBtn" layoutX="24.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
+      <JFXButton fx:id="newBtn" layoutX="28.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -55,7 +59,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="searchBtn" layoutX="119.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
+      <JFXButton fx:id="searchBtn" layoutX="119.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -64,7 +68,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="cancelBtn" layoutX="214.0" layoutY="520.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+      <JFXButton fx:id="cancelBtn" layoutX="216.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -73,6 +77,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXTextField fx:id="searchTxt" layoutX="490.0" layoutY="35.0" prefWidth="140.0" unFocusColor="#b1b1b1" />
+      <JFXTextField fx:id="searchTxt" layoutX="486.0" layoutY="36.0" unFocusColor="#b1b1b1" />
    </children>
 </AnchorPane>

@@ -1,9 +1,6 @@
 package controller;
 
-import controller.tables.adminUserTable;
-import controller.tables.departmentTable;
-import controller.tables.offenseTable;
-import controller.tables.studentTable;
+import controller.tables.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -54,7 +51,7 @@ public class DatabaseAccessObject implements Initializable {
         }
     }
 
-    public void admin(String crud) throws SQLException, ClassNotFoundException, FileNotFoundException {
+    public void admin(String crud) throws SQLException, ClassNotFoundException, FileNotFoundException { // admin
         switch (crud){
             case "create":
                 fileInputStream = new FileInputStream(AdminUserAddController.getAddAdminUserController().file);
@@ -124,7 +121,7 @@ public class DatabaseAccessObject implements Initializable {
         }
 
     }
-    public void student(String crud) throws SQLException, ClassNotFoundException, FileNotFoundException {
+    public void student(String crud) throws SQLException, ClassNotFoundException, FileNotFoundException { // student
         switch (crud){
             case "create":
 
@@ -279,7 +276,7 @@ public class DatabaseAccessObject implements Initializable {
             return list;
         }
     }
-    public ObservableList<adminUserTable> getAdminSearch(String query){
+    public ObservableList<adminUserTable> getAdminSearch(String query){ // admin table
         ObservableList<adminUserTable> list = FXCollections.observableArrayList();
         try{
             connection = connector.getConnection();
@@ -362,8 +359,29 @@ public class DatabaseAccessObject implements Initializable {
             return list;
         }
     }
+    public ObservableList<scheduleTable> getScheduleData(String query) throws SQLException { // schedule table
+        ObservableList<scheduleTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new scheduleTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
 
-    public ObservableList<String> getStudentDepartmentComboBox(String query){
+    }
+
+    public ObservableList<String> getStudentDepartmentComboBox(String query){ // student department combox
         ObservableList list = FXCollections.observableArrayList();
         try {
             connection = connector.getConnection();
