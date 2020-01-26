@@ -36,6 +36,12 @@ public class HomePageController implements Initializable {
     @FXML
     private Pane apaneHolder;
 
+    @FXML
+    private JFXButton portSettingsBtn;
+
+    @FXML
+    private JFXButton departmentBtn;
+
     // Declare var below;
     AnchorPane home;
 
@@ -51,6 +57,15 @@ public class HomePageController implements Initializable {
         });
         studentBtn.setOnAction(event -> { // event btn studentBtn
             createPage(home, "/views/StudentPage.fxml");
+        });
+        portSettingsBtn.setOnAction(event -> {
+            createPage(home, "/views/PortSettingPage.fxml");
+        });
+        departmentBtn.setOnAction(event -> {
+            createPage(home, "/views/DepartmentPage.fxml");
+        });
+        offenseListBtn.setOnAction(event -> {
+            createPage(home, "/views/OffensePage.fxml");
         });
     }
 

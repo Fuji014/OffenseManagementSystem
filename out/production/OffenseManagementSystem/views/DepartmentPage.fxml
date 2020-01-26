@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DepartmentPageController">
+   <children>
+      <Label layoutX="25.0" layoutY="24.0" text="Manage Department" textFill="#3f3f3f">
+         <font>
+            <Font name="Segoe UI Black" size="25.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="searchComboBox" layoutX="323.0" layoutY="29.0" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #F0F0F0; -jfx-unfocus-color: transparent; -fx-border-color: #C1C1C1;" />
+      <JFXTextField fx:id="searchTxt" layoutX="483.0" layoutY="30.0" prefWidth="140.0" unFocusColor="#b1b1b1" />
+      <JFXButton fx:id="refreshBtn" layoutX="641.0" layoutY="30.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-refresh-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView fx:id="deptTableView" layoutX="26.0" layoutY="87.0" prefHeight="361.0" prefWidth="699.0">
+        <columns>
+          <TableColumn fx:id="deptidCol" prefWidth="189.0" text="DEPARTMENT ID" />
+          <TableColumn fx:id="deptnameCol" prefWidth="289.0" text="DEPARTMENT NAME" />
+            <TableColumn fx:id="deptdescriptionCol" minWidth="0.0" prefWidth="220.0" text="DEPARTMENT DESCRIPTION" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                  <MenuItem fx:id="updateBtn" mnemonicParsing="false" text="Update" />
+                  <MenuItem fx:id="deleteBtn" mnemonicParsing="false" text="Delete" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <JFXButton fx:id="newBtn" layoutX="26.0" layoutY="512.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-add-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="searchBtn" layoutX="119.0" layoutY="512.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-search-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="cancelBtn" layoutX="213.0" layoutY="512.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-close-window-52.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,6 +1,8 @@
 package controller;
 
 import controller.tables.adminUserTable;
+import controller.tables.departmentTable;
+import controller.tables.offenseTable;
 import controller.tables.studentTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,20 +57,20 @@ public class DatabaseAccessObject implements Initializable {
     public void admin(String crud) throws SQLException, ClassNotFoundException, FileNotFoundException {
         switch (crud){
             case "create":
-                fileInputStream = new FileInputStream(AddAdminUserController.getAddAdminUserController().file);
+                fileInputStream = new FileInputStream(AdminUserAddController.getAddAdminUserController().file);
                 timestamp = new Timestamp(System.currentTimeMillis());
                 query = "insert into admin_tbl values (?,?,?,?,?,?,?,?,?)";
                 connection = connector.getConnection();
                 try{
                     prs = connection.prepareStatement(query);
                     prs.setString(1,null);
-                    prs.setString(2,AddAdminUserController.getAddAdminUserController().firstnameTxt.getText());
-                    prs.setString(3, AddAdminUserController.getAddAdminUserController().lastnameTxt.getText());
-                    prs.setString(4,AddAdminUserController.getAddAdminUserController().miTxt.getText());
-                    prs.setString(5,AddAdminUserController.getAddAdminUserController().contactTxt.getText());
-                    prs.setString(6,AddAdminUserController.getAddAdminUserController().usernameTxt.getText());
-                    prs.setString(7,AddAdminUserController.getAddAdminUserController().passwordTxt.getText());
-                    prs.setBinaryStream(8,fileInputStream,AddAdminUserController.getAddAdminUserController().file.length());
+                    prs.setString(2, AdminUserAddController.getAddAdminUserController().firstnameTxt.getText());
+                    prs.setString(3, AdminUserAddController.getAddAdminUserController().lastnameTxt.getText());
+                    prs.setString(4, AdminUserAddController.getAddAdminUserController().miTxt.getText());
+                    prs.setString(5, AdminUserAddController.getAddAdminUserController().contactTxt.getText());
+                    prs.setString(6, AdminUserAddController.getAddAdminUserController().usernameTxt.getText());
+                    prs.setString(7, AdminUserAddController.getAddAdminUserController().passwordTxt.getText());
+                    prs.setBinaryStream(8,fileInputStream, AdminUserAddController.getAddAdminUserController().file.length());
                     prs.setTimestamp(9,timestamp);
                     prs.executeUpdate();
                 }catch (Exception e){
@@ -78,18 +80,18 @@ public class DatabaseAccessObject implements Initializable {
                 }
                 break;
             case "update":
-                if(EditAdminUserController.getEditAdminUserController().file != null){
-                    fileInputStream = new FileInputStream(EditAdminUserController.getEditAdminUserController().file);
+                if(AdminUserEditController.getEditAdminUserController().file != null){
+                    fileInputStream = new FileInputStream(AdminUserEditController.getEditAdminUserController().file);
                     query = "update admin_tbl set firstname = ?, lastname = ?, mi = ?, contact = ?, username = ?, image = ? where id = ?";
                     connection = connector.getConnection();
                     try{
                         prs = connection.prepareStatement(query);
-                        prs.setString(1,EditAdminUserController.getEditAdminUserController().firstnameTxt.getText());
-                        prs.setString(2,EditAdminUserController.getEditAdminUserController().lastnameTxt.getText());
-                        prs.setString(3,EditAdminUserController.getEditAdminUserController().miTxt.getText());
-                        prs.setString(4,EditAdminUserController.getEditAdminUserController().contactTxt.getText());
-                        prs.setString(5,EditAdminUserController.getEditAdminUserController().usernameTxt.getText());
-                        prs.setBinaryStream(6,fileInputStream,EditAdminUserController.getEditAdminUserController().file.length());
+                        prs.setString(1, AdminUserEditController.getEditAdminUserController().firstnameTxt.getText());
+                        prs.setString(2, AdminUserEditController.getEditAdminUserController().lastnameTxt.getText());
+                        prs.setString(3, AdminUserEditController.getEditAdminUserController().miTxt.getText());
+                        prs.setString(4, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
+                        prs.setString(5, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
+                        prs.setBinaryStream(6,fileInputStream, AdminUserEditController.getEditAdminUserController().file.length());
                         prs.setInt(7,SettingsPageController.getSettingsPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
@@ -102,11 +104,11 @@ public class DatabaseAccessObject implements Initializable {
                     connection = connector.getConnection();
                     try{
                         prs = connection.prepareStatement(query);
-                        prs.setString(1,EditAdminUserController.getEditAdminUserController().firstnameTxt.getText());
-                        prs.setString(2,EditAdminUserController.getEditAdminUserController().lastnameTxt.getText());
-                        prs.setString(3,EditAdminUserController.getEditAdminUserController().miTxt.getText());
-                        prs.setString(4,EditAdminUserController.getEditAdminUserController().contactTxt.getText());
-                        prs.setString(5,EditAdminUserController.getEditAdminUserController().usernameTxt.getText());
+                        prs.setString(1, AdminUserEditController.getEditAdminUserController().firstnameTxt.getText());
+                        prs.setString(2, AdminUserEditController.getEditAdminUserController().lastnameTxt.getText());
+                        prs.setString(3, AdminUserEditController.getEditAdminUserController().miTxt.getText());
+                        prs.setString(4, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
+                        prs.setString(5, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
                         prs.setInt(6,SettingsPageController.getSettingsPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
@@ -126,25 +128,25 @@ public class DatabaseAccessObject implements Initializable {
         switch (crud){
             case "create":
 
-                fileInputStream = new FileInputStream(AddStudentController.getAddStudentController().file);
+                fileInputStream = new FileInputStream(StudentAddController.getAddStudentController().file);
                 query = "INSERT INTO student_tbl  VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);";
                 connection = connector.getConnection();
                 try{
                     prs = connection.prepareStatement(query);
                     prs.setString(1,null);
-                    prs.setString(2,AddStudentController.getAddStudentController().studNumberTxt.getText());
-                    prs.setString(3, AddStudentController.getAddStudentController().rfidTagIdTxt.getText());
-                    prs.setString(4,AddStudentController.getAddStudentController().studFullnameTxt.getText());
-                    prs.setString(5,AddStudentController.getAddStudentController().yearTxt.getText());
-                    prs.setString(6,AddStudentController.getAddStudentController().sectionTxt.getText());
-                    prs.setString(7,AddStudentController.getAddStudentController().courseTxt.getText());
-                    prs.setString(8,AddStudentController.getAddStudentController().strandTxt.getText());
-                    prs.setString(9,AddStudentController.getAddStudentController().studDeptComboBox.getSelectionModel().getSelectedIndex()+1+"");
-                    prs.setString(10,AddStudentController.getAddStudentController().studContact.getText());
-                    prs.setBinaryStream(11,fileInputStream,AddStudentController.getAddStudentController().file.length());
-                    prs.setString(12,AddStudentController.getAddStudentController().parentFullnameTxt.getText());
-                    prs.setString(13,AddStudentController.getAddStudentController().parentContactTxt.getText());
-                    prs.setString(14,AddStudentController.getAddStudentController().parentAddressTxt.getText());
+                    prs.setString(2, StudentAddController.getAddStudentController().studNumberTxt.getText());
+                    prs.setString(3, StudentAddController.getAddStudentController().rfidTagIdTxt.getText());
+                    prs.setString(4, StudentAddController.getAddStudentController().studFullnameTxt.getText());
+                    prs.setString(5, StudentAddController.getAddStudentController().yearTxt.getText());
+                    prs.setString(6, StudentAddController.getAddStudentController().sectionTxt.getText());
+                    prs.setString(7, StudentAddController.getAddStudentController().courseTxt.getText());
+                    prs.setString(8, StudentAddController.getAddStudentController().strandTxt.getText());
+                    prs.setString(9, StudentAddController.getAddStudentController().studDeptComboBox.getSelectionModel().getSelectedIndex()+1+"");
+                    prs.setString(10, StudentAddController.getAddStudentController().studContact.getText());
+                    prs.setBinaryStream(11,fileInputStream, StudentAddController.getAddStudentController().file.length());
+                    prs.setString(12, StudentAddController.getAddStudentController().parentFullnameTxt.getText());
+                    prs.setString(13, StudentAddController.getAddStudentController().parentContactTxt.getText());
+                    prs.setString(14, StudentAddController.getAddStudentController().parentAddressTxt.getText());
                     prs.executeUpdate();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -153,25 +155,25 @@ public class DatabaseAccessObject implements Initializable {
                 }
                 break;
             case "update":
-                if(EditStudentController.getEditStudentController().file != null){
-                    fileInputStream = new FileInputStream(EditStudentController.getEditStudentController().file);
+                if(StudentEditController.getEditStudentController().file != null){
+                    fileInputStream = new FileInputStream(StudentEditController.getEditStudentController().file);
                     query = "update student_tbl set student_id = ? , rfid_tag_id = ? , student_name = ?, student_year = ?, student_section = ? , student_course = ? , student_strand =?, student_department = ?, student_image = ?, parent_fullname = ?, parent_contact = ? ,parent_address =?, student_contact = ? where id = ?";
                     connection = connector.getConnection();
                     try{
                         prs = connection.prepareStatement(query);
-                        prs.setInt(1, Integer.parseInt(EditStudentController.getEditStudentController().studNumberTxt.getText()));
-                        prs.setInt(2, Integer.parseInt(EditStudentController.getEditStudentController().rfidTagIdTxt.getText()));
-                        prs.setString(3,EditStudentController.getEditStudentController().studFullnameTxt.getText());
-                        prs.setString(4,EditStudentController.getEditStudentController().yearTxt.getText());
-                        prs.setString(5,EditStudentController.getEditStudentController().sectionTxt.getText());
-                        prs.setString(6,EditStudentController.getEditStudentController().courseTxt.getText());
-                        prs.setString(7,EditStudentController.getEditStudentController().strandTxt.getText());
-                        prs.setString(8,EditStudentController.getEditStudentController().studDeptComboBox.getSelectionModel().getSelectedIndex()+1+"");
-                        prs.setBinaryStream(9,fileInputStream,EditStudentController.getEditStudentController().file.length());
-                        prs.setString(10,EditStudentController.getEditStudentController().parentFullnameTxt.getText());
-                        prs.setString(11,EditStudentController.getEditStudentController().parentContactTxt.getText());
-                        prs.setString(12,EditStudentController.getEditStudentController().parentAddressTxt.getText());
-                        prs.setString(13,EditStudentController.getEditStudentController().studContact.getText());
+                        prs.setInt(1, Integer.parseInt(StudentEditController.getEditStudentController().studNumberTxt.getText()));
+                        prs.setInt(2, Integer.parseInt(StudentEditController.getEditStudentController().rfidTagIdTxt.getText()));
+                        prs.setString(3, StudentEditController.getEditStudentController().studFullnameTxt.getText());
+                        prs.setString(4, StudentEditController.getEditStudentController().yearTxt.getText());
+                        prs.setString(5, StudentEditController.getEditStudentController().sectionTxt.getText());
+                        prs.setString(6, StudentEditController.getEditStudentController().courseTxt.getText());
+                        prs.setString(7, StudentEditController.getEditStudentController().strandTxt.getText());
+                        prs.setString(8, StudentEditController.getEditStudentController().studDeptComboBox.getSelectionModel().getSelectedIndex()+1+"");
+                        prs.setBinaryStream(9,fileInputStream, StudentEditController.getEditStudentController().file.length());
+                        prs.setString(10, StudentEditController.getEditStudentController().parentFullnameTxt.getText());
+                        prs.setString(11, StudentEditController.getEditStudentController().parentContactTxt.getText());
+                        prs.setString(12, StudentEditController.getEditStudentController().parentAddressTxt.getText());
+                        prs.setString(13, StudentEditController.getEditStudentController().studContact.getText());
                         prs.executeUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -183,18 +185,18 @@ public class DatabaseAccessObject implements Initializable {
                     connection = connector.getConnection();
                     try{
                         prs = connection.prepareStatement(query);
-                        prs.setInt(1, Integer.parseInt(EditStudentController.getEditStudentController().studNumberTxt.getText()));
-                        prs.setInt(2, Integer.parseInt(EditStudentController.getEditStudentController().rfidTagIdTxt.getText()));
-                        prs.setString(3,EditStudentController.getEditStudentController().studFullnameTxt.getText());
-                        prs.setString(4,EditStudentController.getEditStudentController().yearTxt.getText());
-                        prs.setString(5,EditStudentController.getEditStudentController().sectionTxt.getText());
-                        prs.setString(6,EditStudentController.getEditStudentController().courseTxt.getText());
-                        prs.setString(7,EditStudentController.getEditStudentController().strandTxt.getText());
-                        prs.setString(8,EditStudentController.getEditStudentController().studDeptComboBox.getSelectionModel().getSelectedIndex()+1+"");
-                        prs.setString(9,EditStudentController.getEditStudentController().parentFullnameTxt.getText());
-                        prs.setString(10,EditStudentController.getEditStudentController().parentContactTxt.getText());
-                        prs.setString(11,EditStudentController.getEditStudentController().parentAddressTxt.getText());
-                        prs.setString(12,EditStudentController.getEditStudentController().studContact.getText());
+                        prs.setInt(1, Integer.parseInt(StudentEditController.getEditStudentController().studNumberTxt.getText()));
+                        prs.setInt(2, Integer.parseInt(StudentEditController.getEditStudentController().rfidTagIdTxt.getText()));
+                        prs.setString(3, StudentEditController.getEditStudentController().studFullnameTxt.getText());
+                        prs.setString(4, StudentEditController.getEditStudentController().yearTxt.getText());
+                        prs.setString(5, StudentEditController.getEditStudentController().sectionTxt.getText());
+                        prs.setString(6, StudentEditController.getEditStudentController().courseTxt.getText());
+                        prs.setString(7, StudentEditController.getEditStudentController().strandTxt.getText());
+                        prs.setString(8, StudentEditController.getEditStudentController().studDeptComboBox.getSelectionModel().getSelectedIndex()+1+"");
+                        prs.setString(9, StudentEditController.getEditStudentController().parentFullnameTxt.getText());
+                        prs.setString(10, StudentEditController.getEditStudentController().parentContactTxt.getText());
+                        prs.setString(11, StudentEditController.getEditStudentController().parentAddressTxt.getText());
+                        prs.setString(12, StudentEditController.getEditStudentController().studContact.getText());
                         prs.setInt(13,StudentPageController.getStudentPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
@@ -237,7 +239,7 @@ public class DatabaseAccessObject implements Initializable {
     }
 
 
-    public ObservableList<adminUserTable> getAdminData(String query){
+    public ObservableList<adminUserTable> getAdminData(String query){ // addmin table
         ObservableList<adminUserTable> list = FXCollections.observableArrayList();
         try{
             connection = connector.getConnection();
@@ -257,7 +259,7 @@ public class DatabaseAccessObject implements Initializable {
             return list;
         }
     }
-    public ObservableList<studentTable> getStudentSearch(String query){
+    public ObservableList<studentTable> getStudentSearch(String query){ // student Search table
         ObservableList<studentTable> list = FXCollections.observableArrayList();
         try{
             connection = connector.getConnection();
@@ -297,7 +299,7 @@ public class DatabaseAccessObject implements Initializable {
             return list;
         }
     }
-    public ObservableList<studentTable> getStudentData(String query){
+    public ObservableList<studentTable> getStudentData(String query) throws SQLException { // student table
         ObservableList<studentTable> list = FXCollections.observableArrayList();
         try{
             connection = connector.getConnection();
@@ -314,9 +316,53 @@ public class DatabaseAccessObject implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }finally {
+            connector.close(connection,prs,rs);
             return list;
         }
     }
+    public ObservableList<departmentTable> getDepartmentData(String query) throws SQLException { // department table
+        ObservableList<departmentTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new departmentTable(rs.getInt(1),rs.getString(2),rs.getString(3)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
+    public ObservableList<offenseTable> getOffenseData(String query) throws SQLException { // offense table
+        ObservableList<offenseTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new offenseTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
     public ObservableList<String> getStudentDepartmentComboBox(String query){
         ObservableList list = FXCollections.observableArrayList();
         try {

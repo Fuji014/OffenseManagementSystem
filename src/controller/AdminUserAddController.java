@@ -3,8 +3,6 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.javafx.fxml.expression.BinaryExpression;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,9 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sun.misc.IOUtils;
 
-import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.URL;
 import java.sql.Blob;
@@ -23,7 +19,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
-public class AddAdminUserController implements Initializable {
+public class AdminUserAddController implements Initializable {
 
     @FXML
     private Label closeBtn;
@@ -81,11 +77,11 @@ public class AddAdminUserController implements Initializable {
     private FileInputStream fileInputStream;
     private InputStream inputStream;
     private Blob blob;
-    private static AddAdminUserController instance;
+    private static AdminUserAddController instance;
 
     // create instance itself
-    public AddAdminUserController(){ this.instance = this; }
-    public static  AddAdminUserController getAddAdminUserController(){
+    public AdminUserAddController(){ this.instance = this; }
+    public static AdminUserAddController getAddAdminUserController(){
         return instance;
     }
 

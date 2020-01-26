@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="636.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OffenseAddController">
+   <children>
+      <Pane prefHeight="26.0" prefWidth="636.0" style="-fx-background-color: #151928;">
+         <children>
+            <Label fx:id="closeBtn" layoutX="614.0" layoutY="-2.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="4.0" text="Add Offense" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="10.0" layoutY="39.0" prefHeight="327.0" prefWidth="616.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Offense Information" />
+            <JFXButton fx:id="saveBtn" layoutX="439.0" layoutY="282.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-add-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="cancelBtn" layoutX="528.0" layoutY="282.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #CD241D #CD241D;" text="Cancel" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-close-window-52.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXTextField fx:id="severityTxt" layoutX="14.0" layoutY="179.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Severity" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
+            <JFXTextArea fx:id="descriptionTxt" layoutX="16.0" layoutY="47.0" prefHeight="109.0" prefWidth="587.0" promptText="Offense Description" style="-jfx-unfocus-color: transparent; -fx-border-color: #D2D2D2; -fx-background-color: #F0F0F0;" />
+            <JFXComboBox fx:id="departmentComboBox" layoutX="14.0" layoutY="228.0" prefHeight="25.0" prefWidth="587.0" promptText="Department Name" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

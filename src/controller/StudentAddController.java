@@ -1,5 +1,6 @@
 package controller;
 
+import controller.jserial.Test;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -14,12 +15,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddStudentController implements Initializable {
+public class StudentAddController implements Initializable {
     @FXML
     private AnchorPane apaneAddStudent;
 
@@ -78,20 +77,21 @@ public class AddStudentController implements Initializable {
     private JFXButton uploaderBtn;
 
     // Declare var below
+    private Test t;
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
     private FileChooser fileChooser;
     public File file;
     private Stage stage;
     private Image image;
-    private static AddStudentController instance;
+    private static StudentAddController instance;
     // end of var
 
     // create initialize itself
-    public AddStudentController(){
+    public StudentAddController(){
         this.instance = this;
     }
-    public static AddStudentController getAddStudentController(){
+    public static StudentAddController getAddStudentController(){
         return instance;
     }
     // end of initialize itself
@@ -100,8 +100,10 @@ public class AddStudentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // initialize class
+        t = new Test();
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
+
         // end of initialize class
 
         // initialize method
@@ -123,6 +125,9 @@ public class AddStudentController implements Initializable {
         });
         cancelBtn.setOnAction(event -> {
             this.cancelBtn.getScene().getWindow().hide();
+        });
+        scanBtn.setOnAction(event -> {
+            t.haha();
         });
         // end of event  btn
     }

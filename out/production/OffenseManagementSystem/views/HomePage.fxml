@@ -47,7 +47,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="reportOffenseBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="216.0" prefHeight="45.0" prefWidth="209.0" text="REPORT OFFENSE" textFill="WHITE">
+            <JFXButton fx:id="reportOffenseBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="195.0" prefHeight="45.0" prefWidth="209.0" text="REPORT OFFENSE" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="offenseListBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="279.0" prefHeight="45.0" prefWidth="209.0" text="OFFENSE LIST" textFill="WHITE">
+            <JFXButton fx:id="offenseListBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="243.0" prefHeight="45.0" prefWidth="209.0" text="OFFENSE LIST" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -71,7 +71,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="studentBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="347.0" prefHeight="45.0" prefWidth="209.0" text="STUDENTS" textFill="WHITE">
+            <JFXButton fx:id="studentBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="294.0" prefHeight="45.0" prefWidth="209.0" text="STUDENTS" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -83,7 +83,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="settingsBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="410.0" prefHeight="45.0" prefWidth="209.0" text="SETTINGS" textFill="WHITE">
+            <JFXButton fx:id="settingsBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="437.0" prefHeight="45.0" prefWidth="209.0" text="SETTINGS" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -105,6 +105,30 @@
                   <Font size="16.0" />
                </font>
             </Text>
+            <JFXButton fx:id="portSettingsBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="389.0" prefHeight="45.0" prefWidth="209.0" text="PORT SETTINGS" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                     <image>
+                        <Image url="@../resources/icons8-settings-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="departmentBtn" alignment="TOP_LEFT" layoutX="19.0" layoutY="339.0" prefHeight="45.0" prefWidth="209.0" text="DEPARTMENT" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                     <image>
+                        <Image url="@../resources/icons8-student-male-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </Pane>
       <Pane layoutX="245.0" prefHeight="26.0" prefWidth="756.0" style="-fx-background-color: #151928;">

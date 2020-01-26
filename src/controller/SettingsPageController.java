@@ -4,24 +4,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import controller.tables.adminUserTable;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Observable;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 public class SettingsPageController implements Initializable {
     @FXML
@@ -105,7 +96,7 @@ public class SettingsPageController implements Initializable {
         // event btn click
         newBtn.setOnAction(event -> {
             try {
-                mc.createPage("Add User", "/views/AddAdminUser.fxml");
+                mc.createPage("Add User", "/views/AdminUserAdd.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -118,7 +109,7 @@ public class SettingsPageController implements Initializable {
         updateBtn.setOnAction(event -> {
             updateEvent();
             try {
-                mc.createPage(null, "/views/EditAdminUser.fxml");
+                mc.createPage(null, "/views/AdminUserEdit.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }

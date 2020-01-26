@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -110,14 +111,18 @@ public class StudentPageController implements Initializable {
         // end of initalize class
 
         // initialize method()
-        refreshTable();
+        try {
+            refreshTable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         initSearch();
         // end of initialize method()
 
         // event button
         newBtn.setOnAction(event -> {
             try {
-                mc.createPage("Add User", "/views/AddStudent.fxml");
+                mc.createPage("Add User", "/views/StudentAdd.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -126,16 +131,24 @@ public class StudentPageController implements Initializable {
             updateEvent();
             System.out.println(getStudentDept());
             try {
-                mc.createPage(null, "/views/EditStudent.fxml");
+                mc.createPage(null, "/views/StudentEdit.fxml");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         deleteBtn.setOnAction(event -> {
-            deleteEvent();
+            try {
+                deleteEvent();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
         refreshBtn.setOnAction(event -> {
-            refreshTable();
+            try {
+                refreshTable();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
 
         // end of event button
@@ -159,7 +172,7 @@ public class StudentPageController implements Initializable {
         parentaddressCol.setCellValueFactory(cell -> cell.getValue().parentAdressProperty());
     }
 
-    public void refreshTable(){
+    public void refreshTable() throws SQLException {
         initTable();
         query = "select s.id,s.rfid_tag_id,s.student_id,s.student_name,s.student_year,s.student_section,s.student_course,s.student_strand,d.dept_name,s.parent_fullname,s.parent_contact,s.student_contact,s.parent_address from student_tbl as s inner join department_tbl as d on s.student_department = d.id order by id desc";
         studentTableView.setItems(dao.getStudentData(query));
@@ -172,7 +185,7 @@ public class StudentPageController implements Initializable {
             studentTableView.setItems(dao.getStudentSearch(query));
         });
     }
-    public void deleteEvent(){
+    public void deleteEvent() throws SQLException {
         alertConfirmation(null, "Are you sure you want to delete?");
         if(isConfirm){
             studentTable selected = studentTableView.getSelectionModel().getSelectedItem();

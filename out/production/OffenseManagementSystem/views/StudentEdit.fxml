@@ -12,11 +12,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="apaneAddStudent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="636.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddStudentController">
+<AnchorPane fx:id="apaneEditStudent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="636.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentEditController">
    <children>
       <Pane prefHeight="26.0" prefWidth="636.0" style="-fx-background-color: #151928;">
          <children>
-            <Label layoutX="11.0" layoutY="4.0" text="Add Student" textFill="WHITE">
+            <Label layoutX="11.0" layoutY="4.0" text="Edit Student" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

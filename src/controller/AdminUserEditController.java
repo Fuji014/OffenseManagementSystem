@@ -1,8 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,54 +21,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class EditStudentController implements Initializable {
+public class AdminUserEditController implements Initializable {
+
     @FXML
-    private AnchorPane apaneEditStudent;
+    private AnchorPane apaneEditUserId;
 
     @FXML
     private Label closeBtn;
 
     @FXML
-    public JFXTextField studNumberTxt;
+    public JFXTextField firstnameTxt;
 
     @FXML
-    public JFXTextField rfidTagIdTxt;
+    public JFXTextField lastnameTxt;
 
     @FXML
-    private JFXButton scanBtn;
+    public JFXTextField miTxt;
 
     @FXML
-    public JFXTextField studFullnameTxt;
+    public JFXTextField contactTxt;
 
     @FXML
-    public JFXTextField studContact;
+    public JFXTextField usernameTxt;
 
     @FXML
-    public JFXTextField yearTxt;
+    private JFXPasswordField passwordTxt;
 
     @FXML
-    public JFXTextField sectionTxt;
-
-    @FXML
-    public JFXTextField courseTxt;
-
-    @FXML
-    public JFXTextField strandTxt;
-
-    @FXML
-    public JFXComboBox<String> studDeptComboBox;
-
-    @FXML
-    public JFXTextField parentFullnameTxt;
-
-    @FXML
-    public JFXTextField parentContactTxt;
-
-    @FXML
-    public JFXTextArea parentAddressTxt;
-
-    @FXML
-    private ImageView imagePreview;
+    private JFXPasswordField confirmpassTxt;
 
     @FXML
     private JFXButton saveBtn;
@@ -78,7 +57,11 @@ public class EditStudentController implements Initializable {
     private JFXButton cancelBtn;
 
     @FXML
+    private ImageView imagePreview;
+
+    @FXML
     private JFXButton uploaderBtn;
+
 
     // Declare var below
     private ConnectionHandler connector;
@@ -94,19 +77,16 @@ public class EditStudentController implements Initializable {
     public File file;
     private Stage stage;
     private Image image;
-    private static EditStudentController instance;
-    // End of declare var
+    private FileInputStream fileInputStream;
+    private static AdminUserEditController instance;
 
-    // initialize itself
-    public EditStudentController(){
-        this.instance = this;
-    }
-    public static EditStudentController getEditStudentController(){
+    // create instance itself
+    public AdminUserEditController(){this.instance = this;}
+    public static AdminUserEditController getEditAdminUserController(){
         return instance;
     }
-    // end of initialize itself
+    // end instance itself
 
-    // initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initFillTextBox();
@@ -114,21 +94,18 @@ public class EditStudentController implements Initializable {
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
         connector = new ConnectionHandler();
-        // end of initialize class
-
-        // initialize method
+        // end of initilization
+        // initialize object
         initFileChooser();
         try {
             initShowImagePreview();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        initStudentDeptCombobox();
-        // end of initialize method
-
-        // event buttons
-        uploaderBtn.setOnAction(event -> {
-            uploaderEvent();
+        // end of initilize object
+        // event button
+        closeBtn.setOnMouseClicked(event -> {
+            this.closeBtn.getScene().getWindow().hide();
         });
         saveBtn.setOnAction(event -> {
             try {
@@ -137,31 +114,20 @@ public class EditStudentController implements Initializable {
                 e.printStackTrace();
             }
         });
-        studDeptComboBox.setOnMouseClicked(event -> {
-            initStudentDeptCombobox();
+        uploaderBtn.setOnAction(event -> {
+            uploaderEvent();
         });
-        cancelBtn.setOnAction(event -> {
-            this.cancelBtn.getScene().getWindow().hide();
-        });
-        closeBtn.setOnMouseClicked(event -> {
-            this.closeBtn.getScene().getWindow().hide();
-        });
-        // end of event buttons
-    }
-    // End of initializable
-    public void editEvent() throws FileNotFoundException {
-        try {
-            dao.student("update");
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            alc.alertSuccess(null, "Successfully Updated!");
-            StudentPageController.getStudentPageController().refreshTable();
-        }
     }
 
+    public void initFillTextBox(){
+        firstnameTxt.setText(SettingsPageController.getSettingsPageController().getFirstname());
+        lastnameTxt.setText(SettingsPageController.getSettingsPageController().getLastname());
+        miTxt.setText(SettingsPageController.getSettingsPageController().getMi());
+        contactTxt.setText(SettingsPageController.getSettingsPageController().getContact());
+        usernameTxt.setText(SettingsPageController.getSettingsPageController().getUsername());
+    }
     public void uploaderEvent(){
-        stage = (Stage) apaneEditStudent.getScene().getWindow();
+        stage = (Stage) apaneEditUserId.getScene().getWindow();
         file = fileChooser.showOpenDialog(stage);
         if(file != null){
             System.out.println(""+file.getAbsolutePath());
@@ -171,22 +137,27 @@ public class EditStudentController implements Initializable {
             imagePreview.setPreserveRatio(true);
         }
     }
+    public void editEvent() throws FileNotFoundException {
 
-    private void initStudentDeptCombobox(){
-        studDeptComboBox.getSelectionModel().clearSelection();
-        String query = "select * from department_tbl";
-        studDeptComboBox.setItems(dao.getStudentDepartmentComboBox(query));
+        try {
+            dao.admin("update");
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            alc.alertSuccess(null, "Successfully Updated!");
+            SettingsPageController.getSettingsPageController().refreshTable();
+        }
     }
 
     public void initShowImagePreview() throws SQLException {
-        id = StudentPageController.getStudentPageController().getId();
+        id = SettingsPageController.getSettingsPageController().getId();
         try {
             connection = connector.getConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        query = "select student_image from student_tbl where id = '"+id+"'";
+        query = "select image from admin_tbl where id = '"+id+"'";
         try {
             connection = connector.getConnection();
         }catch (Exception e){
@@ -224,20 +195,5 @@ public class EditStudentController implements Initializable {
         );
     }
 
-    public void initFillTextBox(){
-        studNumberTxt.setText(Integer.toString(StudentPageController.getStudentPageController().getStudId()));
-        rfidTagIdTxt.setText(Integer.toString(StudentPageController.getStudentPageController().getRfid()));
-        studFullnameTxt.setText(StudentPageController.getStudentPageController().getStudentName());
-        studContact.setText(StudentPageController.getStudentPageController().getParentContact());
-        yearTxt.setText(StudentPageController.getStudentPageController().getStudentYear());
-        sectionTxt.setText(StudentPageController.getStudentPageController().getStudentSection());
-        courseTxt.setText(StudentPageController.getStudentPageController().getStudentCourse());
-        strandTxt.setText(StudentPageController.getStudentPageController().getStudentStrand());
-        studDeptComboBox.getSelectionModel().select(StudentPageController.getStudentPageController().getStudentDept());
-        parentFullnameTxt.setText(StudentPageController.getStudentPageController().getParentName());
-        parentContactTxt.setText(StudentPageController.getStudentPageController().getParentContact());
-        parentAddressTxt.setText(StudentPageController.getStudentPageController().getParentAddress());
-        studContact.setText(StudentPageController.getStudentPageController().getStudentContact());
 
-    }
 }
