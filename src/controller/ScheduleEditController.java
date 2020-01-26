@@ -6,11 +6,11 @@ import com.jfoenix.controls.JFXTimePicker;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
-public class ScheduleAddController implements Initializable {
+public class ScheduleEditController implements Initializable {
 
     @FXML
     private Label closeBtn;
@@ -43,47 +43,54 @@ public class ScheduleAddController implements Initializable {
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
     private String query;
-    // end of declare var
+    // end of declare var below
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        setTimer24hrs();
+        fillFields();
         // initialize class
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
-        // end of initalize class
+        // end of initialize class
 
         // methods
+        initDepartmentComboBox();
         // end of methods
 
         // event button
         saveBtn.setOnAction(event -> {
             saveEvent();
         });
-        departmentComboBox.setOnMouseClicked(event -> {
-            initDepartmentComboBox();
-        });
         closeBtn.setOnMouseClicked(event -> {
             this.closeBtn.getScene().getWindow().hide();
         });
+        cancelBtn.setOnAction(event -> {
+            this.cancelBtn.getScene().getWindow().hide();
+        });
         // end of event button
+
     }
 
     // init
     public void saveEvent(){
         String dept = departmentComboBox.getSelectionModel().getSelectedIndex()+1+"";
-        query = "INSERT INTO schedule_tbl VALUES (NULL, "+dept+", '"+mondayTimer.getValue()+"', '"+tuesdayTimer.getValue()+"', '"+wednesdayTimer.getValue()+"', '"+thursdayTimer.getValue()+"', '"+fridayTimer.getValue()+"');";
-        try {
+        query = "update schedule_tbl set dept_key = "+dept+", monday = '"+SchedulePageController.getSchedulePageController().getSchedMonday()+"', tuesday = '"+SchedulePageController.getSchedulePageController().getSchedTuesday()+"', wednesday = '"+SchedulePageController.getSchedulePageController().getSchedWednesday()+"', thursday = '"+SchedulePageController.getSchedulePageController().getSchedThursday()+"', friday = '"+SchedulePageController.getSchedulePageController().getSchedFriday()+"' where schedule_id = "+SchedulePageController.getSchedulePageController().getId()+"";
+        try{
             dao.saveData(query);
             SchedulePageController.getSchedulePageController().refreshTable();
-            clearFields();
         }catch (Exception e){
-            alc.alertErr(null,"Err"+e);
+            alc.alertErr(null, "Err"+e);
         }finally {
             alc.alertSuccess(null, "Successfully Added!");
         }
-
+    }
+    public void fillFields(){
+        departmentComboBox.getSelectionModel().select(SchedulePageController.getSchedulePageController().getSchedDeptName());
+        mondayTimer.setValue(LocalTime.parse(SchedulePageController.getSchedulePageController().getSchedMonday()));
+        tuesdayTimer.setValue(LocalTime.parse(SchedulePageController.getSchedulePageController().getSchedTuesday()));
+        wednesdayTimer.setValue(LocalTime.parse(SchedulePageController.getSchedulePageController().getSchedWednesday()));
+        thursdayTimer.setValue(LocalTime.parse(SchedulePageController.getSchedulePageController().getSchedThursday()));
+        fridayTimer.setValue(LocalTime.parse(SchedulePageController.getSchedulePageController().getSchedFriday()));
     }
     public void initDepartmentComboBox(){
         departmentComboBox.getSelectionModel().clearSelection();
@@ -93,20 +100,5 @@ public class ScheduleAddController implements Initializable {
     // end of init
 
     // custom methods
-    public void clearFields(){
-        departmentComboBox.getSelectionModel().clearSelection();
-        mondayTimer.setValue(null);
-        tuesdayTimer.setValue(null);
-        wednesdayTimer.setValue(null);
-        thursdayTimer.setValue(null);
-        fridayTimer.setValue(null);
-    }
-    public void setTimer24hrs(){
-        mondayTimer._24HourViewProperty();
-        tuesdayTimer._24HourViewProperty();
-        wednesdayTimer._24HourViewProperty();
-        thursdayTimer._24HourViewProperty();
-        fridayTimer._24HourViewProperty();
-    }
     // end of custom methods
 }
