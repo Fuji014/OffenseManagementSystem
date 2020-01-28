@@ -74,6 +74,9 @@ public class HomePageController implements Initializable {
         scheduleBtn.setOnAction(event -> {
             createPage(home, "/views/SchedulePage.fxml");
         });
+        reportOffenseBtn.setOnAction(event -> {
+            createPage(home, "/views/StudentOffensePage.fxml");
+        });
     }
 
 

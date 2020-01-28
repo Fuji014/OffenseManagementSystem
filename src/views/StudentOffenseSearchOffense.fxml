@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="636.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentOffenseSearchOffenseController">
+   <children>
+      <Pane prefHeight="26.0" prefWidth="636.0" style="-fx-background-color: #151928;">
+         <children>
+            <Label layoutX="10.0" layoutY="4.0" text="Search Offense" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="closeBtn" layoutX="611.0" layoutY="-2.0" text="X" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="9.0" layoutY="34.0" prefHeight="55.0" prefWidth="613.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <JFXComboBox fx:id="searchComboBox" disable="true" layoutX="104.0" layoutY="14.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" />
+            <Label layoutX="14.0" layoutY="6.0" text="Search helper" textFill="#a19a9a" />
+            <JFXTextField fx:id="searchTxt" disable="true" layoutX="262.0" layoutY="14.0" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+            <JFXButton fx:id="searchBtn" layoutX="412.0" layoutY="15.0" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-search-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="12.0" layoutY="110.0" prefHeight="253.0" prefWidth="426.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <Label layoutX="11.0" layoutY="8.0" text="Table View" textFill="#a19a9a" />
+            <TableView fx:id="srchstudentTableView" layoutX="14.0" layoutY="39.0" prefHeight="200.0" prefWidth="400.0">
+              <columns>
+                <TableColumn fx:id="descriptionCol" prefWidth="219.0" text="DESCRIPTION" />
+                <TableColumn fx:id="severityCol" prefWidth="83.0" text="SEVERITY" />
+                  <TableColumn fx:id="deptCol" prefWidth="98.0" text="DEPARTMENT" />
+                  <TableColumn fx:id="offenseId" minWidth="0.0" prefWidth="36.0" text="ID" />
+              </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                        <MenuItem fx:id="selectBtn" mnemonicParsing="false" text="Select" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="452.0" layoutY="110.0" prefHeight="253.0" prefWidth="169.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <Label layoutX="11.0" layoutY="9.0" text="Direction" textFill="#a19a9a" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

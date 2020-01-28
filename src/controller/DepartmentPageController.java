@@ -175,6 +175,7 @@ public class DepartmentPageController implements Initializable {
             }
         });
     }
+
     // end of init methods
 
     // custom method

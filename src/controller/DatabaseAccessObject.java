@@ -381,6 +381,70 @@ public class DatabaseAccessObject implements Initializable {
 
     }
 
+    public ObservableList<studentOffenseTable> getStudentOffenseData(String query) throws SQLException { // student offense table
+        ObservableList<studentOffenseTable> list = FXCollections.observableArrayList();
+       try{
+           connection = connector.getConnection();
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new studentOffenseTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+
+        }
+    }
+
+    public ObservableList<StudentOffenseSearchStudentTable> getStudentOffenseStudentSearchData(String query) throws SQLException { // student search table
+        ObservableList<StudentOffenseSearchStudentTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new StudentOffenseSearchStudentTable(rs.getInt(1),rs.getString(2)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
+    public ObservableList<StudentOffenseSearchOffenseTable> getStudentOffenseOffenseSearchData(String query) throws SQLException {
+        ObservableList<StudentOffenseSearchOffenseTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new StudentOffenseSearchOffenseTable(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
     public ObservableList<String> getStudentDepartmentComboBox(String query){ // student department combox
         ObservableList list = FXCollections.observableArrayList();
         try {
@@ -401,4 +465,6 @@ public class DatabaseAccessObject implements Initializable {
             return list;
         }
     }
+
+
 }
