@@ -20,6 +20,7 @@ public class PortSettingPageController implements Initializable {
 
     // declare var below
     private Test t;
+    private AdminLoginController alc;
     private static PortSettingPageController instance;
 
     // create instance itself
@@ -32,15 +33,30 @@ public class PortSettingPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         // initialize class
         t = new Test();
+        alc = new AdminLoginController();
         // end of initialize class
 
         // event button
         choosePortComboBox.setOnMouseClicked(event -> {
-            choosePortComboBox.setItems(t.haha());
+            choosePortComboBox.setItems(t.getOpenPort());
+        });
+        testButton.setOnAction(event -> {
+            System.out.println(choosePortComboBox.getSelectionModel().getSelectedItem());
+            testEvent();
         });
         // end of event button
     }
+    // init
+    public void testEvent(){
+        if(t.getConnectionStatus()){
+            alc.alertSuccess(null,"connect success");
+        }else{
+            alc.alertErr(null, "connection failed");
+        }
+    }
+    // end of init
 
 }

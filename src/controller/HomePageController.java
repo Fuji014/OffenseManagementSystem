@@ -6,12 +6,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import model.ConnectionHandler;
 
+import java.io.*;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
@@ -45,19 +54,59 @@ public class HomePageController implements Initializable {
     @FXML
     private JFXButton scheduleBtn;
 
+    @FXML
+    private Circle myCircle;
+
+    @FXML
+    private JFXButton logoutBtn;
+
 
     // Declare var below;
+    private ConnectionHandler connector;
+    private MainController mc;
+    private Connection connection;
+    private PreparedStatement prs;
+    private ResultSet rs;
+    private DatabaseAccessObject dao;
+    private String query;
+    private Image image;
     AnchorPane home;
+    private int id;
+    private static HomePageController instance;
 
+    // init itself
+    public HomePageController(){
+        this.instance = this;
+    }
+    public static HomePageController getHomePageController(){
+        return instance;
+    }
+    // end init itself
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         createPage(home,"/views/Dashboard.fxml");
         usernameTxt.setText(AdminLoginController.getAdminLoginController().getInfo().get("username"));
+        // initalize class
+        dao = new DatabaseAccessObject();
+        mc = new MainController();
+        connector = new ConnectionHandler();
+        // end of initalize class
+
+        // methods
+        try {
+            initShowImagePreview();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // end of methods
 
         // click event
-        settingsBtn.setOnAction(event -> { // event btn settingsBtn
-            createPage(home, "/views/SettingsPage.fxml");
+        dashboardBtn.setOnAction(event -> { // event btn dashboard
+            createPage(home,"/views/Dashboard.fxml");
+        });
+        settingsBtn.setOnAction(event -> { // event btn AdminUser
+            createPage(home, "/views/AdminUserPage.fxml");
         });
         studentBtn.setOnAction(event -> { // event btn studentBtn
             createPage(home, "/views/StudentPage.fxml");
@@ -76,6 +125,14 @@ public class HomePageController implements Initializable {
         });
         reportOffenseBtn.setOnAction(event -> {
             createPage(home, "/views/StudentOffensePage.fxml");
+        });
+        logoutBtn.setOnAction(event -> {
+            this.logoutBtn.getScene().getWindow().hide();
+            try {
+                mc.createPage(null, "/views/AdminLoginFxml.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 
@@ -102,4 +159,42 @@ public class HomePageController implements Initializable {
         }
 
     }
+
+    // init
+    public void initShowImagePreview() throws SQLException {
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        query = "select image from admin_tbl where username = '"+usernameTxt.getText()+"'";
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                InputStream is = rs.getBinaryStream(1);
+                File file;
+                OutputStream os = new FileOutputStream(new File("photo.jpg"));
+                byte[] contents = new byte[1024];
+                int size = 0;
+                while((size = is.read(contents)) !=-1){
+                    os.write(contents,0,size);
+                }
+                image = new Image("file:photo.jpg",false);
+                myCircle.setFill(new ImagePattern(image));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+        }
+    }
+    // end of init
 }

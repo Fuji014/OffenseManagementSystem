@@ -129,7 +129,7 @@ public class AdminUserAddController implements Initializable {
 
         if(passwordTxt.getText().equals(confirmpassTxt.getText())){
             dao.admin("create");
-            SettingsPageController.getSettingsPageController().refreshTable();
+            AdminUserPageController.getSettingsPageController().refreshTable();
             alc.alertSuccess(null, "User Added Successfully ");
             clearFields();
         }else{

@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -14,11 +15,6 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="245.0" style="-fx-background-color: #151928;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="66.0" prefWidth="80.0" style="-fx-border-color: #fff;" text="OMS" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
             <Label layoutX="103.0" layoutY="30.0" text="ATENEO DE " textFill="#fff3f3">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -35,112 +31,134 @@
                </font>
             </Label>
             <Line endX="107.0" layoutX="123.0" layoutY="123.0" startX="-109.0" stroke="#bbbbbb" />
-            <JFXButton fx:id="dashboardBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="150.0" prefHeight="45.0" prefWidth="209.0" text=" DASHBOARD" textAlignment="JUSTIFY" textFill="WHITE">
+            <JFXButton fx:id="dashboardBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="150.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" DASHBOARD" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
                         <Image url="@../resources/icons8-page-properties-report-50.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="reportOffenseBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="195.0" prefHeight="45.0" prefWidth="209.0" text=" REPORT OFFENSE" textFill="WHITE">
+            <JFXButton fx:id="reportOffenseBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="189.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" REPORT OFFENSE" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
                         <Image url="@../resources/icons8-business-report-48.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="offenseListBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="243.0" prefHeight="45.0" prefWidth="209.0" text=" OFFENSE LIST" textFill="WHITE">
+            <JFXButton fx:id="offenseListBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="228.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" OFFENSE LIST" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
                         <Image url="@../resources/icons8-add-list-48.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="studentBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="294.0" prefHeight="45.0" prefWidth="209.0" text=" STUDENTS" textFill="WHITE">
+            <JFXButton fx:id="studentBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="266.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" STUDENTS" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
                         <Image url="@../resources/icons8-student-male-48.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="settingsBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="461.0" prefHeight="45.0" prefWidth="209.0" text=" SETTINGS" textFill="WHITE">
+            <JFXButton fx:id="settingsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="421.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" ADMIN USER" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-settings-48.png" />
+                        <Image url="@../resources/icons8-microsoft-admin-50.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="102.0" layoutY="561.0" text="Admin" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Text fx:id="usernameTxt" fill="WHITE" layoutX="90.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hans Lim" underline="true">
+            <Text fx:id="usernameTxt" fill="WHITE" layoutX="88.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hans Lim" underline="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <JFXButton fx:id="portSettingsBtn" alignment="TOP_LEFT" layoutX="18.0" layoutY="414.0" prefHeight="45.0" prefWidth="209.0" text=" PORT SETTINGS" textFill="WHITE">
+            <JFXButton fx:id="portSettingsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="383.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" PORT SETTINGS" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-settings-48.png" />
+                        <Image url="@../resources/icons8-connected-48.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="departmentBtn" alignment="TOP_LEFT" layoutX="19.0" layoutY="336.0" prefHeight="45.0" prefWidth="209.0" text=" DEPARTMENT" textFill="WHITE">
+            <JFXButton fx:id="departmentBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="305.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" DEPARTMENT" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-student-male-48.png" />
+                        <Image url="@../resources/icons8-shop-64.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="scheduleBtn" alignment="TOP_LEFT" layoutX="19.0" layoutY="376.0" prefHeight="45.0" prefWidth="209.0" text=" SCHEDULE" textFill="WHITE">
+            <JFXButton fx:id="scheduleBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="344.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" SCHEDULE" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="33.0">
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-student-male-48.png" />
+                        <Image url="@../resources/icons8-schedule-50.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="12.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logoAteneoDezam.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="myCircle" fill="DODGERBLUE" layoutX="54.0" layoutY="564.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="221.0" layoutY="152.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="191.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <JFXButton fx:id="logoutBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="460.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" LOGOUT" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0">
+                     <image>
+                        <Image url="@../resources/icons8-exit-52.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Label layoutX="221.0" layoutY="230.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="268.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="307.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="346.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="385.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="423.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="462.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
          </children>
       </Pane>
       <Pane layoutX="245.0" prefHeight="26.0" prefWidth="756.0" style="-fx-background-color: #151928;">
@@ -157,7 +175,6 @@
             </JFXButton>
          </children>
       </Pane>
-      <JFXButton />
-      <Pane fx:id="apaneHolder" layoutX="246.0" layoutY="26.0" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" />
+      <Pane fx:id="apaneHolder" layoutX="239.0" layoutY="26.0" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" />
    </children>
 </AnchorPane>

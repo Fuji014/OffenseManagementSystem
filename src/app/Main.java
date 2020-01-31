@@ -18,7 +18,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/views/MainFxml.fxml"));
         Scene sc = new Scene(root);
         primaryStage.setScene(sc);
-        primaryStage.setTitle("Offense Management System");
+            primaryStage.setTitle("Offense Management System");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
     }

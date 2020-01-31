@@ -89,7 +89,7 @@ public class DatabaseAccessObject implements Initializable {
                         prs.setString(4, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
                         prs.setString(5, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
                         prs.setBinaryStream(6,fileInputStream, AdminUserEditController.getEditAdminUserController().file.length());
-                        prs.setInt(7,SettingsPageController.getSettingsPageController().getId());
+                        prs.setInt(7, AdminUserPageController.getSettingsPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -106,7 +106,7 @@ public class DatabaseAccessObject implements Initializable {
                         prs.setString(3, AdminUserEditController.getEditAdminUserController().miTxt.getText());
                         prs.setString(4, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
                         prs.setString(5, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
-                        prs.setInt(6,SettingsPageController.getSettingsPageController().getId());
+                        prs.setInt(6, AdminUserPageController.getSettingsPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -350,7 +350,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new offenseTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+                list.add(new offenseTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -465,6 +465,50 @@ public class DatabaseAccessObject implements Initializable {
             return list;
         }
     }
+
+    public int getStudentOffenseCount(String query) throws SQLException {
+        int count = 0;
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return count+1;
+        }
+    }
+
+    public int getRfidCount(String query) throws SQLException {
+        int count = 0;
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return count;
+        }
+    }
+
 
 
 }

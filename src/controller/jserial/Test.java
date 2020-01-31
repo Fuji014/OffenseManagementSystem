@@ -8,51 +8,51 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Test {
-    public static String devicePortName = "com3";
+    public static String devicePortName = "";
     public static SerialPort arduinoPort = null;
     public static InputStream arduinoStream = null;
     public static int PACKET_SIZE_IN_BYTES = 8;
+    private String portName;
+    private int i;
 
     // custom var
     public boolean isConnected = false;
 
 
-    public ObservableList<String> haha(){
+    public ObservableList<String> getOpenPort(){
         int len = SerialPort.getCommPorts().length;
         SerialPort serialPorts[] = new SerialPort[len];
         serialPorts = SerialPort.getCommPorts();
 
         ObservableList list = FXCollections.observableArrayList();
-        for(int i = 0; i < len; i++) {
-            String portName = serialPorts[i].getDescriptivePortName();
-            System.out.println(serialPorts[i].getSystemPortName() + ": " + portName + ": " + i);
+        for(i = 0; i < len; i++) {
+            portName = serialPorts[i].getDescriptivePortName();
             portName = serialPorts[i].getSystemPortName();
+            arduinoPort = serialPorts[i];
+            arduinoPort.openPort();
             list.add(portName);
-
-            if(portName.contains(devicePortName)) {
-                arduinoPort = serialPorts[i];
-                arduinoPort.openPort();
-                System.out.println("connected to: "+ portName + "{" + i + "}");
-                isConnected = true;
-                break;
-            }else{
-                isConnected = false;
-                System.out.println("error");
-            }
         }
         return list;
-
-
-//        try{
-//        if(arduinoPort != null){
-//            PacketListener listener = new PacketListener();
-//            arduinoPort.addDataListener(listener);
-//        }
-
-//        }catch (Exception e){
-//            System.out.println("Please Configure Port In The Port Settings!");
-//        }
     }
+    public boolean getConnectionStatus(){
+        System.out.println(portName);
+        devicePortName = PortSettingPageController.getPortSettingPageController().choosePortComboBox.getSelectionModel().getSelectedItem();
+        if(portName.contains(devicePortName)) {
+            System.out.println("connected to: "+ portName + "{" + i + "}");
+            isConnected = true;
+        }else{
+            isConnected = false;
+            System.out.println("error");
+        }
+        return isConnected;
+    }
+    public void readArduinoData(){
+        if(arduinoPort != null){
+            PacketListener listener = new PacketListener();
+            arduinoPort.addDataListener(listener);
+            System.out.println("not null");
+        }
 
+    }
 
 }

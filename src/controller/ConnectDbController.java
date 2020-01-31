@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public class ConnectDbController implements Initializable {
     private JFXButton cancelBtn;
 
     // Declare var below ;
-
+    private MainController mc;
     private ConnectionHandler connector;
     private Connection connection;
     private String server,port,database,username,password;
@@ -63,6 +64,7 @@ public class ConnectDbController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        mc = new MainController();
         connector = new ConnectionHandler();
         serverTxt.setText("localhost");
         portTxt.setText("3306");
@@ -78,8 +80,14 @@ public class ConnectDbController implements Initializable {
             } finally {
                 System.out.println(connection);
             }
-
-
+        });
+        cancelBtn.setOnAction(event -> {
+            this.cancelBtn.getScene().getWindow().hide();
+            try {
+                mc.createPage(null,"/views/MainFxml.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 

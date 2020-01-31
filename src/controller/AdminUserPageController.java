@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class SettingsPageController implements Initializable {
+public class AdminUserPageController implements Initializable {
     @FXML
     private JFXButton refreshBtn;
 
@@ -22,10 +22,10 @@ public class SettingsPageController implements Initializable {
     private TableView<adminUserTable> tableView;
 
     @FXML
-    private MenuItem updateBtn;
+    private MenuItem updateBtn1;
 
     @FXML
-    private MenuItem deleteBtn;
+    private MenuItem deleteBtn1;
 
     @FXML
     private TableColumn<adminUserTable, Integer> idCol;
@@ -62,7 +62,7 @@ public class SettingsPageController implements Initializable {
 
 
     // Declare var below;
-    private static SettingsPageController instance;
+    private static AdminUserPageController instance;
     private String query;
     private DatabaseAccessObject dao;
     private MainController mc;
@@ -73,10 +73,10 @@ public class SettingsPageController implements Initializable {
 
 
     // create instance
-    public SettingsPageController(){
+    public AdminUserPageController(){
         this.instance = this;
     }
-    public static SettingsPageController getSettingsPageController(){
+    public static AdminUserPageController getSettingsPageController(){
         return instance;
     }
     // end of instance
@@ -106,7 +106,7 @@ public class SettingsPageController implements Initializable {
             refreshTable();
         });
 
-        updateBtn.setOnAction(event -> {
+        updateBtn1.setOnAction(event -> {
             updateEvent();
             try {
                 mc.createPage(null, "/views/AdminUserEdit.fxml");
@@ -115,7 +115,7 @@ public class SettingsPageController implements Initializable {
             }
         });
 
-        deleteBtn.setOnAction(event -> {
+        deleteBtn1.setOnAction(event -> {
             deleteEvent();
         });
 

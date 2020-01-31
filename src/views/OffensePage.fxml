@@ -17,10 +17,11 @@
    <children>
       <TableView fx:id="offenseTableView" layoutX="24.0" layoutY="112.0" prefHeight="350.0" prefWidth="707.0">
         <columns>
-          <TableColumn fx:id="idCol" prefWidth="88.0" text="ID" />
-          <TableColumn fx:id="descriptionCol" prefWidth="345.0" text="DESCRIPTION" />
-            <TableColumn fx:id="severityCol" prefWidth="144.0" text="SEVERITY" />
-            <TableColumn fx:id="deptnameCol" prefWidth="129.0" text="DEPT NAME" />
+          <TableColumn fx:id="idCol" prefWidth="48.0" text="ID" />
+          <TableColumn fx:id="descriptionCol" prefWidth="358.0" text="DESCRIPTION" />
+            <TableColumn fx:id="severityCol" prefWidth="72.0" text="SEVERITY" />
+            <TableColumn fx:id="deptnameCol" prefWidth="107.0" text="DEPT NAME" />
+            <TableColumn fx:id="sanctionCol" prefWidth="121.0" text="SANCTION" />
         </columns>
          <contextMenu>
             <ContextMenu>

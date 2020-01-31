@@ -48,6 +48,7 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         connectdbBtn.setOnAction(event -> { // event btn connectBtn
+            this.connectdbBtn.getScene().getWindow().hide();
             try {
                 createPage("Connect Database","/views/ConnectDbFxml.fxml");
             } catch (IOException e) {
@@ -56,6 +57,7 @@ public class MainController implements Initializable {
         });
 
         adminloginBtn.setOnAction(event -> { // event btn adminloginBtn
+            this.adminloginBtn.getScene().getWindow().hide();
             try{
                 createPage("Admin Login","/views/AdminLoginFxml.fxml");
             }catch (Exception e){

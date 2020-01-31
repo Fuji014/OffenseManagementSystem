@@ -36,6 +36,7 @@ public class AdminLoginController implements Initializable {
     private ImageView loadingProg;
 
     // Declare var below ;
+    private MainController mc;
     private DatabaseAccessObject dao;
     private String query,username,password;
     private static AdminLoginController instance;
@@ -49,6 +50,7 @@ public class AdminLoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // initialize class
+        mc = new MainController();
         dao = new DatabaseAccessObject();
         // end of initalize class
         loadingProg.setVisible(false);
@@ -65,7 +67,14 @@ public class AdminLoginController implements Initializable {
                 }
             });
             pt.play();
-
+        });
+        cencelBtn.setOnAction(event -> {
+            this.cencelBtn.getScene().getWindow().hide();
+            try {
+                mc.createPage(null,"/views/MainFxml.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
     }

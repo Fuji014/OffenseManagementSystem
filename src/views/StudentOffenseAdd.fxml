@@ -62,9 +62,18 @@
             <AnchorPane layoutX="260.0" layoutY="52.0" prefHeight="194.0" prefWidth="341.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
                   <Label layoutX="11.0" layoutY="10.0" text="Student Offense" textFill="#a19a9a" />
-                  <JFXTextField fx:id="offensecountTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="41.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Count" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <JFXTextField fx:id="offensecountTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="41.0" prefHeight="27.0" prefWidth="116.0" promptText="Offense Count" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
                   <JFXTextField fx:id="offensedateTxt" disable="true" labelFloat="true" layoutX="175.0" layoutY="41.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Date" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
                   <JFXTextArea fx:id="remarksTxt" layoutX="15.0" layoutY="88.0" prefHeight="92.0" prefWidth="313.0" promptText=" Remarks" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2; -jfx-unfocus-color: transparent;" />
+                  <JFXButton fx:id="offensecountBtn" contentDisplay="GRAPHIC_ONLY" layoutX="133.0" layoutY="41.0" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: #2980b9;">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-search-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                </children>
             </AnchorPane>
             <JFXButton fx:id="saveBtn" layoutX="443.0" layoutY="279.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">

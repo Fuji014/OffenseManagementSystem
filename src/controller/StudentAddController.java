@@ -1,5 +1,8 @@
 package controller;
 
+import com.fazecast.jSerialComm.SerialPortPacketListener;
+import controller.jserial.JSerialComm01;
+import controller.jserial.PacketListener;
 import controller.jserial.Test;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -16,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class StudentAddController implements Initializable {
@@ -77,6 +81,8 @@ public class StudentAddController implements Initializable {
     private JFXButton uploaderBtn;
 
     // Declare var below
+    private PacketListener pl;
+    private JSerialComm01 js01;
     private Test t;
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
@@ -84,6 +90,7 @@ public class StudentAddController implements Initializable {
     public File file;
     private Stage stage;
     private Image image;
+    private String query;
     private static StudentAddController instance;
     // end of var
 
@@ -101,8 +108,10 @@ public class StudentAddController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // initialize class
         t = new Test();
+        pl = new PacketListener();
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
+        js01 = new JSerialComm01();
 
         // end of initialize class
 
@@ -115,7 +124,11 @@ public class StudentAddController implements Initializable {
             uploaderEvent();
         });
         saveBtn.setOnAction(event -> {
-            saveEvent();
+            try {
+                saveEvent();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
         studDeptComboBox.setOnMouseClicked(event -> {
             initStudentDeptCombobox();
@@ -127,22 +140,29 @@ public class StudentAddController implements Initializable {
             this.cancelBtn.getScene().getWindow().hide();
         });
         scanBtn.setOnAction(event -> {
-            t.haha();
+            js01.testRun();
+
         });
         // end of event  btn
     }
     // end of initializable
 
-    public void saveEvent()  {
-        try{
-            dao.student("create");
-            StudentPageController.getStudentPageController().refreshTable();
-            clearFields();
-        }catch (Exception e){
-            alc.alertErr(null,"Exception Err"+e);
-        }finally {
-            alc.alertSuccess(null, "User Added Successfully ");
+    public void saveEvent() throws SQLException {
+        query = "select * from student_tbl where rfid_tag_id = '"+rfidTagIdTxt.getText()+"'";
+        if(dao.getRfidCount(query) == 0 ){
+            try{
+                dao.student("create");
+                StudentPageController.getStudentPageController().refreshTable();
+                clearFields();
+            }catch (Exception e){
+                alc.alertErr(null,"Exception Err"+e);
+            }finally {
+                alc.alertSuccess(null, "User Added Successfully ");
+            }
+        }else{
+            alc.alertErr(null, "RFID already registered!");
         }
+
 
 
     }
@@ -173,6 +193,13 @@ public class StudentAddController implements Initializable {
         studDeptComboBox.setItems(dao.getStudentDepartmentComboBox(query));
     }
 
+    private void scanEvent(){
+        t.readArduinoData();
+    }
+    // end of init
+
+    // custom methods
+
     public void clearFields(){
         studNumberTxt.setText("");
         rfidTagIdTxt.setText("");
@@ -189,6 +216,7 @@ public class StudentAddController implements Initializable {
         parentAddressTxt.setText("");
 
     }
+
 
 
 }

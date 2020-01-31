@@ -65,7 +65,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../resources/icons8-soccer-yellow-card-48.png" />
+                        <Image url="@../resources/icons8-add-list-48.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -118,6 +118,15 @@
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="6.0" layoutY="-35.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #16A085;">
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../resources/icons8-soccer-yellow-card-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
          </children>
       </AnchorPane>

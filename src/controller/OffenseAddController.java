@@ -31,6 +31,9 @@ public class OffenseAddController implements Initializable {
     @FXML
     private JFXComboBox<String> departmentComboBox;
 
+    @FXML
+    private JFXTextField sanctionTxt;
+
     // declare var below
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
@@ -63,7 +66,6 @@ public class OffenseAddController implements Initializable {
         });
 
         // end of event buttons
-
     }
 
     // init
@@ -74,7 +76,7 @@ public class OffenseAddController implements Initializable {
     }
     public void saveEvent(){
         String dept =  departmentComboBox.getSelectionModel().getSelectedIndex()+1+"";
-        query = "INSERT INTO offense_tbl  VALUES (NULL, '"+descriptionTxt.getText()+"', '"+severityTxt.getText()+"', "+dept+")";
+        query = "INSERT INTO offense_tbl  VALUES (NULL, '"+descriptionTxt.getText()+"', '"+severityTxt.getText()+"', "+dept+",'"+sanctionTxt.getText()+"')";
         try {
             dao.saveData(query);
             OffensePageController.getOffensePageController().refreshTable();
@@ -84,9 +86,7 @@ public class OffenseAddController implements Initializable {
         }finally {
             alc.alertSuccess(null, "User Added Successfully ");
         }
-
     }
-
     // end of init
 
     // custom methods
@@ -94,6 +94,7 @@ public class OffenseAddController implements Initializable {
         descriptionTxt.setText("");
         severityTxt.setText("");
         departmentComboBox.getSelectionModel().clearSelection();
+        sanctionTxt.setText("");
     }
     // end of custom methods
 }

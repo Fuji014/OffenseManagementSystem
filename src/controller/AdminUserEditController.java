@@ -110,7 +110,7 @@ public class AdminUserEditController implements Initializable {
         saveBtn.setOnAction(event -> {
             try {
                 editEvent();
-            } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         });
@@ -120,11 +120,11 @@ public class AdminUserEditController implements Initializable {
     }
 
     public void initFillTextBox(){
-        firstnameTxt.setText(SettingsPageController.getSettingsPageController().getFirstname());
-        lastnameTxt.setText(SettingsPageController.getSettingsPageController().getLastname());
-        miTxt.setText(SettingsPageController.getSettingsPageController().getMi());
-        contactTxt.setText(SettingsPageController.getSettingsPageController().getContact());
-        usernameTxt.setText(SettingsPageController.getSettingsPageController().getUsername());
+        firstnameTxt.setText(AdminUserPageController.getSettingsPageController().getFirstname());
+        lastnameTxt.setText(AdminUserPageController.getSettingsPageController().getLastname());
+        miTxt.setText(AdminUserPageController.getSettingsPageController().getMi());
+        contactTxt.setText(AdminUserPageController.getSettingsPageController().getContact());
+        usernameTxt.setText(AdminUserPageController.getSettingsPageController().getUsername());
     }
     public void uploaderEvent(){
         stage = (Stage) apaneEditUserId.getScene().getWindow();
@@ -137,7 +137,7 @@ public class AdminUserEditController implements Initializable {
             imagePreview.setPreserveRatio(true);
         }
     }
-    public void editEvent() throws FileNotFoundException {
+    public void editEvent() throws FileNotFoundException, SQLException {
 
         try {
             dao.admin("update");
@@ -145,12 +145,13 @@ public class AdminUserEditController implements Initializable {
             e.printStackTrace();
         }finally {
             alc.alertSuccess(null, "Successfully Updated!");
-            SettingsPageController.getSettingsPageController().refreshTable();
+            HomePageController.getHomePageController().initShowImagePreview();
+            AdminUserPageController.getSettingsPageController().refreshTable();
         }
     }
 
     public void initShowImagePreview() throws SQLException {
-        id = SettingsPageController.getSettingsPageController().getId();
+        id = AdminUserPageController.getSettingsPageController().getId();
         try {
             connection = connector.getConnection();
         }catch (Exception e){

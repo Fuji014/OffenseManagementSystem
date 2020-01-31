@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -11,12 +13,12 @@
    <children>
       <Pane prefHeight="138.0" prefWidth="1000.0" style="-fx-background-color: #151928;">
          <children>
-            <Label layoutX="48.0" layoutY="27.0" text="College of Engineering" textFill="WHITE">
+            <Label layoutX="130.0" layoutY="14.0" text="College of Engineering" textFill="WHITE">
                <font>
-                  <Font size="45.0" />
+                  <Font name="Segoe UI Black" size="45.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="88.0" text="Ateneo de Zamboanga" textFill="WHITE">
+            <Label layoutX="130.0" layoutY="75.0" text="Ateneo de Zamboanga" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
@@ -31,6 +33,11 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
+            <ImageView fitHeight="117.0" fitWidth="104.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logoAteneoDezam.png" />
+               </image>
+            </ImageView>
          </children></Pane>
       <AnchorPane layoutY="138.0" prefHeight="462.0" prefWidth="1000.0" style="-fx-background-color: #F0F0F0;">
          <children>
@@ -44,14 +51,37 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="270.0" layoutY="8.0">
+                           <graphic>
+                              <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/icons8-exit-52.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </Pane>
                   <JFXTextField fx:id="serverTxt" labelFloat="true" layoutX="19.0" layoutY="59.0" prefHeight="29.0" prefWidth="162.0" promptText=" Server Name" />
                   <JFXTextField fx:id="databaseTxt" labelFloat="true" layoutX="22.0" layoutY="109.0" prefHeight="29.0" prefWidth="266.0" promptText=" Database Name" />
                   <JFXTextField fx:id="portTxt" labelFloat="true" layoutX="194.0" layoutY="59.0" prefHeight="29.0" prefWidth="91.0" promptText=" Server Port" />
                   <JFXTextField fx:id="usernameTxt" labelFloat="true" layoutX="19.0" layoutY="159.0" prefHeight="29.0" prefWidth="266.0" promptText=" Username" />
-                  <JFXButton fx:id="connectBtn" layoutX="22.0" layoutY="269.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #27AE60;" text="Connect" textFill="WHITE" />
-                  <JFXButton fx:id="cancelBtn" layoutX="103.0" layoutY="269.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #151928;" text="Cancel" textFill="WHITE" />
+                  <JFXButton fx:id="connectBtn" layoutX="22.0" layoutY="269.0" prefHeight="29.0" prefWidth="91.0" style="-fx-background-color: #27AE60;" text="Connect" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-connected-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="cancelBtn" layoutX="128.0" layoutY="269.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #151928;" text="Cancel" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-close-window-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
                </children>
             </AnchorPane>
          </children></AnchorPane>

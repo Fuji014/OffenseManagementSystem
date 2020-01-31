@@ -33,6 +33,9 @@ public class OffensePageController implements Initializable {
     private TableColumn<offenseTable, String> deptnameCol;
 
     @FXML
+    private TableColumn<offenseTable, String> sanctionCol;
+
+    @FXML
     private MenuItem updateBtn;
 
     @FXML
@@ -60,7 +63,7 @@ public class OffensePageController implements Initializable {
     private DatabaseAccessObject dao;
     private MainController mc;
     private static OffensePageController instance;
-    private String query,offenseDescription,offenseSeverity,deptName;
+    private String query,offenseDescription,offenseSeverity,deptName,offenseSanction;
     private int id;
     private boolean isConfirm;
     // end of declare var below
@@ -78,7 +81,7 @@ public class OffensePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchComboBox.getItems().addAll("OFFENSE_DESCRIPTION","OFFENSE_SEVERITY","DEPT_NAME");
+        searchComboBox.getItems().addAll("OFFENSE_DESCRIPTION","OFFENSE_SEVERITY","DEPT_NAME","OFFENSE_SANCTION");
         // initialize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
@@ -132,10 +135,12 @@ public class OffensePageController implements Initializable {
         descriptionCol.setCellValueFactory(cell -> cell.getValue().offenseDescProperty());
         severityCol.setCellValueFactory(cell -> cell.getValue().offenseSeverityProperty());
         deptnameCol.setCellValueFactory(cell -> cell.getValue().deptNameProperty());
+        sanctionCol.setCellValueFactory(cell -> cell.getValue().offenseSactionProperty());
+
     }
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select o.id, o.offense_description, o.offense_severity, d.dept_name from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id order by o.id desc";
+        query = "select o.id, o.offense_description, o.offense_severity, d.dept_name, o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id order by o.id desc";
         offenseTableView.setItems(dao.getOffenseData(query));
     }
     public void deleteEvent() throws SQLException {
@@ -159,12 +164,13 @@ public class OffensePageController implements Initializable {
         offenseDescription = selected.offenseDescProperty().get();
         offenseSeverity = selected.offenseSeverityProperty().get();
         deptName = selected.deptNameProperty().get();
+        offenseSanction = selected.offenseSactionProperty().get();
     }
     public void initSearch(){
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
             initTable();
-            query = "select o.id,o.offense_description,o.offense_severity,d.dept_name from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id  where "+forSearchComboxValue+" like '%"+newV+"%'";
+            query = "select o.id,o.offense_description,o.offense_severity,d.dept_name,o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id  where "+forSearchComboxValue+" like '%"+newV+"%'";
             try {
                 offenseTableView.setItems(dao.getOffenseData(query));
             } catch (SQLException e) {
@@ -191,6 +197,9 @@ public class OffensePageController implements Initializable {
     // end of custom
 
     // getters
+    public String getOffenseSanction(){
+        return offenseSanction;
+    }
 
     public String getOffenseDescription() {
         return offenseDescription;

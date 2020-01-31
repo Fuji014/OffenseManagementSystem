@@ -14,28 +14,23 @@
    <children>
       <Pane prefHeight="138.0" prefWidth="1000.0" style="-fx-background-color: #151928;">
          <children>
-            <Label layoutX="48.0" layoutY="27.0" text="College of Engineering" textFill="WHITE">
+            <Label layoutX="123.0" layoutY="9.0" text="College of Engineering" textFill="WHITE">
                <font>
-                  <Font size="45.0" />
+                  <Font name="Segoe UI Black" size="45.0" />
                </font>
             </Label>
-            <Label layoutX="48.0" layoutY="88.0" text="Ateneo de Zamboanga" textFill="WHITE">
+            <Label layoutX="133.0" layoutY="68.0" text="Ateneo de Zamboanga" textFill="WHITE">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
+            <ImageView fitHeight="117.0" fitWidth="104.0" layoutX="11.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/logoAteneoDezam.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Label layoutX="48.0" layoutY="27.0" text="College of Engineering" textFill="WHITE">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Label>
-      <Label layoutX="48.0" layoutY="88.0" text="Ateneo de Zamboanga" textFill="WHITE">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
       <AnchorPane layoutY="138.0" prefHeight="463.0" prefWidth="1000.0" style="-fx-background-color: #F0F0F0;">
          <children>
             <AnchorPane layoutX="348.0" layoutY="42.0" prefHeight="280.0" prefWidth="304.0" style="-fx-background-color: #fff;">
@@ -60,8 +55,22 @@
                         <Image url="@../resources/icons8-lock-52.png" />
                      </image>
                   </ImageView>
-                  <JFXButton fx:id="loginBtn" layoutX="27.0" layoutY="195.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #27AE60;" text="Login" textFill="WHITE" />
-                  <JFXButton fx:id="cencelBtn" layoutX="116.0" layoutY="195.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #151928;" text="Cancel" textFill="WHITE" />
+                  <JFXButton fx:id="loginBtn" layoutX="27.0" layoutY="195.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #27AE60;" text="Login" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-login-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="cencelBtn" layoutX="116.0" layoutY="195.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #151928;" text="Cancel" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-close-window-52.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
                   <ImageView fx:id="loadingProg" fitHeight="18.0" fitWidth="200.0" layoutX="54.0" layoutY="248.0">
                      <image>
                         <Image url="@../resources/294.gif" />

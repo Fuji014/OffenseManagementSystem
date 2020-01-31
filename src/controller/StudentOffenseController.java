@@ -69,10 +69,17 @@ public class StudentOffenseController implements Initializable {
     // declare var below
     private DatabaseAccessObject dao;
     private MainController mc;
+    private String query;
+    private static StudentOffenseController instance;
     // end of declare var
 
     // initialize itself
-    private String query;
+    public StudentOffenseController(){
+        this.instance = this;
+    }
+    public static StudentOffenseController getStudentOffenseController(){
+        return instance;
+    }
     // end of initialize itself
 
     @Override
@@ -115,7 +122,7 @@ public class StudentOffenseController implements Initializable {
     }
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select so.std_offense_id, s.student_id, o.offense_description, o.offense_severity, so.student_offense_count, so.student_offense_date, so.student_offense_remarks from student_offense_tbl as so join student_tbl as s on so.student_key = s.id join offense_tbl as o on so.offense_key = o.id";
+        query = "select so.std_offense_id, s.student_id, o.offense_description, o.offense_severity, so.student_offense_count, so.student_offense_date, so.student_offense_remarks from student_offense_tbl as so join student_tbl as s on so.student_key = s.student_id join offense_tbl as o on so.offense_key = o.id order by so.std_offense_id desc";
         studoffenseTableView.setItems(dao.getStudentOffenseData(query));
     }
 

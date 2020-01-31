@@ -29,6 +29,9 @@ public class OffenseEditController implements Initializable {
     private JFXTextArea descriptionTxt;
 
     @FXML
+    private JFXTextField sanctionTxt;
+
+    @FXML
     private JFXComboBox<String> departmentComboBox;
 
     // declare var below
@@ -63,6 +66,7 @@ public class OffenseEditController implements Initializable {
         descriptionTxt.setText(OffensePageController.getOffensePageController().getOffenseDescription());
         severityTxt.setText(OffensePageController.getOffensePageController().getOffenseSeverity());
         departmentComboBox.getSelectionModel().select(OffensePageController.getOffensePageController().getDeptName());
+        sanctionTxt.setText(OffensePageController.getOffensePageController().getOffenseSanction());
     }
     private void initOffenseDeptCombobox(){
         departmentComboBox.getSelectionModel().clearSelection();
@@ -71,7 +75,7 @@ public class OffenseEditController implements Initializable {
     }
     public void saveEvent(){
         String dept = departmentComboBox.getSelectionModel().getSelectedIndex()+1+"";
-        query = "update offense_tbl set offense_description = '"+descriptionTxt.getText()+"', offense_severity = '"+severityTxt.getText()+"', dept_key = "+dept+" where id = "+OffensePageController.getOffensePageController().getId()+"";
+        query = "update offense_tbl set offense_description = '"+descriptionTxt.getText()+"', offense_severity = '"+severityTxt.getText()+"', dept_key = "+dept+", offense_sanction = '"+sanctionTxt.getText()+"' where id = "+OffensePageController.getOffensePageController().getId()+"";
         try {
             dao.saveData(query);
             OffensePageController.getOffensePageController().refreshTable();
