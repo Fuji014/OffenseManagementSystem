@@ -1,6 +1,5 @@
 package controller;
 
-
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -8,9 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -75,10 +75,13 @@ public class MainController implements Initializable {
     public void createPage(String title, String loc) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(loc));
         Scene sc = new Scene(root);
+        sc.setFill(Color.TRANSPARENT);
+        sc.getStylesheets().add(getClass().getResource("/styles/Global.css").toExternalForm());
         Stage secondaryStage = new Stage();
         secondaryStage.setScene(sc);
         secondaryStage.setTitle(title);
-        secondaryStage.initStyle(StageStyle.UNDECORATED);
+        secondaryStage.initModality(Modality.APPLICATION_MODAL);
+        secondaryStage.initStyle(StageStyle.TRANSPARENT);
         secondaryStage.show();
     }
 }

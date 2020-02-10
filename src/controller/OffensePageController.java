@@ -66,6 +66,7 @@ public class OffensePageController implements Initializable {
     private String query,offenseDescription,offenseSeverity,deptName,offenseSanction;
     private int id;
     private boolean isConfirm;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of declare var below
 
     // initialize itself
@@ -140,7 +141,7 @@ public class OffensePageController implements Initializable {
     }
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select o.id, o.offense_description, o.offense_severity, d.dept_name, o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id order by o.id desc";
+        query = "select o.id, o.offense_description, o.offense_severity, d.dept_name, o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id where dept_key = "+departmentId+" order by o.id desc";
         offenseTableView.setItems(dao.getOffenseData(query));
     }
     public void deleteEvent() throws SQLException {
@@ -170,7 +171,7 @@ public class OffensePageController implements Initializable {
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
             initTable();
-            query = "select o.id,o.offense_description,o.offense_severity,d.dept_name,o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id  where "+forSearchComboxValue+" like '%"+newV+"%'";
+            query = "select o.id,o.offense_description,o.offense_severity,d.dept_name,o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id  where "+forSearchComboxValue+" like '%"+newV+"%' and dept_key = "+departmentId+" order by id desc";
             try {
                 offenseTableView.setItems(dao.getOffenseData(query));
             } catch (SQLException e) {

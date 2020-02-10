@@ -1,9 +1,4 @@
 package controller;
-
-import com.fazecast.jSerialComm.SerialPortPacketListener;
-import controller.jserial.JSerialComm01;
-import controller.jserial.PacketListener;
-import controller.jserial.Test;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -16,6 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
+import jssc.SerialPortException;
 
 import java.io.File;
 import java.net.URL;
@@ -81,9 +80,6 @@ public class StudentAddController implements Initializable {
     private JFXButton uploaderBtn;
 
     // Declare var below
-    private PacketListener pl;
-    private JSerialComm01 js01;
-    private Test t;
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
     private FileChooser fileChooser;
@@ -91,6 +87,8 @@ public class StudentAddController implements Initializable {
     private Stage stage;
     private Image image;
     private String query;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
+    static SerialPort serialPort = new SerialPort("COM5");
     private static StudentAddController instance;
     // end of var
 
@@ -106,17 +104,21 @@ public class StudentAddController implements Initializable {
     // start of initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         // initialize class
-        t = new Test();
-        pl = new PacketListener();
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
-        js01 = new JSerialComm01();
 
         // end of initialize class
 
         // initialize method
         initFileChooser();
+        initStudentDeptCombobox();
+        try {
+            initFill();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         // end of initialize method
 
         // event btn
@@ -129,23 +131,52 @@ public class StudentAddController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            try {
+                serialPort.closePort();
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            }
         });
         studDeptComboBox.setOnMouseClicked(event -> {
             initStudentDeptCombobox();
         });
         closeBtn.setOnMouseClicked(event -> {
+            try {
+                serialPort.closePort();
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            }
             this.closeBtn.getScene().getWindow().hide();
         });
         cancelBtn.setOnAction(event -> {
             this.cancelBtn.getScene().getWindow().hide();
         });
         scanBtn.setOnAction(event -> {
-            js01.testRun();
+            try {
+                initRfid();
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            }
 
         });
         // end of event  btn
     }
     // end of initializable
+    public void initRfid() throws SerialPortException {
+        try {
+            serialPort.openPort();//Open port
+            serialPort.setParams(9600, 8, 1, 0);//Set params
+            int mask = SerialPort.MASK_RXCHAR + SerialPort.MASK_CTS + SerialPort.MASK_DSR;//Prepare mask
+            serialPort.setEventsMask(mask);//Set mask
+            serialPort.addEventListener(
+                    new SerialPortReader()
+            );//Add SerialPortEventListener
+
+        }
+        catch (SerialPortException ex) {
+            System.out.println(ex);
+        }
+    }
 
     public void saveEvent() throws SQLException {
         query = "select * from student_tbl where rfid_tag_id = '"+rfidTagIdTxt.getText()+"'";
@@ -186,15 +217,16 @@ public class StudentAddController implements Initializable {
                 new FileChooser.ExtensionFilter("Text File","*.txt")
         );
     }
+    public  void initFill() throws SQLException {
+        query = "select dept_name from department_tbl WHERE id = "+departmentId+"";
+        studDeptComboBox.getSelectionModel().select(dao.getDepartmentName(query).get("department"));
+    }
 
     private void initStudentDeptCombobox(){
         studDeptComboBox.getSelectionModel().clearSelection();
         String query = "select * from department_tbl";
+//        System.out.println(query);
         studDeptComboBox.setItems(dao.getStudentDepartmentComboBox(query));
-    }
-
-    private void scanEvent(){
-        t.readArduinoData();
     }
     // end of init
 
@@ -216,7 +248,48 @@ public class StudentAddController implements Initializable {
         parentAddressTxt.setText("");
 
     }
+    class SerialPortReader implements SerialPortEventListener {
+        public void serialEvent(SerialPortEvent event) {
+            if(event.isRXCHAR() && event.getEventValue()>0){//If data is available
+                if(event.getEventValue() == 10){//Check bytes count in the input buffer
+                    //Read data, if 10 bytes available
+                    try {
+                        byte buffer[] = serialPort.readBytes(event.getEventValue());
+                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
+                        int byteSize = 0;
+                        try {
+                            byteSize = str.getBytes("UTF-8").length;
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        if (byteSize == 8){
+                            System.out.println(str);
+                            Thread.sleep(1000);
+                            rfidTagIdTxt.setText(str);
 
-
-
+                        }
+                    }
+                    catch (SerialPortException | InterruptedException ex) {
+                        System.out.println(ex);
+                    }
+                }
+            }
+            else if(event.isCTS()){//If CTS line has changed state
+                if(event.getEventValue() == 1){//If line is ON
+                    System.out.println("CTS - ON");
+                }
+                else {
+                    System.out.println("CTS - OFF");
+                }
+            }
+            else if(event.isDSR()){///If DSR line has changed state
+                if(event.getEventValue() == 1){//If line is ON
+                    System.out.println("DSR - ON");
+                }
+                else {
+                    System.out.println("DSR - OFF");
+                }
+            }
+        }
+    }
 }

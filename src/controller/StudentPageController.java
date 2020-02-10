@@ -23,7 +23,7 @@ public class StudentPageController implements Initializable {
     private TableColumn<studentTable, Integer> idCol;
 
     @FXML
-    private TableColumn<studentTable, Integer> rfidCol;
+    private TableColumn<studentTable, String> rfidCol;
 
     @FXML
     private TableColumn<studentTable, Integer> studidCol;
@@ -88,7 +88,9 @@ public class StudentPageController implements Initializable {
     private String query,studentName,studentYear,studentDept,studentSection,studentCourse,studentStrand,parentName,parentContact,studentContact,parentAddress;
     private static StudentPageController instance;
     private boolean isConfirm;
-    private int id,rfid,studId;
+    private int id,studId;
+    private String rfid;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of declare var
 
     // initialize itself
@@ -158,7 +160,7 @@ public class StudentPageController implements Initializable {
 
     public void initTable(){
         idCol.setCellValueFactory(cell -> cell.getValue().idProperty().asObject());
-        rfidCol.setCellValueFactory(cell -> cell.getValue().studentRfidProperty().asObject());
+        rfidCol.setCellValueFactory(cell -> cell.getValue().studentRfidProperty());
         studidCol.setCellValueFactory(cell -> cell.getValue().studentIdProperty().asObject());
         studnameCol.setCellValueFactory(cell -> cell.getValue().studentNameProperty());
         studyearCol.setCellValueFactory(cell -> cell.getValue().studentYearProperty());
@@ -174,14 +176,15 @@ public class StudentPageController implements Initializable {
 
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select s.id,s.rfid_tag_id,s.student_id,s.student_name,s.student_year,s.student_section,s.student_course,s.student_strand,d.dept_name,s.parent_fullname,s.parent_contact,s.student_contact,s.parent_address from student_tbl as s inner join department_tbl as d on s.student_department = d.id order by id desc";
+        query = "select s.id,s.rfid_tag_id,s.student_id,s.student_name,s.student_year,s.student_section,s.student_course,s.student_strand,d.dept_name,s.parent_fullname,s.parent_contact,s.student_contact,s.parent_address from student_tbl as s inner join department_tbl as d on s.student_department = d.id where s.student_department = "+departmentId+" order by id desc";
+//        System.out.println(query);
         studentTableView.setItems(dao.getStudentData(query));
     }
     public void initSearch(){
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) ->{
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
             initTable();
-            query = "select s.id,s.rfid_tag_id,s.student_id,s.student_name,s.student_year,s.student_section,s.student_course,s.student_strand,d.dept_name,s.parent_fullname,s.parent_contact,s.student_contact,s.parent_address from student_tbl as s inner join department_tbl as d on s.student_department = d.id where "+forSearchComboxValue+" like '%"+newV+"%'";
+            query = "select s.id,s.rfid_tag_id,s.student_id,s.student_name,s.student_year,s.student_section,s.student_course,s.student_strand,d.dept_name,s.parent_fullname,s.parent_contact,s.student_contact,s.parent_address from student_tbl as s inner join department_tbl as d on s.student_department = d.id where "+forSearchComboxValue+" like '%"+newV+"%' and student_department = "+departmentId+"";
             studentTableView.setItems(dao.getStudentSearch(query));
         });
     }
@@ -200,8 +203,6 @@ public class StudentPageController implements Initializable {
             }
         }
     }
-
-
 
     public void updateEvent(){
         studentTable selected = studentTableView.getSelectionModel().getSelectedItem();
@@ -276,7 +277,7 @@ public class StudentPageController implements Initializable {
         return id;
     }
 
-    public int getRfid() {
+    public String getRfid() {
         return rfid;
     }
     public int getStudId() {

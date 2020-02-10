@@ -51,7 +51,7 @@
             <JFXTextField fx:id="severityTxt" layoutX="14.0" layoutY="168.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Severity" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
             <JFXTextArea fx:id="descriptionTxt" layoutX="16.0" layoutY="47.0" prefHeight="109.0" prefWidth="587.0" promptText="Offense Description" style="-jfx-unfocus-color: transparent; -fx-border-color: #D2D2D2; -fx-background-color: #F0F0F0;" />
             <JFXTextField fx:id="sanctionTxt" layoutX="14.0" layoutY="249.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Sanction" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
-            <JFXComboBox fx:id="departmentComboBox" layoutX="14.0" layoutY="209.0" prefHeight="25.0" prefWidth="587.0" promptText="Department Name" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
+            <JFXComboBox fx:id="departmentComboBox" disable="true" layoutX="14.0" layoutY="209.0" prefHeight="25.0" prefWidth="587.0" promptText="Department Name" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
          </children>
       </AnchorPane>
    </children>

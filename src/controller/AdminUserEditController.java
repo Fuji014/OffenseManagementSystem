@@ -1,8 +1,6 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -30,38 +28,34 @@ public class AdminUserEditController implements Initializable {
     private Label closeBtn;
 
     @FXML
-    public JFXTextField firstnameTxt;
-
-    @FXML
-    public JFXTextField lastnameTxt;
-
-    @FXML
-    public JFXTextField miTxt;
-
-    @FXML
     public JFXTextField contactTxt;
+
+    @FXML
+    public JFXTextField nameTxt;
+
+    @FXML
+    public JFXComboBox<String> deptComboBox;
 
     @FXML
     public JFXTextField usernameTxt;
 
     @FXML
-    private JFXPasswordField passwordTxt;
+    public JFXPasswordField passwordTxt;
 
     @FXML
-    private JFXPasswordField confirmpassTxt;
+    public JFXPasswordField confirmpassTxt;
 
     @FXML
-    private JFXButton saveBtn;
+    public ImageView imagePreview;
+
+    @FXML
+    public JFXButton saveBtn;
 
     @FXML
     private JFXButton cancelBtn;
 
     @FXML
-    private ImageView imagePreview;
-
-    @FXML
     private JFXButton uploaderBtn;
-
 
     // Declare var below
     private ConnectionHandler connector;
@@ -69,7 +63,7 @@ public class AdminUserEditController implements Initializable {
     private PreparedStatement prs;
     private ResultSet rs;
     private String query;
-    private String firstname,lastname,mi,contact,username,datecreated;
+    private String contact,username,datecreated;
     private int id;
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
@@ -96,6 +90,7 @@ public class AdminUserEditController implements Initializable {
         connector = new ConnectionHandler();
         // end of initilization
         // initialize object
+        initDepartmentComboBox();
         initFileChooser();
         try {
             initShowImagePreview();
@@ -103,6 +98,7 @@ public class AdminUserEditController implements Initializable {
             e.printStackTrace();
         }
         // end of initilize object
+
         // event button
         closeBtn.setOnMouseClicked(event -> {
             this.closeBtn.getScene().getWindow().hide();
@@ -119,11 +115,11 @@ public class AdminUserEditController implements Initializable {
         });
     }
 
+    // init
     public void initFillTextBox(){
-        firstnameTxt.setText(AdminUserPageController.getSettingsPageController().getFirstname());
-        lastnameTxt.setText(AdminUserPageController.getSettingsPageController().getLastname());
-        miTxt.setText(AdminUserPageController.getSettingsPageController().getMi());
+        nameTxt.setText(AdminUserPageController.getSettingsPageController().getName());
         contactTxt.setText(AdminUserPageController.getSettingsPageController().getContact());
+        deptComboBox.getSelectionModel().select(AdminUserPageController.getSettingsPageController().getDeptname());
         usernameTxt.setText(AdminUserPageController.getSettingsPageController().getUsername());
     }
     public void uploaderEvent(){
@@ -185,6 +181,12 @@ public class AdminUserEditController implements Initializable {
         }finally {
             connector.close(connection,prs,rs);
         }
+    }
+
+    public void initDepartmentComboBox(){
+        deptComboBox.getSelectionModel().clearSelection();
+        String query = "select * from department_tbl";
+        deptComboBox.setItems(dao.getStudentDepartmentComboBox(query));
     }
 
     public void initFileChooser(){

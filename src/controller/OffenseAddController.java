@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class OffenseAddController implements Initializable {
@@ -38,6 +39,7 @@ public class OffenseAddController implements Initializable {
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
     private String query;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
     // end declare var below
 
     // initialize itself
@@ -52,6 +54,12 @@ public class OffenseAddController implements Initializable {
         // end of initialize class
 
         // methods
+        initDepartmentComboBox();
+        try {
+            initFill();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         // end of methods
 
         // event buttons
@@ -74,9 +82,14 @@ public class OffenseAddController implements Initializable {
         String query = "select * from department_tbl";
         departmentComboBox.setItems(dao.getStudentDepartmentComboBox(query));
     }
+    public void initFill() throws SQLException {
+        query = "select dept_name from department_tbl WHERE id = "+departmentId+"";
+        departmentComboBox.getSelectionModel().select(dao.getDepartmentName(query).get("department"));
+    }
     public void saveEvent(){
         String dept =  departmentComboBox.getSelectionModel().getSelectedIndex()+1+"";
         query = "INSERT INTO offense_tbl  VALUES (NULL, '"+descriptionTxt.getText()+"', '"+severityTxt.getText()+"', "+dept+",'"+sanctionTxt.getText()+"')";
+        System.out.println(query);
         try {
             dao.saveData(query);
             OffensePageController.getOffensePageController().refreshTable();
@@ -93,7 +106,6 @@ public class OffenseAddController implements Initializable {
     public void clearFields(){
         descriptionTxt.setText("");
         severityTxt.setText("");
-        departmentComboBox.getSelectionModel().clearSelection();
         sanctionTxt.setText("");
     }
     // end of custom methods

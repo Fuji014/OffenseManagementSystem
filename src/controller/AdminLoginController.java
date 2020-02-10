@@ -38,7 +38,7 @@ public class AdminLoginController implements Initializable {
     // Declare var below ;
     private MainController mc;
     private DatabaseAccessObject dao;
-    private String query,username,password;
+    private String query,username,password,department,id;
     private static AdminLoginController instance;
     private boolean isConfirm = false;
 
@@ -84,9 +84,14 @@ public class AdminLoginController implements Initializable {
         password = passwordTxt.getText();
         query = "select * from admin_tbl where username = '"+username+"' and password = '"+password+"'";
         if(dao.getUserResult(query)){
-            this.loginBtn.getScene().getWindow().hide();
             clearText();
+            // get admin info
+            id = dao.getUserInfo(query).get("adminId");
+            department = dao.getUserInfo(query).get("adminDepartment");
+            // end of get admin info
+            this.loginBtn.getScene().getWindow().hide();
             MainController.getMainController().createPage(null, "/views/HomePage.fxml");
+
 
         }else{
             clearText();
@@ -133,7 +138,9 @@ public class AdminLoginController implements Initializable {
     }
     public HashMap<String, String> getInfo(){
         HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("id",id);
         hashMap.put("username",username);
+        hashMap.put("department",department);
         return hashMap;
     }
 }

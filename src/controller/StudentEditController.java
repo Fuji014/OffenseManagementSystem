@@ -226,7 +226,7 @@ public class StudentEditController implements Initializable {
 
     public void initFillTextBox(){
         studNumberTxt.setText(Integer.toString(StudentPageController.getStudentPageController().getStudId()));
-        rfidTagIdTxt.setText(Integer.toString(StudentPageController.getStudentPageController().getRfid()));
+        rfidTagIdTxt.setText(StudentPageController.getStudentPageController().getRfid());
         studFullnameTxt.setText(StudentPageController.getStudentPageController().getStudentName());
         studContact.setText(StudentPageController.getStudentPageController().getParentContact());
         yearTxt.setText(StudentPageController.getStudentPageController().getStudentYear());

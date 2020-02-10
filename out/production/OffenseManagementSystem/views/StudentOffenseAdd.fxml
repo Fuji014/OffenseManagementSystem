@@ -44,7 +44,7 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="14.0" layoutY="154.0" prefHeight="92.0" prefWidth="230.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+            <AnchorPane layoutX="14.0" layoutY="150.0" prefHeight="92.0" prefWidth="230.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
                   <Label layoutX="12.0" layoutY="10.0" text="Choose Offense" textFill="#a19a9a" />
                   <JFXTextField fx:id="offensenameTxt" disable="true" layoutX="14.0" layoutY="43.0" prefHeight="25.0" prefWidth="170.0" promptText="Offense Name" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
@@ -59,12 +59,12 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="260.0" layoutY="52.0" prefHeight="194.0" prefWidth="341.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+            <AnchorPane layoutX="260.0" layoutY="52.0" prefHeight="190.0" prefWidth="341.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
                   <Label layoutX="11.0" layoutY="10.0" text="Student Offense" textFill="#a19a9a" />
                   <JFXTextField fx:id="offensecountTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="41.0" prefHeight="27.0" prefWidth="116.0" promptText="Offense Count" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextField fx:id="offensedateTxt" disable="true" labelFloat="true" layoutX="175.0" layoutY="41.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Date" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextArea fx:id="remarksTxt" layoutX="15.0" layoutY="88.0" prefHeight="92.0" prefWidth="313.0" promptText=" Remarks" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2; -jfx-unfocus-color: transparent;" />
+                  <JFXTextField fx:id="offensedateTxt" disable="true" labelFloat="true" layoutX="173.0" layoutY="8.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Date" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <JFXTextArea fx:id="remarksTxt" layoutX="15.0" layoutY="78.0" prefHeight="92.0" prefWidth="313.0" promptText=" Remarks" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2; -jfx-unfocus-color: transparent;" />
                   <JFXButton fx:id="offensecountBtn" contentDisplay="GRAPHIC_ONLY" layoutX="133.0" layoutY="41.0" prefHeight="25.0" prefWidth="27.0" style="-fx-background-color: #2980b9;">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
@@ -74,9 +74,10 @@
                         </ImageView>
                      </graphic>
                   </JFXButton>
+                  <JFXTextField fx:id="severityTxt" disable="true" labelFloat="true" layoutX="173.0" layoutY="41.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Severity" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
                </children>
             </AnchorPane>
-            <JFXButton fx:id="saveBtn" layoutX="443.0" layoutY="279.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
+            <JFXButton fx:id="saveBtn" layoutX="435.0" layoutY="279.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -85,7 +86,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="cancelBtn" layoutX="527.0" layoutY="279.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+            <JFXButton fx:id="cancelBtn" layoutX="519.0" layoutY="279.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -94,6 +95,16 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <AnchorPane layoutX="15.0" layoutY="250.0" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+               <children>
+                  <Label layoutX="12.0" layoutY="10.0" text="Offense Info" textFill="#a19a9a" />
+                  <JFXTextField fx:id="durationTxt" disable="true" labelFloat="true" layoutX="11.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <JFXTextField fx:id="completedtimeTxt" disable="true" labelFloat="true" layoutX="138.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Completed Time" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <JFXTextField fx:id="statusTxt" disable="true" labelFloat="true" layoutX="261.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Status" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="warningLbl" layoutX="247.0" layoutY="10.0" text="Student ID &quot; &quot; Already Exceed maximum limit for minor offense , " textFill="RED" />
+            <Label fx:id="warningLbl1" layoutX="249.0" layoutY="27.0" text="Please add Duration time." textFill="RED" />
          </children>
       </AnchorPane>
    </children>

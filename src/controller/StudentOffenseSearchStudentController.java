@@ -43,10 +43,12 @@ public class StudentOffenseSearchStudentController implements Initializable {
     private MenuItem selectBtn;
 
     // declare var below
+    private int departmentId = HomePageController.getHomePageController().departmentId;
     private DatabaseAccessObject dao;
     private String query,studName;
     private Integer studId;
     private static StudentOffenseSearchStudentController instance;
+
     // end of declare var below
 
     // intialize itself
@@ -102,14 +104,14 @@ public class StudentOffenseSearchStudentController implements Initializable {
     }
     public void refreshTable() throws SQLException { // refresh table
         initTable();
-        query = "select student_id,student_name from student_tbl";
+        query = "select student_id,student_name from student_tbl where student_department = "+departmentId+"";
         srchstudentTableView.setItems(dao.getStudentOffenseStudentSearchData(query));
     }
     public void initSearch(){ // init search
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
             initTable();
-            query = "select student_id,student_name from student_tbl where "+forSearchComboxValue+" like '%"+newV+"%'";
+            query = "select student_id,student_name from student_tbl where "+forSearchComboxValue+" like '%"+newV+"%' and student_department = "+departmentId+"";
             try {
                 srchstudentTableView.setItems(dao.getStudentOffenseStudentSearchData(query));
             } catch (SQLException e) {

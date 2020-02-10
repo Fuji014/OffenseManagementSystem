@@ -165,7 +165,9 @@ public class DepartmentPageController implements Initializable {
     }
     public void initSearch(){
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
-            String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
+            String forSearchComboxValue = searchComboBox.getSelectionModel(
+
+            ).getSelectedItem();
             initTable();
                 query = "select * from department_tbl where "+forSearchComboxValue+" like '%"+newV+"%'";
             try {

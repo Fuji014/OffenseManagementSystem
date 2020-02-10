@@ -1,5 +1,6 @@
 package controller;
 
+import app.Main;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
@@ -40,6 +41,9 @@ public class HomePageController implements Initializable {
     private JFXButton settingsBtn;
 
     @FXML
+    private JFXButton policyBtn;
+
+    @FXML
     private Text usernameTxt;
 
     @FXML
@@ -60,18 +64,27 @@ public class HomePageController implements Initializable {
     @FXML
     private JFXButton logoutBtn;
 
+    @FXML
+    private JFXButton smsBtn;
+
+    @FXML
+    private JFXButton notificationBtn;
+
+
+
 
     // Declare var below;
     private ConnectionHandler connector;
-    private MainController mc;
     private Connection connection;
     private PreparedStatement prs;
     private ResultSet rs;
     private DatabaseAccessObject dao;
+    private MainController mc;
     private String query;
     private Image image;
     AnchorPane home;
     private int id;
+    public int departmentId = Integer.parseInt(AdminLoginController.getAdminLoginController().getInfo().get("department"));
     private static HomePageController instance;
 
     // init itself
@@ -87,6 +100,8 @@ public class HomePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         createPage(home,"/views/Dashboard.fxml");
         usernameTxt.setText(AdminLoginController.getAdminLoginController().getInfo().get("username"));
+//        System.out.println(AdminLoginController.getAdminLoginController().getInfo().get("id"));
+        System.out.println(AdminLoginController.getAdminLoginController().getInfo().get("department"));
         // initalize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
@@ -104,6 +119,19 @@ public class HomePageController implements Initializable {
         // click event
         dashboardBtn.setOnAction(event -> { // event btn dashboard
             createPage(home,"/views/Dashboard.fxml");
+        });
+        policyBtn.setOnAction(event -> { // event btn policy
+            createPage(home, "/views/PolicyPage.fxml");
+        });
+        smsBtn.setOnAction(event -> {
+            createPage(home, "/views/MessagePage.fxml");
+        });
+        notificationBtn.setOnAction(event -> {
+            try {
+                mc.createPage(null, "/views/NotificationPage.fxml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
         settingsBtn.setOnAction(event -> { // event btn AdminUser
             createPage(home, "/views/AdminUserPage.fxml");
@@ -152,7 +180,7 @@ public class HomePageController implements Initializable {
     }
     public void createPage(AnchorPane home, String loc) {
         try{
-            home = FXMLLoader.load(getClass().getResource(loc));
+            home = FXMLLoader.load(Main.class.getResource(loc));
             setNode(home);
         }catch (Exception e){
             e.printStackTrace();

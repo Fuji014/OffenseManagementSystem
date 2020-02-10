@@ -38,6 +38,7 @@ public class OffenseEditController implements Initializable {
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
     private String query;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of declare var
 
     @Override

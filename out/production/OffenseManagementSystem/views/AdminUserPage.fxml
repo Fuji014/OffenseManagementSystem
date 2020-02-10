@@ -23,7 +23,7 @@
       </Label>
       <AnchorPane layoutX="17.0" layoutY="67.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <JFXButton fx:id="refreshBtn" layoutX="612.0" layoutY="-11.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE" />
+            <JFXButton fx:id="refreshBtn" layoutX="612.0" layoutY="-6.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE" />
             <TableView fx:id="tableView" layoutX="14.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="683.0">
                <contextMenu>
                   <ContextMenu>
@@ -35,17 +35,16 @@
                </contextMenu>
                <columns>
                   <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="firstnameCol" prefWidth="122.0" text="FIRST NAME" />
-                  <TableColumn fx:id="lastnameCol" prefWidth="109.0" text="LAST NAME" />
-                  <TableColumn fx:id="miCol" prefWidth="56.0" text="MI" />
-                  <TableColumn fx:id="contactCol" prefWidth="90.0" text="CONTACT" />
-                  <TableColumn fx:id="usernameCol" prefWidth="113.0" text="USERNAME" />
-                  <TableColumn fx:id="datecreatedCol" prefWidth="117.0" text="DATE CREATED" />
+                  <TableColumn fx:id="nameCol" prefWidth="122.0" text="NAME" />
+                  <TableColumn fx:id="contactCol" prefWidth="94.0" text="CONTACT" />
+                  <TableColumn fx:id="usernameCol" prefWidth="140.0" text="USERNAME" />
+                  <TableColumn fx:id="datecreatedCol" prefWidth="129.0" text="DATE CREATED" />
+                  <TableColumn fx:id="deptCol" prefWidth="122.0" text="DEPARTMENT" />
                </columns>
             </TableView>
          </children>
       </AnchorPane>
-      <JFXComboBox fx:id="searchComboBox" layoutX="338.0" layoutY="60.0" prefHeight="26.0" prefWidth="148.0" />
-      <JFXTextField fx:id="searchTxt" layoutX="494.0" layoutY="61.0" prefWidth="119.0" />
+      <JFXComboBox fx:id="searchComboBox" layoutX="338.0" layoutY="60.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+      <JFXTextField fx:id="searchTxt" layoutX="494.0" layoutY="61.0" prefWidth="119.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
    </children>
 </AnchorPane>

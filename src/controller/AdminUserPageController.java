@@ -15,6 +15,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminUserPageController implements Initializable {
+
+    @FXML
+    private JFXButton newBtn;
+
     @FXML
     private JFXButton refreshBtn;
 
@@ -31,13 +35,7 @@ public class AdminUserPageController implements Initializable {
     private TableColumn<adminUserTable, Integer> idCol;
 
     @FXML
-    private TableColumn<adminUserTable, String> firstnameCol;
-
-    @FXML
-    private TableColumn<adminUserTable, String> lastnameCol;
-
-    @FXML
-    private TableColumn<adminUserTable, String> miCol;
+    private TableColumn<adminUserTable, String> nameCol;
 
     @FXML
     private TableColumn<adminUserTable, String> contactCol;
@@ -49,13 +47,13 @@ public class AdminUserPageController implements Initializable {
     private TableColumn<adminUserTable, String> datecreatedCol;
 
     @FXML
-    private JFXButton newBtn;
-
-    @FXML
-    private JFXTextField searchTxt;
+    private TableColumn<adminUserTable, String> deptCol;
 
     @FXML
     private JFXComboBox<String> searchComboBox;
+
+    @FXML
+    private JFXTextField searchTxt;
 
 
 
@@ -66,7 +64,7 @@ public class AdminUserPageController implements Initializable {
     private String query;
     private DatabaseAccessObject dao;
     private MainController mc;
-    private String firstname,lastname,mi,contact,username,datecreated;
+    private String name,contact,deptname,username,datecreated;
     private int id;
     private boolean isConfirm;
     
@@ -84,7 +82,7 @@ public class AdminUserPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // initialize object                                                                                  
-        searchComboBox.getItems().addAll("ID","FIRSTNAME","LASTNAME","MI","CONTACT","USERNAME","CREATED_AT");
+        searchComboBox.getItems().addAll("NAME","CONTACT","DEPARTMENT","USERNAME","CREATED_AT");
         // initialize classes
         dao = new DatabaseAccessObject();
         mc = new MainController();
@@ -126,27 +124,25 @@ public class AdminUserPageController implements Initializable {
 
     public void initTable(){
         idCol.setCellValueFactory(cell -> cell.getValue().getAdminId().asObject());
-        firstnameCol.setCellValueFactory(cell -> cell.getValue().getFirstname());
-        lastnameCol.setCellValueFactory(cell -> cell.getValue().getLastname());
-        miCol.setCellValueFactory(cell -> cell.getValue().getMi());
+        nameCol.setCellValueFactory(cell -> cell.getValue().getName());
         contactCol.setCellValueFactory(cell -> cell.getValue().getContact());
+        deptCol.setCellValueFactory(cell -> cell.getValue().getDeptname());
         usernameCol.setCellValueFactory(cell -> cell.getValue().getUsername());
         datecreatedCol.setCellValueFactory(cell -> cell.getValue().getDatecreated());
     }
 
     public void refreshTable(){
         initTable();
-        query = "select id,firstname,lastname,mi,contact,username,created_at from admin_tbl order by id desc;";
+        query = "select a.id,a.name,a.contact,d.dept_name,a.username,a.created_at from admin_tbl as a inner join department_tbl as d on a.department_key = d.id order by id desc";
         tableView.setItems(dao.getAdminData(query));
     }
 
     public void updateEvent(){
         adminUserTable selected = tableView.getSelectionModel().getSelectedItem();
         id = selected.getAdminId().get();
-        firstname = selected.getFirstname().get();
-        lastname = selected.getLastname().get();
-        mi = selected.getMi().get();
+        name = selected.getName().get();
         contact = selected.getContact().get();
+        deptname = selected.getDeptname().get();
         username = selected.getUsername().get();
         datecreated = selected.getDatecreated().get();
     }
@@ -171,7 +167,7 @@ public class AdminUserPageController implements Initializable {
          searchTxt.textProperty().addListener((ObservableValue<? extends String>ob,String oldV, String newV) ->{
              String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
              initTable();
-             query = "select id,firstname,lastname,mi,contact,username,created_at from admin_tbl where "+forSearchComboxValue+" like '%"+newV+"%'";
+             query = "select a.id,a.name,a.contact,d.dept_name,a.username,a.created_at from admin_tbl as a inner join department_tbl as d on a.department_key = d.id where "+forSearchComboxValue+" like '%"+newV+"%'";
              tableView.setItems(dao.getAdminSearch(query));
          });
     }
@@ -193,18 +189,13 @@ public class AdminUserPageController implements Initializable {
     public int getId(){
         return id;
     }
-    public String getFirstname(){
-        return firstname;
-    }
-    public String getLastname(){
-        return lastname;
-    }
-    public String getMi(){
-        return mi;
+    public String getName(){
+        return name;
     }
     public String getContact(){
         return contact;
     }
+    public String getDeptname(){return deptname;}
     public String getUsername(){
         return username;
     }

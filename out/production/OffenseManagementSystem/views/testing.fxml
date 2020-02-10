@@ -6,14 +6,13 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #151928;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="-4.0" layoutY="60.0" prefHeight="184.0" prefWidth="1372.0" style="-fx-background-color: #c1c1c1;">
          <children>
             <Label layoutX="420.0" layoutY="50.0" prefHeight="66.0" prefWidth="381.0" text="Jerome Gabat" textFill="#363636">
                <font>
-                  <Font name="Calibri Light" size="50.0" />
+                  <Font name="Modern No. 20" size="50.0" />
                </font>
             </Label>
          </children>

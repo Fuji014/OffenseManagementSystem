@@ -51,7 +51,7 @@
             <JFXTextField fx:id="sectionTxt" labelFloat="true" layoutX="105.0" layoutY="120.0" prefHeight="23.0" prefWidth="86.0" promptText=" Section" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2; -jfx-unfocus-color: transparent;" unFocusColor="#d2d2d2" />
             <JFXTextField fx:id="courseTxt" labelFloat="true" layoutX="199.0" layoutY="120.0" prefHeight="23.0" prefWidth="86.0" promptText=" Course" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2; -jfx-unfocus-color: transparent;" unFocusColor="#d2d2d2" />
             <JFXTextField fx:id="strandTxt" labelFloat="true" layoutX="293.0" layoutY="120.0" prefHeight="23.0" prefWidth="86.0" promptText=" Strand" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2; -jfx-unfocus-color: transparent;" unFocusColor="#d2d2d2" />
-            <JFXComboBox fx:id="studDeptComboBox" layoutX="388.0" layoutY="121.0" prefHeight="25.0" prefWidth="155.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2; -jfx-unfocus-color: transparent;" />
+            <JFXComboBox fx:id="studDeptComboBox" disable="true" layoutX="388.0" layoutY="121.0" prefHeight="25.0" prefWidth="155.0" promptText=" Department" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2; -jfx-unfocus-color: transparent;" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="8.0" layoutY="216.0" prefHeight="153.0" prefWidth="297.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">

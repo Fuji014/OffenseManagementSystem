@@ -53,6 +53,7 @@ public class StudentOffenseSearchOffenseController implements Initializable {
     private DatabaseAccessObject dao;
     private String query,studId;
     private int offId;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of var below
 
     @Override
@@ -99,14 +100,14 @@ public class StudentOffenseSearchOffenseController implements Initializable {
     }
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select o.offense_description,o.offense_severity,d.dept_name,o.id from offense_tbl as o inner JOIN department_tbl as d on o.id = d.id";
+        query = "select o.offense_description,o.offense_severity,d.dept_name,o.id from offense_tbl as o inner JOIN department_tbl as d on  o.dept_key = d.id where dept_key = "+departmentId+" order by o.id desc";
         srchstudentTableView.setItems(dao.getStudentOffenseOffenseSearchData(query));
     }
     public void initSearch(){ // init search
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
             initTable();
-            query = "select o.offense_description,o.offense_severity,d.dept_name,o.id from offense_tbl as o inner JOIN department_tbl as d on o.id = d.id where "+forSearchComboxValue+" like '%"+newV+"%'";
+            query = "select o.offense_description,o.offense_severity,d.dept_name,o.id from offense_tbl as o inner JOIN department_tbl as d on o.dept_key = d.id where "+forSearchComboxValue+" like '%"+newV+"%' where dept_key = "+departmentId+" order by o.id desc";
             try {
                 srchstudentTableView.setItems(dao.getStudentOffenseOffenseSearchData(query));
             } catch (SQLException e) {

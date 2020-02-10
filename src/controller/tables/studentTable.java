@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 public class studentTable {
     private final IntegerProperty id;
-    private final IntegerProperty studentRfid;
+    private final StringProperty studentRfid;
     private final IntegerProperty studentId;
     private final StringProperty studentName;
     private final StringProperty studentYear;
@@ -20,9 +20,9 @@ public class studentTable {
     private final StringProperty studentContact;
     private final StringProperty parentAddress;
 
-    public studentTable(int id, int studentRfid, int studentId, String studentName, String studentYear, String studentSection, String studentCourse, String studentStrand, String studentDepartment, String parentName, String parentContact, String studentContact, String parentAddress){
+    public studentTable(int id, String studentRfid, int studentId, String studentName, String studentYear, String studentSection, String studentCourse, String studentStrand, String studentDepartment, String parentName, String parentContact, String studentContact, String parentAddress){
         this.id = new SimpleIntegerProperty(id);
-        this.studentRfid = new SimpleIntegerProperty(studentRfid);
+        this.studentRfid = new SimpleStringProperty(studentRfid);
         this.studentId = new SimpleIntegerProperty(studentId);
         this.studentName = new SimpleStringProperty(studentName);
         this.studentYear = new SimpleStringProperty(studentYear);
@@ -42,7 +42,7 @@ public class studentTable {
     }
 
 
-    public IntegerProperty studentRfidProperty() {
+    public StringProperty studentRfidProperty() {
         return studentRfid;
     }
 

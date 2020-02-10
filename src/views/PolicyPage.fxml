@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PolicyPageController">
+   <children>
+      <Label layoutX="17.0" layoutY="12.0" text="Manage Policy">
+         <font>
+            <Font name="Copperplate Gothic Light" size="25.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="capane" disable="true" layoutX="14.0" layoutY="48.0" prefHeight="258.0" prefWidth="357.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <Label layoutX="10.0" layoutY="5.0" text="COLLEGE DEPARTMENT">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="cminorcountTxt" labelFloat="true" layoutX="65.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Minor Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="33.0" text="MINOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="cminorremarksTxt" layoutX="65.0" layoutY="62.0" prefHeight="37.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="cminordurationTxt" labelFloat="true" layoutX="207.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="cmajorcountTxt" labelFloat="true" layoutX="65.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Major Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="108.0" text="MAJOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="cmajorremarksTxt" layoutX="65.0" layoutY="137.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="cmajordurationTxt" labelFloat="true" layoutX="206.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="cseriouscountTxt" labelFloat="true" layoutX="65.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Serious Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="182.0" text="SERIOUS :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="cseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="cseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXButton fx:id="cresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="csaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="shsapane" disable="true" layoutX="382.0" layoutY="48.0" prefHeight="258.0" prefWidth="357.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <Label layoutX="10.0" layoutY="5.0" text="SHS DEPARTMENT">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="shsminorcountTxt" labelFloat="true" layoutX="65.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Minor Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="33.0" text="MINOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="shsminorremarksTxt" layoutX="65.0" layoutY="62.0" prefHeight="37.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="shsminordurationTxt" labelFloat="true" layoutX="207.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="shsmajorcountTxt" labelFloat="true" layoutX="65.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Major Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="108.0" text="MAJOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="shsmajorremarksTxt" layoutX="65.0" layoutY="137.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="shsmajordurationTxt" labelFloat="true" layoutX="206.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="shsseriouscountTxt" labelFloat="true" layoutX="65.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Serious Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="182.0" text="SERIOUS ;" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="shsseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="shsseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXButton fx:id="shsresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="shssaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="jhsapane" disable="true" layoutX="14.0" layoutY="313.0" prefHeight="258.0" prefWidth="357.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <Label layoutX="10.0" layoutY="5.0" text="JHS DEPARTMENT">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="jhsminorcountTxt" labelFloat="true" layoutX="65.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Minor Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="33.0" text="MINOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="jhsminorremarksTxt" layoutX="65.0" layoutY="62.0" prefHeight="37.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="jhsminordurationTxt" labelFloat="true" layoutX="207.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="jhsmajorcountTxt" labelFloat="true" layoutX="65.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Major Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="108.0" text="MAJOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="jhsmajorremarksTxt" layoutX="65.0" layoutY="137.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="jhsmajordurationTxt" labelFloat="true" layoutX="206.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="jhsseriouscountTxt" labelFloat="true" layoutX="65.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Serious Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="182.0" text="SERIOUS :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="jhsseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="jhsseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXButton fx:id="jhsresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="jhssaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="gsapane" disable="true" layoutX="382.0" layoutY="313.0" prefHeight="258.0" prefWidth="357.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
+         <children>
+            <Label layoutX="10.0" layoutY="5.0" text="GS DEPARTMENT">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="gsminorcountTxt" labelFloat="true" layoutX="65.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Minor Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="33.0" text="MINOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="gsminorremarksTxt" layoutX="65.0" layoutY="62.0" prefHeight="37.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="gsminordurationTxt" labelFloat="true" layoutX="207.0" layoutY="29.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="gsmajorcountTxt" labelFloat="true" layoutX="65.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Major Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="108.0" text="MAJOR :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="gsmajorremarksTxt" layoutX="65.0" layoutY="137.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="gsmajordurationTxt" labelFloat="true" layoutX="206.0" layoutY="104.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="gsseriouscountTxt" labelFloat="true" layoutX="65.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Serious Count" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <Label layoutX="10.0" layoutY="182.0" text="SERIOUS :" textFill="#a19a9a">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="gsseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXTextField fx:id="gsseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
+            <JFXButton fx:id="gsresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="gssaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

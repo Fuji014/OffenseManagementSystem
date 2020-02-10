@@ -1,6 +1,7 @@
 package controller;
 
 import controller.tables.*;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.scene.image.Image;
@@ -56,19 +58,18 @@ public class DatabaseAccessObject implements Initializable {
             case "create":
                 fileInputStream = new FileInputStream(AdminUserAddController.getAddAdminUserController().file);
                 timestamp = new Timestamp(System.currentTimeMillis());
-                query = "insert into admin_tbl values (?,?,?,?,?,?,?,?,?)";
+                query = "insert into admin_tbl values (?,?,?,?,?,?,?,?)";
                 connection = connector.getConnection();
                 try{
                     prs = connection.prepareStatement(query);
                     prs.setString(1,null);
-                    prs.setString(2, AdminUserAddController.getAddAdminUserController().firstnameTxt.getText());
-                    prs.setString(3, AdminUserAddController.getAddAdminUserController().lastnameTxt.getText());
-                    prs.setString(4, AdminUserAddController.getAddAdminUserController().miTxt.getText());
-                    prs.setString(5, AdminUserAddController.getAddAdminUserController().contactTxt.getText());
-                    prs.setString(6, AdminUserAddController.getAddAdminUserController().usernameTxt.getText());
-                    prs.setString(7, AdminUserAddController.getAddAdminUserController().passwordTxt.getText());
-                    prs.setBinaryStream(8,fileInputStream, AdminUserAddController.getAddAdminUserController().file.length());
-                    prs.setTimestamp(9,timestamp);
+                    prs.setString(2, AdminUserAddController.getAddAdminUserController().nameTxt.getText());
+                    prs.setString(3, AdminUserAddController.getAddAdminUserController().contactTxt.getText());
+                    prs.setString(4, AdminUserAddController.getAddAdminUserController().deptComboBox.getSelectionModel().getSelectedIndex()+1+"");
+                    prs.setString(5, AdminUserAddController.getAddAdminUserController().usernameTxt.getText());
+                    prs.setString(6, AdminUserAddController.getAddAdminUserController().passwordTxt.getText());
+                    prs.setBinaryStream(7,fileInputStream, AdminUserAddController.getAddAdminUserController().file.length());
+                    prs.setTimestamp(8,timestamp);
                     prs.executeUpdate();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -79,17 +80,16 @@ public class DatabaseAccessObject implements Initializable {
             case "update":
                 if(AdminUserEditController.getEditAdminUserController().file != null){
                     fileInputStream = new FileInputStream(AdminUserEditController.getEditAdminUserController().file);
-                    query = "update admin_tbl set firstname = ?, lastname = ?, mi = ?, contact = ?, username = ?, image = ? where id = ?";
+                    query = "update admin_tbl set name = ?,  contact = ?, department_key = ? , username = ?, image = ? where id = ?";
                     connection = connector.getConnection();
                     try{
                         prs = connection.prepareStatement(query);
-                        prs.setString(1, AdminUserEditController.getEditAdminUserController().firstnameTxt.getText());
-                        prs.setString(2, AdminUserEditController.getEditAdminUserController().lastnameTxt.getText());
-                        prs.setString(3, AdminUserEditController.getEditAdminUserController().miTxt.getText());
-                        prs.setString(4, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
-                        prs.setString(5, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
-                        prs.setBinaryStream(6,fileInputStream, AdminUserEditController.getEditAdminUserController().file.length());
-                        prs.setInt(7, AdminUserPageController.getSettingsPageController().getId());
+                        prs.setString(1, AdminUserEditController.getEditAdminUserController().nameTxt.getText());
+                        prs.setString(2, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
+                        prs.setString(3,AdminUserEditController.getEditAdminUserController().deptComboBox.getSelectionModel().getSelectedIndex()+1+"");
+                        prs.setString(4, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
+                        prs.setBinaryStream(5,fileInputStream, AdminUserEditController.getEditAdminUserController().file.length());
+                        prs.setInt(6, AdminUserPageController.getSettingsPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -97,16 +97,15 @@ public class DatabaseAccessObject implements Initializable {
                         connector.close(connection,prs,null);
                     }
                 }else{
-                    query = "update admin_tbl set firstname = ?, lastname = ?, mi = ?, contact = ?, username = ? where id = ?";
+                    query = "update admin_tbl set name = ?, contact = ?, department_key = ?, username = ? where id = ?";
                     connection = connector.getConnection();
                     try{
                         prs = connection.prepareStatement(query);
-                        prs.setString(1, AdminUserEditController.getEditAdminUserController().firstnameTxt.getText());
-                        prs.setString(2, AdminUserEditController.getEditAdminUserController().lastnameTxt.getText());
-                        prs.setString(3, AdminUserEditController.getEditAdminUserController().miTxt.getText());
-                        prs.setString(4, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
-                        prs.setString(5, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
-                        prs.setInt(6, AdminUserPageController.getSettingsPageController().getId());
+                        prs.setString(1, AdminUserEditController.getEditAdminUserController().nameTxt.getText());
+                        prs.setString(2, AdminUserEditController.getEditAdminUserController().contactTxt.getText());
+                        prs.setString(3, AdminUserEditController.getEditAdminUserController().deptComboBox.getSelectionModel().getSelectedIndex()+1+"");
+                        prs.setString(4, AdminUserEditController.getEditAdminUserController().usernameTxt.getText());
+                        prs.setInt(5, AdminUserPageController.getSettingsPageController().getId());
                         prs.executeUpdate();
                     }catch (Exception e){
                         e.printStackTrace();
@@ -235,6 +234,29 @@ public class DatabaseAccessObject implements Initializable {
         }
     }
 
+    public HashMap<String,String> getUserInfo(String query) throws SQLException {
+        HashMap<String,String> hashMap = new HashMap<String,String>();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while (rs.next()){
+                hashMap.put("adminId", rs.getString(1));
+                hashMap.put("adminDepartment",rs.getString(4));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return hashMap;
+        }
+
+    }
+
 
     public ObservableList<adminUserTable> getAdminData(String query){ // addmin table
         ObservableList<adminUserTable> list = FXCollections.observableArrayList();
@@ -248,7 +270,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new adminUserTable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                list.add(new adminUserTable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -268,7 +290,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new studentTable(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13)));
+                list.add(new studentTable(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -288,7 +310,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new adminUserTable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                list.add(new adminUserTable(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -308,7 +330,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new studentTable(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13)));
+                list.add(new studentTable(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),rs.getString(13)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -392,7 +414,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new studentOffenseTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));
+                list.add(new studentOffenseTable(rs.getInt("std_offense_id"),rs.getInt("student_key"),rs.getInt("offense_key"),rs.getString("offense_severity"),rs.getString("offense_duration"),rs.getString("offense_completedTime"),rs.getString("offense_status"),rs.getString("offense_status"),rs.getString("student_offense_remarks"),rs.getString("student_offense_date")));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -445,6 +467,49 @@ public class DatabaseAccessObject implements Initializable {
         }
     }
 
+    public ObservableList<penaltyTable> getPenaltyData(String query) throws SQLException { // penalty table
+        ObservableList<penaltyTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new penaltyTable(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
+    public ObservableList<notificationTable> getNotificationData(String query) throws SQLException {
+        ObservableList<notificationTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                list.add(new notificationTable(rs.getInt(1), rs.getString(2), rs.getString(3)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
     public ObservableList<String> getStudentDepartmentComboBox(String query){ // student department combox
         ObservableList list = FXCollections.observableArrayList();
         try {
@@ -488,7 +553,28 @@ public class DatabaseAccessObject implements Initializable {
         }
     }
 
-    public int getRfidCount(String query) throws SQLException {
+    public HashMap<String,String> getDepartmentName(String query) throws SQLException {
+        HashMap<String,String> hashMap = new HashMap<>();
+        try{
+            connection=connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                hashMap.put("department",rs.getString(1));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return hashMap;
+        }
+    }
+
+    public int getRfidCount(String query) throws SQLException { // rfid count
         int count = 0;
         try {
             connection = connector.getConnection();
@@ -509,6 +595,121 @@ public class DatabaseAccessObject implements Initializable {
         }
     }
 
+    public HashMap<String, String> getSeverityAndDepartment(String query) throws SQLException {
+        HashMap<String, String> hashMap = new HashMap<>();
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                hashMap.put("severity",rs.getString(1));
+                hashMap.put("department_key",rs.getString(2));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return hashMap;
+        }
+    }
 
+    // policy shs
+    public ResultSet getStdOffenseAndOffense(String query) throws SQLException {
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,null);
+            return rs;
+        }
+    }
+    public ResultSet getPolicyCountAndDuration(String query) throws SQLException {
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+//            connector.close(connection,prs,null);
+            return rs;
+        }
+    }
+
+    public int officialCount(String query) throws SQLException {
+        int count = 0;
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while(rs.next()){
+                count = rs.getInt(1);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            connector.close(connection,prs,rs);
+            return count;
+        }
+    }
+
+    public ResultSet getSeverityAndDeptKey(String query) throws SQLException {
+        try {
+            connection=connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+//            connector.close(connection,prs,null);
+            return rs;
+        }
+    }
+
+    // policy module
+    public ResultSet getPolicyData(String query){
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return rs;
+        }
+    }
+
+    // end of policy shs
 }

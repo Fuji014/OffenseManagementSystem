@@ -55,7 +55,7 @@
                         <Image url="@../resources/icons8-lock-52.png" />
                      </image>
                   </ImageView>
-                  <JFXButton fx:id="loginBtn" layoutX="27.0" layoutY="195.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #27AE60;" text="Login" textFill="WHITE">
+                  <JFXButton fx:id="loginBtn" layoutX="35.0" layoutY="205.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #27AE60;" text="Login" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -63,7 +63,7 @@
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
-                  <JFXButton fx:id="cencelBtn" layoutX="116.0" layoutY="195.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #151928;" text="Cancel" textFill="WHITE">
+                  <JFXButton fx:id="cencelBtn" layoutX="124.0" layoutY="205.0" prefHeight="29.0" prefWidth="76.0" style="-fx-background-color: #151928;" text="Cancel" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -76,7 +76,7 @@
                         <Image url="@../resources/294.gif" />
                      </image>
                   </ImageView>
-                  <JFXPasswordField fx:id="passwordTxt" layoutX="85.0" layoutY="137.0" prefHeight="25.0" prefWidth="197.0" promptText=" Enter Your Password" />
+                  <JFXPasswordField fx:id="passwordTxt" labelFloat="true" layoutX="85.0" layoutY="137.0" prefHeight="25.0" prefWidth="197.0" promptText=" Enter Your Password" />
                </children>
             </AnchorPane>
          </children>

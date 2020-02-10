@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
@@ -22,28 +23,31 @@ import java.util.ResourceBundle;
 public class AdminUserAddController implements Initializable {
 
     @FXML
+    private AnchorPane apaneAddUserId;
+
+    @FXML
     private Label closeBtn;
-
-    @FXML
-    public JFXTextField firstnameTxt;
-
-    @FXML
-    public JFXTextField lastnameTxt;
-
-    @FXML
-    public JFXTextField miTxt;
 
     @FXML
     public JFXTextField contactTxt;
 
     @FXML
-    public JFXPasswordField passwordTxt;
+    public JFXTextField nameTxt;
+
+    @FXML
+    public JFXComboBox<String> deptComboBox;
 
     @FXML
     public JFXTextField usernameTxt;
 
     @FXML
-    private JFXPasswordField  confirmpassTxt;
+    public JFXPasswordField passwordTxt;
+
+    @FXML
+    public JFXPasswordField confirmpassTxt;
+
+    @FXML
+    public ImageView imagePreview;
 
     @FXML
     private JFXButton saveBtn;
@@ -52,13 +56,7 @@ public class AdminUserAddController implements Initializable {
     private JFXButton cancelBtn;
 
     @FXML
-    private ImageView imagePreview;
-
-    @FXML
     private JFXButton uploaderBtn;
-
-    @FXML
-    private AnchorPane apaneId;
 
 
 
@@ -122,6 +120,10 @@ public class AdminUserAddController implements Initializable {
         uploaderBtn.setOnAction(event -> {
             uploaderEvent();
         });
+
+        deptComboBox.setOnMouseClicked(event -> {
+            initDepartmentComboBox();
+        });
     }
 
 
@@ -139,7 +141,7 @@ public class AdminUserAddController implements Initializable {
     }
 
     public void uploaderEvent(){
-        stage = (Stage) apaneId.getScene().getWindow();
+        stage = (Stage) apaneAddUserId.getScene().getWindow();
         file = fileChooser.showOpenDialog(stage);
         if(file != null){
             path = file.getAbsolutePath();
@@ -149,11 +151,17 @@ public class AdminUserAddController implements Initializable {
         }
     }
 
+    public void initDepartmentComboBox(){
+        deptComboBox.getSelectionModel().clearSelection();
+        String query = "select * from department_tbl";
+        deptComboBox.setItems(dao.getStudentDepartmentComboBox(query));
+    }
+
+    // custom methods
     public void clearFields(){
-        firstnameTxt.setText("");
-        lastnameTxt.setText("");
-        miTxt.setText("");
+        nameTxt.setText("");
         contactTxt.setText("");
+        deptComboBox.getSelectionModel().clearSelection();
         usernameTxt.setText("");
         passwordTxt.setText("");
         confirmpassTxt.setText("");
