@@ -91,7 +91,16 @@ public class StudentOffenseEditController implements Initializable {
 
     // init
     public  void editEvent() throws SQLException {
-        query = "update student_offense_tbl set offense_duration ='"+durationTxt.getText()+"',offense_completedTime ='"+completedtimeTxt.getText()+"', offense_status = "+statusTxt.getText()+", student_offense_remarks = '"+remarksTxt.getText()+"' where std_offense_id = "+StudentOffenseController.getStudentOffenseController().getId()+"";
+        String offenseStatus = "";
+        if(durationTxt.getText().equals(completedtimeTxt.getText())){
+            offenseStatus = "complete";
+            statusTxt.setText("complete");
+        }else{
+            offenseStatus = "not complete";
+            statusTxt.setText("not complete");
+        }
+
+        query = "update student_offense_tbl set offense_duration ='"+durationTxt.getText()+"',offense_completedTime ='"+completedtimeTxt.getText()+"', offense_status = '"+offenseStatus+"', student_offense_remarks = '"+remarksTxt.getText()+"' where std_offense_id = "+StudentOffenseController.getStudentOffenseController().getId()+"";
         try {
             dao.saveData(query);
         }catch (Exception e){

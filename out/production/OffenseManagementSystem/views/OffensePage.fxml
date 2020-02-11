@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #F0F0F0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OffensePageController">
    <children>
-      <TableView fx:id="offenseTableView" layoutX="24.0" layoutY="112.0" prefHeight="350.0" prefWidth="707.0">
+      <TableView fx:id="offenseTableView" layoutX="24.0" layoutY="94.0" prefHeight="374.0" prefWidth="707.0" stylesheets="@../styles/TableStyle.css">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="48.0" text="ID" />
           <TableColumn fx:id="descriptionCol" prefWidth="358.0" text="DESCRIPTION" />

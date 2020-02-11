@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StudentOffenseController">
    <children>
-      <TableView fx:id="studoffenseTableView" layoutX="28.0" layoutY="99.0" prefHeight="316.0" prefWidth="699.0">
+      <TableView fx:id="studoffenseTableView" layoutX="28.0" layoutY="81.0" prefHeight="316.0" prefWidth="699.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="40.0" text="ID" />
           <TableColumn fx:id="studidCol" prefWidth="77.0" text="STUDENT ID" />
@@ -53,7 +54,6 @@
             <Font name="Copperplate Gothic Light" size="10.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="searchTxt" layoutX="500.0" layoutY="36.0" prefHeight="25.0" prefWidth="130.0" unFocusColor="#b1b1b1" />
       <JFXButton fx:id="newBtn" layoutX="28.0" layoutY="522.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06; -fx-border-color: #007E06;" text="New" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
@@ -64,18 +64,6 @@
          </graphic>
          <font>
             <Font name="Copperplate Gothic Light" size="12.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="searchBtn" layoutX="640.0" layoutY="35.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/icons8-search-48.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <font>
-            <Font name="Copperplate Gothic Light" size="11.0" />
          </font>
       </JFXButton>
       <JFXButton fx:id="cancelBtn" layoutX="122.0" layoutY="522.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D; -fx-border-color: #CD241D;" text="Cancel" textFill="WHITE">
@@ -90,74 +78,96 @@
             <Font name="Copperplate Gothic Light" size="11.0" />
          </font>
       </JFXButton>
-      <AnchorPane layoutX="316.0" layoutY="420.0" prefHeight="146.0" prefWidth="411.0" style="-fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;">
+      <AnchorPane layoutX="316.0" layoutY="403.0" prefHeight="167.0" prefWidth="411.0" style="-fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;">
          <children>
-            <Label layoutX="11.0" layoutY="5.0" text="Student View :">
-               <font>
-                  <Font name="Copperplate Gothic Light" size="13.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="imageView" fitHeight="97.0" fitWidth="118.0" layoutX="11.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageView" fitHeight="97.0" fitWidth="118.0" layoutX="11.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/icons8-male-user-96.png" />
                </image>
             </ImageView>
-            <Label layoutX="142.0" layoutY="20.0" text="ID No. :" textFill="#ff3c3c">
+            <Label layoutX="142.0" layoutY="44.0" text="ID No. :" textFill="#ff3c3c">
                <font>
                   <Font name="Copperplate Gothic Light" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="143.0" layoutY="44.0" text="Name :" textFill="#ff3c3c">
+            <Label layoutX="143.0" layoutY="68.0" text="Name :" textFill="#ff3c3c">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="143.0" layoutY="68.0" text="Year :" textFill="#ff3c3c">
+            <Label layoutX="143.0" layoutY="92.0" text="Year :" textFill="#ff3c3c">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="143.0" layoutY="90.0" text="Section :" textFill="#ff3c3c">
+            <Label layoutX="143.0" layoutY="114.0" text="Section :" textFill="#ff3c3c">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="143.0" layoutY="117.0" text="Total  Unserved Time :" textFill="#ff3c3c">
+            <Label layoutX="143.0" layoutY="141.0" text="Total  Unserved Time :" textFill="#ff3c3c">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="studentidLbl" layoutX="206.0" layoutY="20.0" text="Student ID">
+            <Label fx:id="studentidLbl" layoutX="206.0" layoutY="44.0" text="Student ID">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="nameLbl" layoutX="206.0" layoutY="44.0" text="Student Name">
+            <Label fx:id="nameLbl" layoutX="206.0" layoutY="68.0" text="Student Name">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="yearLbl" layoutX="206.0" layoutY="68.0" text="Student Year">
+            <Label fx:id="yearLbl" layoutX="206.0" layoutY="92.0" text="Student Year">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="sectionLbl" layoutX="206.0" layoutY="90.0" text="Student Section">
+            <Label fx:id="sectionLbl" layoutX="206.0" layoutY="114.0" text="Student Section">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="unservetimeLbl" layoutX="275.0" layoutY="117.0" text="Unserve Time">
+            <Label fx:id="unservetimeLbl" layoutX="275.0" layoutY="141.0" text="Unserve Time">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="searchTxt" layoutX="160.0" layoutY="7.0" prefHeight="25.0" prefWidth="130.0" unFocusColor="#b1b1b1" />
+            <JFXButton fx:id="searchBtn" layoutX="307.0" layoutY="6.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-search-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Copperplate Gothic Light" size="11.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField disable="true" layoutX="26.0" layoutY="9.0" prefHeight="25.0" prefWidth="130.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" text="STUDENT ID" unFocusColor="#b1b1b1">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
-      <JFXTextField fx:id="searchTxt1" disable="true" layoutX="365.0" layoutY="38.0" prefHeight="25.0" prefWidth="130.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" text="STUDENT ID" unFocusColor="#b1b1b1">
+      <JFXComboBox fx:id="searchComBox" layoutX="390.0" layoutY="34.0" prefHeight="27.0" prefWidth="130.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+      <JFXButton fx:id="searchtblBtn" layoutX="643.0" layoutY="32.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-search-48.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <font>
-            <Font name="Copperplate Gothic Light" size="12.0" />
+            <Font name="Copperplate Gothic Light" size="11.0" />
          </font>
-      </JFXTextField>
+      </JFXButton>
+      <JFXTextField fx:id="searchtblTxt" layoutX="528.0" layoutY="33.0" prefHeight="25.0" prefWidth="104.0" />
    </children>
 </AnchorPane>

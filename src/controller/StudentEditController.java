@@ -198,7 +198,6 @@ public class StudentEditController implements Initializable {
             rs = prs.executeQuery();
             while(rs.next()){
                 InputStream is = rs.getBinaryStream(1);
-                File file;
                 OutputStream os = new FileOutputStream(new File("photo.jpg"));
                 byte[] contents = new byte[1024];
                 int size = 0;

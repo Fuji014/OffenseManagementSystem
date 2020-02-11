@@ -1,0 +1,19 @@
+.table-view {
+    -fx-selection-bar: #808080;
+    -fx-selection-bar-non-focused: #b1b1b1;
+    -fx-control-inner-background-alt: -fx-control-inner-background ;
+   // -fx-table-cell-border-color: transparent;
+}
+.table-view .column-header-background{
+    -fx-background-color: #404040;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}

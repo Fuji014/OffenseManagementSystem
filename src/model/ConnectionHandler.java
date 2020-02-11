@@ -1,8 +1,5 @@
 package model;
-
 import java.sql.*;
-
-
         public class ConnectionHandler {
             public Connection conn;
             public Connection getConnection() throws ClassNotFoundException, SQLException {

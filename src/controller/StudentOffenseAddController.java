@@ -136,7 +136,7 @@ public class StudentOffenseAddController implements Initializable {
 
     // init
     public void saveEvent() {
-        query = "insert into student_offense_tbl values (null,"+studentidTxt.getText()+","+offensenameTxt.getText()+","+offensecountTxt.getText()+",'"+severityTxt.getText()+"','"+durationTxt.getText()+"',null,0,'"+remarksTxt.getText()+"','"+offensedateTxt.getText()+"')";
+        query = "insert into student_offense_tbl values (null,"+studentidTxt.getText()+","+offensenameTxt.getText()+","+offensecountTxt.getText()+",'"+severityTxt.getText()+"','"+durationTxt.getText()+"','00:00','not complete','"+remarksTxt.getText()+"','"+offensedateTxt.getText()+"')";
         try {
             dao.saveData(query);
             clearFields();

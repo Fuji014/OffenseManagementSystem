@@ -4,7 +4,7 @@
 
 .table-view {
     -fx-control-inner-background-alt: -fx-control-inner-background ;
-    -fx-table-cell-border-color: transparent;
+   // -fx-table-cell-border-color: transparent;
 }
 .table-view .table-row-cell {
     -fx-border-width: 1;

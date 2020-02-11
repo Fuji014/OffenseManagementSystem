@@ -19,7 +19,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="614.0" layoutY="-1.0" text="X" textFill="WHITE">
+            <Label fx:id="closeBtn" layoutX="614.0" layoutY="-1.0" text="X" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -82,7 +82,7 @@
                   <Label layoutX="12.0" layoutY="10.0" text="Offense Info" textFill="#a19a9a" />
                   <JFXTextField fx:id="durationTxt" labelFloat="true" layoutX="11.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
                   <JFXTextField fx:id="completedtimeTxt" labelFloat="true" layoutX="138.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Completed Time" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextField fx:id="statusTxt" labelFloat="true" layoutX="261.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Status" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <JFXTextField fx:id="statusTxt" disable="true" labelFloat="true" layoutX="261.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Status" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
                </children>
             </AnchorPane>
          </children>

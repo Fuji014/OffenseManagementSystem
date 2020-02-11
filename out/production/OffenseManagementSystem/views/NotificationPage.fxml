@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
@@ -9,26 +8,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="305.0" style="-fx-background-color: #fff;" stylesheets="@../styles/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NotificationPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="305.0" style="-fx-background-color: #151928; -fx-border-color: #d2d2d2;" stylesheets="@../styles/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NotificationPageController">
    <children>
-      <JFXButton fx:id="exitBtn" layoutX="270.0" layoutY="7.0" style="-fx-background-color: red;" text="X" textFill="WHITE">
+      <Label layoutX="73.0" layoutY="7.0" text="5" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXButton>
-      <Label layoutX="77.0" layoutY="7.0" text="5" textFill="#6c7591">
-         <font>
-            <Font name="Century Gothic" size="20.0" />
+            <Font name="Copperplate Gothic Light" size="22.0" />
          </font>
       </Label>
-      <Label id="try" layoutX="101.0" layoutY="9.0" text="Notification" textFill="#6c7591">
+      <Label id="try" layoutX="101.0" layoutY="9.0" text="Notification" textFill="#ffdcdc">
          <font>
-            <Font name="Century Gothic" size="18.0" />
+            <Font name="Copperplate Gothic Light" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="79.0" layoutY="236.0" text="See All Notification">
+      <Label layoutX="98.0" layoutY="238.0" text="See All Notification" textFill="WHITE" underline="true">
          <font>
-            <Font name="Century Gothic" size="15.0" />
+            <Font name="Century Gothic" size="13.0" />
          </font>
       </Label>
       <TableView fx:id="tableView" layoutY="38.0" prefHeight="190.0" prefWidth="305.0" stylesheets="@../styles/MainStyle.css">
@@ -46,5 +40,10 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
+      <Label fx:id="exitBtn" layoutX="277.0" layoutY="5.0" text="X" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

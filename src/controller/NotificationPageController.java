@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 public class NotificationPageController implements Initializable {
 
     @FXML
-    private JFXButton exitBtn;
+    private Label exitBtn;
 
     @FXML
     private TableView<notificationTable> tableView;
@@ -60,7 +61,7 @@ public class NotificationPageController implements Initializable {
         // end of init methods
 
         // event btns
-        exitBtn.setOnAction(event -> {
+        exitBtn.setOnMouseClicked(event -> {
             this.exitBtn.getScene().getWindow().hide();
         });
 

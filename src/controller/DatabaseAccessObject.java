@@ -617,24 +617,6 @@ public class DatabaseAccessObject implements Initializable {
             return hashMap;
         }
     }
-
-    // policy shs
-    public ResultSet getStdOffenseAndOffense(String query) throws SQLException {
-        try{
-            connection = connector.getConnection();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try{
-            prs = connection.prepareStatement(query);
-            rs = prs.executeQuery();
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            connector.close(connection,prs,null);
-            return rs;
-        }
-    }
     public ResultSet getPolicyCountAndDuration(String query) throws SQLException {
         try{
             connection = connector.getConnection();
@@ -710,6 +692,24 @@ public class DatabaseAccessObject implements Initializable {
             return rs;
         }
     }
+
+    public ResultSet getStudentInfoDetails(String query){
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally{
+            return rs;
+        }
+    }
+
 
     // end of policy shs
 }

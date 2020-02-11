@@ -8,17 +8,22 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.sql.Array;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class StudentOffenseController implements Initializable {
 
     @FXML
-    private JFXComboBox<String> searchComboBox;
+    private JFXComboBox<String> searchComBox;
 
     @FXML
     private JFXTextField searchTxt;
@@ -74,12 +79,37 @@ public class StudentOffenseController implements Initializable {
     @FXML
     private TableColumn<studentOffenseTable, String> dateCol;
 
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    private Label studentidLbl;
+
+    @FXML
+    private Label nameLbl;
+
+    @FXML
+    private Label yearLbl;
+
+    @FXML
+    private Label sectionLbl;
+
+    @FXML
+    private Label unservetimeLbl;
+
+    @FXML
+    private JFXButton searchtblBtn;
+
+    @FXML
+    private JFXTextField searchtblTxt;
     // declare var below
     private DatabaseAccessObject dao;
     private MainController mc;
     private String query,severity,duration,completed,status,count,remarks,date;
     public int id,student_key,offense_key,departmentId = HomePageController.getHomePageController().departmentId;
     private boolean isConfirm;
+    private ResultSet rs;
+    private Image image;
     private static StudentOffenseController instance;
     // end of declare var
 
@@ -94,13 +124,14 @@ public class StudentOffenseController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        searchComBox.getItems().addAll("student_key","offense_key","s.offense_severity","offense_status");
         // initialize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
         // end of initialize class
 
         // methods
+        initSearchTable();
         try {
             refreshTable();
         } catch (SQLException e) {
@@ -133,7 +164,7 @@ public class StudentOffenseController implements Initializable {
         });
         refreshBtn.setOnAction(event -> {
             try {
-                searchTxt.setStyle("-fx-text-inner-color: #000;");
+                searchTxt.setStyle("-jfx-unfocus-color: #b1b1b1;");
                 refreshTable();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -142,7 +173,7 @@ public class StudentOffenseController implements Initializable {
         searchBtn.setOnAction(event -> {
             try {
                 initSearch();
-            } catch (SQLException e) {
+            } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
         });
@@ -187,13 +218,30 @@ public class StudentOffenseController implements Initializable {
 
     }
 
-    public void initSearch() throws SQLException {
-            if(searchTxt.getText() != ""){
+    public void initSearchTable(){
+        searchtblTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) ->{
+            String forSearchComboxValue = searchComBox.getSelectionModel().getSelectedItem();
+            initTable();
+                query = "select s.* from student_offense_tbl as s inner join offense_tbl as o on s.offense_key = o.id where o.dept_key = "+departmentId+" and "+forSearchComboxValue+" like '%"+newV+"%'";
+            try {
+                studoffenseTableView.setItems(dao.getStudentOffenseData(query));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void initSearch() throws SQLException, IOException {
+            if(searchTxt.getText().isEmpty()){
+//                searchTxt.setStyle("-fx-text-inner-color: red;");
+                searchTxt.setStyle("-jfx-unfocus-color: red;");
+            }else{
+
                 initTable();
                 query = "select so.* from student_offense_tbl as so inner join offense_tbl as o on so.offense_key = o.id where o.dept_key = "+departmentId+" and student_key =  "+searchTxt.getText()+"";
                 studoffenseTableView.setItems(dao.getStudentOffenseData(query));
-            }else{
-                searchTxt.setStyle("-fx-text-inner-color: red;");
+                displayStudInfo(Integer.parseInt(searchTxt.getText()));
+                searchTxt.setStyle("-jfx-unfocus-color: #b1b1b1;");
             }
     }
 
@@ -214,6 +262,69 @@ public class StudentOffenseController implements Initializable {
         }
     }
 
+    public void displayStudInfo(int student_key) throws SQLException, IOException {
+        query = "select s.student_id,s.student_name,s.student_year,s.student_section,s.student_image from student_tbl as s inner join student_offense_tbl as so on s.student_id = so.student_key where so.offense_severity = 'minor' and s.student_department = "+departmentId+" and s.student_id = "+student_key+" limit 1";
+        rs = dao.getStudentInfoDetails(query);
+        if(rs.next()){
+                studentidLbl.setText(rs.getString("student_id"));
+                nameLbl.setText(rs.getString("student_name"));
+                yearLbl.setText(rs.getString("student_year"));
+                sectionLbl.setText(rs.getString("student_section"));
+                // for image processing
+                InputStream is = rs.getBinaryStream("student_image");
+                OutputStream os = new FileOutputStream(new File("photo.jpg"));
+                byte[] contents = new byte[1024];
+                int size = 0;
+                while((size = is.read(contents)) !=-1){
+                    os.write(contents,0,size);
+                }
+                image = new Image("file:photo.jpg",imageView.getFitWidth(),imageView.getFitHeight(),true,true);
+                imageView.setImage(image);
+            // for computing unserve time and dumpimg
+            query = "select so.offense_duration from student_tbl as s inner join student_offense_tbl as so on s.student_id = so.student_key where so.offense_severity = 'minor' and so.offense_status = 'not Complete' and s.student_department = "+departmentId+" and s.student_id = "+student_key+"";
+            rs = dao.getStudentInfoDetails(query);
+            ArrayList<String> arrayList = new ArrayList<>();
+            while (rs.next()){
+                arrayList.add(rs.getString(1));
+            }
+            int total1 = 0;
+            for(String test1 : arrayList){
+                total1 += getTotalMinutes(test1);
+            }
+            // for completedTime
+            query = "select so.offense_completedTime from student_tbl as s inner join student_offense_tbl as so on s.student_id = so.student_key where so.offense_severity = 'minor' and so.offense_status = 'not Complete' and s.student_department = "+departmentId+" and s.student_id = "+student_key+"";
+            rs = dao.getStudentInfoDetails(query);
+            ArrayList<String> arrayList1 = new ArrayList<>();
+            while (rs.next()){
+                arrayList1.add(rs.getString(1));
+            }
+            int total2 = 0;
+            for(String test2 : arrayList1){
+                total2 += getTotalMinutes(test2);
+            }
+            int diff = total1 - total2;
+            String result = getResult(diff);
+            unservetimeLbl.setText(result);
+        }else{
+            studentidLbl.setText("Not found");
+            nameLbl.setText("Not found");
+            yearLbl.setText("Not found");
+            sectionLbl.setText("Not found");
+            unservetimeLbl.setText("Not found");
+            imageView.setImage(null);
+        }
+
+    }
+    public int getTotalMinutes(String time) {
+        String[] t = time.split(":");
+        return Integer.valueOf(t[0]) * 60 + Integer.valueOf(t[1]);
+    }
+
+    public String getResult(int total) {
+        int minutes = total % 60;
+        int hours = ((total - minutes) / 60);
+        return String.format("%02d:%02d", hours, minutes);
+    }
     public void alertConfirmation(String headerText, String content){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(headerText);
