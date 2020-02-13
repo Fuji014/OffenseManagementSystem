@@ -13,15 +13,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SchedulePageController">
    <children>
       <Label layoutX="20.0" layoutY="30.0" text="Manage Schedule" textFill="#3f3f3f">
          <font>
-            <Font name="Segoe UI Black" size="25.0" />
+            <Font name="Copperplate Gothic Light" size="25.0" />
          </font>
       </Label>
-      <TableView fx:id="scheduleTableView" layoutX="20.0" layoutY="93.0" prefHeight="361.0" prefWidth="699.0">
+      <TableView fx:id="scheduleTableView" layoutX="20.0" layoutY="93.0" prefHeight="361.0" prefWidth="699.0" stylesheets="@../styles/TableStyle.css">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="deptnameCol" prefWidth="109.0" text="DEPT NAME" />
@@ -40,8 +39,8 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXComboBox fx:id="searchComboBox" layoutX="328.0" layoutY="35.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" />
-      <JFXButton fx:id="refreshBtn" layoutX="632.0" layoutY="35.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE">
+      <JFXComboBox fx:id="searchComboBox" layoutX="321.0" layoutY="35.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" />
+      <JFXButton fx:id="refreshBtn" layoutX="625.0" layoutY="35.0" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #1D7D7B; -fx-border-color: #1D7D7B;" text="Refresh" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -49,8 +48,11 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font name="Copperplate Gothic Light" size="11.0" />
+         </font>
       </JFXButton>
-      <JFXButton fx:id="newBtn" layoutX="28.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE">
+      <JFXButton fx:id="newBtn" layoutX="28.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06; -fx-border-color: #007E06;" text="New" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -58,8 +60,11 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font name="Copperplate Gothic Light" size="11.0" />
+         </font>
       </JFXButton>
-      <JFXButton fx:id="searchBtn" layoutX="119.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE">
+      <JFXButton fx:id="searchBtn" layoutX="119.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -67,16 +72,10 @@
                </image>
             </ImageView>
          </graphic>
+         <font>
+            <Font name="Copperplate Gothic Light" size="11.0" />
+         </font>
       </JFXButton>
-      <JFXButton fx:id="cancelBtn" layoutX="216.0" layoutY="515.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/icons8-close-window-52.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXTextField fx:id="searchTxt" layoutX="486.0" layoutY="36.0" unFocusColor="#b1b1b1" />
+      <JFXTextField fx:id="searchTxt" layoutX="479.0" layoutY="36.0" unFocusColor="#b1b1b1" />
    </children>
 </AnchorPane>

@@ -182,7 +182,7 @@ public class DatabaseAccessObject implements Initializable {
                     try{
                         prs = connection.prepareStatement(query);
                         prs.setInt(1, Integer.parseInt(StudentEditController.getEditStudentController().studNumberTxt.getText()));
-                        prs.setInt(2, Integer.parseInt(StudentEditController.getEditStudentController().rfidTagIdTxt.getText()));
+                        prs.setString(2, StudentEditController.getEditStudentController().rfidTagIdTxt.getText());
                         prs.setString(3, StudentEditController.getEditStudentController().studFullnameTxt.getText());
                         prs.setString(4, StudentEditController.getEditStudentController().yearTxt.getText());
                         prs.setString(5, StudentEditController.getEditStudentController().sectionTxt.getText());
@@ -414,7 +414,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new studentOffenseTable(rs.getInt("std_offense_id"),rs.getInt("student_key"),rs.getInt("offense_key"),rs.getString("offense_severity"),rs.getString("offense_duration"),rs.getString("offense_completedTime"),rs.getString("offense_status"),rs.getString("offense_status"),rs.getString("student_offense_remarks"),rs.getString("student_offense_date")));
+                list.add(new studentOffenseTable(rs.getInt("std_offense_id"),rs.getInt("student_key"),rs.getInt("offense_key"),rs.getString("offense_severity"),rs.getString("offense_duration"),rs.getString("offense_completedTime"),rs.getString("offense_status"),rs.getString("student_offense_count"),rs.getString("student_offense_remarks"),rs.getString("student_offense_date")));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -457,7 +457,7 @@ public class DatabaseAccessObject implements Initializable {
             prs = connection.prepareStatement(query);
             rs = prs.executeQuery();
             while(rs.next()){
-                list.add(new StudentOffenseSearchOffenseTable(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4)));
+                list.add(new StudentOffenseSearchOffenseTable(rs.getString(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -712,4 +712,60 @@ public class DatabaseAccessObject implements Initializable {
 
 
     // end of policy shs
+    public ObservableList<notificationmanageTable> getnotificationmanageTable(String query) throws SQLException {
+        ObservableList<notificationmanageTable> list = FXCollections.observableArrayList();
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while (rs.next()){
+                list.add(new notificationmanageTable(rs.getInt("id"),rs.getInt("studentNumber"),rs.getString("description"),rs.getString("status")));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
+    public ResultSet getDisplayNotificationInfo(String query){
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return rs;
+        }
+    }
+
+    public int getCountNotification(String query){
+        int count = 0;
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return count;
+        }
+    }
 }

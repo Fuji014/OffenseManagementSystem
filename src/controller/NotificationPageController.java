@@ -1,18 +1,13 @@
 package controller;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
 import controller.tables.notificationTable;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.Pane;
-
+import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -40,16 +35,35 @@ public class NotificationPageController implements Initializable {
     @FXML
     private MenuItem closeBtn;
 
+    @FXML
+    private Label viewallLbl;
+
+    @FXML
+    private AnchorPane home;
+
     // declare var below
     private DatabaseAccessObject dao;
+    private HomePageController homePageController;
     private String query;
+    private int departmentId = HomePageController.getHomePageController().departmentId;
+    private static  NotificationPageController instance;
     // end of var below
+
+    // init itself
+    public NotificationPageController(){
+        this.instance = this;
+    }
+    public static NotificationPageController getNotificationPageController(){
+        return instance;
+    }
+    // init itself
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         // init class
         dao = new DatabaseAccessObject();
+        homePageController = new HomePageController();
         // end of init class
 
         // init methods
@@ -64,7 +78,10 @@ public class NotificationPageController implements Initializable {
         exitBtn.setOnMouseClicked(event -> {
             this.exitBtn.getScene().getWindow().hide();
         });
-
+//        viewallLbl.setOnMouseClicked(event -> {
+//            this.viewallLbl.getScene().getWindow().hide();
+//            HomePageController.getHomePageController().viewNotification();
+//        });
         // end of event btns
     }
 
@@ -76,8 +93,19 @@ public class NotificationPageController implements Initializable {
     }
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select id,description,date from notification_tbl where status = 0 and department_key = 4;";
+        query = "select id,description,status from notification_tbl where department_key = "+departmentId+"";
         tableView.setItems(dao.getNotificationData(query));
+    }
+    public int countNotification(){
+        int count = 0;
+        query = "select count(*) from notification_tbl where status = 'unread'";
+        try {
+            count = dao.getCountNotification(query);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return count;
+        }
     }
     // end of init
 

@@ -88,7 +88,7 @@ public class StudentAddController implements Initializable {
     private Image image;
     private String query;
     private int departmentId = HomePageController.getHomePageController().departmentId;
-    static SerialPort serialPort = new SerialPort("COM5");
+    static SerialPort serialPort;
     private static StudentAddController instance;
     // end of var
 
@@ -131,11 +131,6 @@ public class StudentAddController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            try {
-                serialPort.closePort();
-            } catch (SerialPortException e) {
-                e.printStackTrace();
-            }
         });
         studDeptComboBox.setOnMouseClicked(event -> {
             initStudentDeptCombobox();
@@ -164,7 +159,14 @@ public class StudentAddController implements Initializable {
     // end of initializable
     public void initRfid() throws SerialPortException {
         try {
+            serialPort = new SerialPort("COM3");
+
             serialPort.openPort();//Open port
+            if(serialPort.isOpened()){
+                System.out.println("open");
+            }else{
+                System.out.println("close");
+            }
             serialPort.setParams(9600, 8, 1, 0);//Set params
             int mask = SerialPort.MASK_RXCHAR + SerialPort.MASK_CTS + SerialPort.MASK_DSR;//Prepare mask
             serialPort.setEventsMask(mask);//Set mask

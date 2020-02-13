@@ -47,11 +47,14 @@ public class StudentOffenseSearchOffenseController implements Initializable {
     private TableColumn<StudentOffenseSearchOffenseTable, Integer> offenseId;
 
     @FXML
+    private TableColumn<StudentOffenseSearchOffenseTable, String> sanctionCol;
+
+    @FXML
     private MenuItem selectBtn;
 
     // declare var below
     private DatabaseAccessObject dao;
-    private String query,studId;
+    private String query,studId,offName;
     private int offId;
     private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of var below
@@ -97,10 +100,11 @@ public class StudentOffenseSearchOffenseController implements Initializable {
         severityCol.setCellValueFactory(cell -> cell.getValue().offeseSeverityProperty());
         deptCol.setCellValueFactory(cell -> cell.getValue().deptNameProperty());
         offenseId.setCellValueFactory(cell -> cell.getValue().OffenseIdProperty().asObject());
+        sanctionCol.setCellValueFactory((cell -> cell.getValue().offenseSanctionProperty()));
     }
     public void refreshTable() throws SQLException {
         initTable();
-        query = "select o.offense_description,o.offense_severity,d.dept_name,o.id from offense_tbl as o inner JOIN department_tbl as d on  o.dept_key = d.id where dept_key = "+departmentId+" order by o.id desc";
+        query = "select o.offense_description,o.offense_severity,d.dept_name,o.id,o.offense_sanction from offense_tbl as o inner JOIN department_tbl as d on  o.dept_key = d.id where dept_key = "+departmentId+" order by o.id desc";
         srchstudentTableView.setItems(dao.getStudentOffenseOffenseSearchData(query));
     }
     public void initSearch(){ // init search
@@ -118,7 +122,9 @@ public class StudentOffenseSearchOffenseController implements Initializable {
     public void selectEvent(){ // select event button
         StudentOffenseSearchOffenseTable selected = srchstudentTableView.getSelectionModel().getSelectedItem();
          offId = selected.OffenseIdProperty().get();
+         StudentOffenseAddController.getStudentOffenseAddController().offName = selected.offeseDescriptionProperty().get();
         StudentOffenseAddController.getStudentOffenseAddController().offensenameTxt.setText(Integer.toString(offId));
+        StudentOffenseAddController.getStudentOffenseAddController().offSanction = selected.offenseSanctionProperty().get();
     }
     // end of init
 

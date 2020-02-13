@@ -33,7 +33,7 @@ public class MessagePageController implements Initializable {
 //    // declare var below
 //    private ConnectionPort connectorPort;
 //    private SerialPort connectionPort;
-        private SerialPort serialPort = new SerialPort("COM3");
+        private SerialPort serialPort = new SerialPort("COM5");
 //    // end of declare var below
 
 
@@ -94,34 +94,47 @@ public class MessagePageController implements Initializable {
                     SerialPort.DATABITS_8,
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);//Set params. Also you can set params by this string: serialPort.setParams(9600, 8, 1, 0);
+            String messageString1 = "AT";
+//            String messageString2 = "AT+CPIN=\"7078\"";
+            String messageString3 = "AT+CSCS=\"GSM\"";
+//            String messageString3 = "AT+CMGF=1";
+            String messageString4 = "AT+CMGS=\"+63"+cpnumber+"\"";
+            String messageString5 = data;
+            char enter = 13;
+            char CTRLZ = 26;
 
-            String combineData = "AZ"+data+ "^"+cpnumber; // AZ add dummy test because of delay, ^ dont use symbol (^) seperator for number and content in arduino
+            if(data.length() > 150){
+                int count = 0;
 
-//            if(data.length() > 150){
-//                int count = 0;
-//                while(_Spliter.getSplit(data).size() > count) {
-//                    for (int i = 0; i < 2; i++) { // need to repeat because of lost of signal
-//                        String testData = "AZ"+_Spliter.getSplit(data).get(count)+"^"+cpnumber;
-//                        serialPort.writeBytes(testData.getBytes());//Write data to port
-////                        serialPort.closePort();//Close serial port
-////                        connectionPort.getOutputStream().write(testData.getBytes());
-////                        connectionPort.getOutputStream().flush();
-//                        System.out.println("Sent number: " + testData);
-////                        Thread.sleep(2000);
-//                    }
-////                    Thread.sleep(10000);
-//                    count++;
-//                }
-//            }else{
-//                for (int i = 0; i < 2; i++) { // need to repeat because of lost of signal
-//                    serialPort.writeBytes(combineData.getBytes());//Write data to port
-////                    serialPort.closePort();//Close serial port
-////                    connectionPort.getOutputStream().write(combineData.getBytes());
-////                    connectionPort.getOutputStream().flush();
-//                    System.out.println("Sent number: " + combineData);
-////                    Thread.sleep(4000);
-//                }
-//            }
+                while(_Spliter.getSplit(data).size() > count) {
+                    serialPort.writeBytes((messageString1 + enter).getBytes());
+                    Thread.sleep(1000);
+                    serialPort.writeBytes((messageString3 + enter).getBytes());
+                    Thread.sleep(1000);
+                    serialPort.writeBytes((messageString4 + enter).getBytes());
+                    Thread.sleep(1000);
+                    serialPort.writeBytes(( _Spliter.getSplit(data).get(count) + CTRLZ).getBytes());
+                    Thread.sleep(1000);
+                    System.out.println("Wyslano wiadomosc");
+                    Thread.sleep(3000);
+//            serialPort.closePort();
+                    System.out.println("Port COM zamkniety");
+                    count++;
+                }
+            }else{
+                serialPort.writeBytes((messageString1 + enter).getBytes());
+                Thread.sleep(1000);
+                serialPort.writeBytes((messageString3 + enter).getBytes());
+                Thread.sleep(1000);
+                serialPort.writeBytes((messageString4 + enter).getBytes());
+                Thread.sleep(1000);
+                serialPort.writeBytes((messageString5 + CTRLZ).getBytes());
+                Thread.sleep(1000);
+                System.out.println("Wyslano wiadomosc");
+                Thread.sleep(3000);
+//            serialPort.closePort();
+                System.out.println("Port COM zamkniety");
+            }
 //            for (Integer i = 0; i < 5; ++i) {
 //                serialPort.writeInt(i.byteValue());//Write data to port
 //                serialPort.closePort();//Close serial port
@@ -130,22 +143,22 @@ public class MessagePageController implements Initializable {
 //                System.out.println("Sent number: " + i);
 //                Thread.sleep(1000);
 //            }
-            Platform.runLater(() -> {
-                for(int z = 0; z <= 1; z++){
-                    try {
-                        serialPort.writeBytes(combineData.getBytes());//Write data to port
-                    } catch (SerialPortException e) {
-                        e.printStackTrace();
-                    }
-//                serialPort.closePort();//Close serial port
-                    System.out.println("Sent number: " + combineData);
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+//            Platform.runLater(() -> {
+//                for(int z = 0; z <= 1; z++){
+//                    try {
+//                        serialPort.writeBytes(combineData.getBytes());//Write data to port
+//                    } catch (SerialPortException e) {
+//                        e.printStackTrace();
+//                    }
+////                serialPort.closePort();//Close serial port
+//                    System.out.println("Sent number: " + combineData);
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            });
 
 
         }

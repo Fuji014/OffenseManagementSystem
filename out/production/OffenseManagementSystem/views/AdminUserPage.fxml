@@ -8,23 +8,54 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminUserPageController">
    <children>
-      <JFXButton fx:id="newBtn" layoutX="33.0" layoutY="529.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06;" text="New" textFill="WHITE" />
-      <JFXButton layoutX="128.0" layoutY="529.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003;" text="Search" textFill="WHITE" />
-      <JFXButton layoutX="223.0" layoutY="529.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE" />
-      <Label layoutX="20.0" layoutY="28.0" text="Settings" textFill="#3f3f3f">
+      <JFXButton fx:id="newBtn" layoutX="33.0" layoutY="529.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #007E06; -fx-border-color: #007E06;" text="New" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="25.0" />
+            <Font name="Copperplate Gothic Light" size="11.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-add-48.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton layoutX="128.0" layoutY="529.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Copperplate Gothic Light" size="11.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/icons8-search-48.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <Label layoutX="28.0" layoutY="54.0" text="Settings" textFill="#3f3f3f">
+         <font>
+            <Font name="Copperplate Gothic Light" size="25.0" />
          </font>
       </Label>
       <AnchorPane layoutX="17.0" layoutY="67.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
          <children>
-            <JFXButton fx:id="refreshBtn" layoutX="612.0" layoutY="-6.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #1D7D7B;" text="Refresh" textFill="WHITE" />
-            <TableView fx:id="tableView" layoutX="14.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="683.0">
+            <JFXButton fx:id="refreshBtn" layoutX="604.0" layoutY="-6.0" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #1D7D7B; -fx-border-color: #1D7D7B;" text="Refresh" textFill="WHITE">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-refresh-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <TableView fx:id="tableView" layoutX="14.0" layoutY="59.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="683.0" stylesheets="@../styles/TableStyle.css">
                <contextMenu>
                   <ContextMenu>
                      <items>

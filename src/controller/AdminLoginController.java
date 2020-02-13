@@ -41,6 +41,7 @@ public class AdminLoginController implements Initializable {
     private String query,username,password,department,id;
     private static AdminLoginController instance;
     private boolean isConfirm = false;
+    private _pushNotification _pushNotification;
 
     // create instanace
     public AdminLoginController(){ this.instance = this; }
@@ -52,6 +53,7 @@ public class AdminLoginController implements Initializable {
         // initialize class
         mc = new MainController();
         dao = new DatabaseAccessObject();
+        _pushNotification = new _pushNotification();
         // end of initalize class
         loadingProg.setVisible(false);
 
@@ -90,12 +92,11 @@ public class AdminLoginController implements Initializable {
             department = dao.getUserInfo(query).get("adminDepartment");
             // end of get admin info
             this.loginBtn.getScene().getWindow().hide();
+            _pushNotification.success("Login Success","Welcome Admin!");
             MainController.getMainController().createPage(null, "/views/HomePage.fxml");
-
-
         }else{
             clearText();
-            alertErr(null,"Username Or Password Is Not Correct!");
+            _pushNotification.failed("Login Failed", "Username Or Password Is Not Correct!");
             loadingProg.setVisible(false);
 
         }

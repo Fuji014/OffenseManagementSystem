@@ -2,11 +2,16 @@ package controller;
 
 import app.Main;
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -16,12 +21,16 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import model.ConnectionHandler;
 
+
 import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
@@ -70,6 +79,9 @@ public class HomePageController implements Initializable {
     @FXML
     private JFXButton notificationBtn;
 
+    @FXML
+    private Label notificationLbl;
+
 
 
 
@@ -106,9 +118,15 @@ public class HomePageController implements Initializable {
         dao = new DatabaseAccessObject();
         mc = new MainController();
         connector = new ConnectionHandler();
+        notificationLbl.setText(Integer.toString(countNotification()));
         // end of initalize class
 
         // methods
+        notificationLbl.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
+            notificationLbl.setText(Integer.toString(countNotification()));
+            _pushNotification.get_PushNotification().information("New Notification","Please Check your Notification");
+        });
+        initClock();
         try {
             initShowImagePreview();
         } catch (SQLException e) {
@@ -127,12 +145,15 @@ public class HomePageController implements Initializable {
             createPage(home, "/views/MessagePage.fxml");
         });
         notificationBtn.setOnAction(event -> {
-            try {
-                mc.createPage(null, "/views/NotificationPage.fxml");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            createPage(home, "/views/NotificationManage.fxml");
         });
+//        notificationBtn.setOnAction(event -> {
+//            try {
+//                mc.createPage(null, "/views/NotificationPage.fxml");
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
         settingsBtn.setOnAction(event -> { // event btn AdminUser
             createPage(home, "/views/AdminUserPage.fxml");
         });
@@ -185,10 +206,35 @@ public class HomePageController implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
+//    public void viewNotification(){
+//        try {
+//            createPage(home, "/views/NotificationManage.fxml");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     // init
+    public void initClock(){
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            notificationLbl.setText(Integer.toString(countNotification()));
+
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
+    public int countNotification(){
+        int count = 0;
+        query = "select count(*) from notification_tbl where department_key = "+departmentId+" and status = 'unread'";
+        try {
+            count = dao.getCountNotification(query);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return count;
+        }
+    }
     public void initShowImagePreview() throws SQLException {
         try {
             connection = connector.getConnection();

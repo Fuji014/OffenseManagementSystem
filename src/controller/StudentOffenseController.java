@@ -233,10 +233,8 @@ public class StudentOffenseController implements Initializable {
 
     public void initSearch() throws SQLException, IOException {
             if(searchTxt.getText().isEmpty()){
-//                searchTxt.setStyle("-fx-text-inner-color: red;");
                 searchTxt.setStyle("-jfx-unfocus-color: red;");
             }else{
-
                 initTable();
                 query = "select so.* from student_offense_tbl as so inner join offense_tbl as o on so.offense_key = o.id where o.dept_key = "+departmentId+" and student_key =  "+searchTxt.getText()+"";
                 studoffenseTableView.setItems(dao.getStudentOffenseData(query));

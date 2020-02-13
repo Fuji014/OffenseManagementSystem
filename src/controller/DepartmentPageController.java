@@ -50,9 +50,6 @@ public class DepartmentPageController implements Initializable {
     @FXML
     private JFXButton searchBtn;
 
-    @FXML
-    private JFXButton cancelBtn;
-
     // declare var below;
     private DatabaseAccessObject dao;
     private MainController mc;
@@ -121,9 +118,6 @@ public class DepartmentPageController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        });
-        cancelBtn.setOnAction(event -> {
-
         });
         // end of event button
     }

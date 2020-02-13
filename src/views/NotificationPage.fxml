@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="305.0" style="-fx-background-color: #151928; -fx-border-color: #d2d2d2;" stylesheets="@../styles/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NotificationPageController">
+<AnchorPane fx:id="home" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="305.0" style="-fx-background-color: #151928; -fx-border-color: #d2d2d2;" stylesheets="@../styles/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NotificationPageController">
    <children>
       <Label layoutX="73.0" layoutY="7.0" text="5" textFill="WHITE">
          <font>
@@ -20,12 +20,12 @@
             <Font name="Copperplate Gothic Light" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="238.0" text="See All Notification" textFill="WHITE" underline="true">
+      <Label fx:id="viewallLbl" layoutX="98.0" layoutY="238.0" text="See All Notification" textFill="WHITE" underline="true">
          <font>
             <Font name="Century Gothic" size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="tableView" layoutY="38.0" prefHeight="190.0" prefWidth="305.0" stylesheets="@../styles/MainStyle.css">
+      <TableView fx:id="tableView" layoutX="5.0" layoutY="38.0" prefHeight="190.0" prefWidth="294.0" stylesheets="@../styles/MainStyle.css">
         <columns>
           <TableColumn id="column-header-background" fx:id="idCol" minWidth="0.0" prefWidth="0.0" text="ID" />
           <TableColumn id="column-header-background" fx:id="descriptionCol" prefWidth="225.0" text="DESCRIPTION" />
