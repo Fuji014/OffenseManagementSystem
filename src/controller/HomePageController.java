@@ -82,6 +82,9 @@ public class HomePageController implements Initializable {
     @FXML
     private Label notificationLbl;
 
+    @FXML
+    private JFXButton recordsBtn;
+
 
 
 
@@ -147,6 +150,9 @@ public class HomePageController implements Initializable {
         notificationBtn.setOnAction(event -> {
             createPage(home, "/views/NotificationManage.fxml");
         });
+        recordsBtn.setOnAction(event -> {
+            createPage(home, "/views/AttendancerecordsPage.fxml");
+        });
 //        notificationBtn.setOnAction(event -> {
 //            try {
 //                mc.createPage(null, "/views/NotificationPage.fxml");
@@ -170,7 +176,8 @@ public class HomePageController implements Initializable {
             createPage(home, "/views/OffensePage.fxml");
         });
         scheduleBtn.setOnAction(event -> {
-            createPage(home, "/views/SchedulePage.fxml");
+            createPage(home, "/views/ScheduleTest.fxml");
+//            createPage(home, "/views/SchedulePage.fxml");
         });
         reportOffenseBtn.setOnAction(event -> {
             createPage(home, "/views/StudentOffensePage.fxml");

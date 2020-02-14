@@ -52,6 +52,22 @@ public class DatabaseAccessObject implements Initializable {
             connector.close(connection,prs,null);
         }
     }
+    public ResultSet selectAll(String query){
+
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return rs;
+        }
+    }
 
     public void admin(String crud) throws SQLException, ClassNotFoundException, FileNotFoundException { // admin
         switch (crud){
@@ -768,4 +784,29 @@ public class DatabaseAccessObject implements Initializable {
             return count;
         }
     }
+
+    // attendance records
+
+    public ObservableList<attendancerecordsTable> getAttendancerecordsTable(String query) throws SQLException {
+        ObservableList<attendancerecordsTable> list = FXCollections.observableArrayList();
+        try{
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        try{
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while (rs.next()){
+                list.add(new attendancerecordsTable(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return list;
+        }
+    }
+
 }
