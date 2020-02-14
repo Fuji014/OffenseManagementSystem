@@ -1,10 +1,8 @@
 package controller;
 
-//import com.fazecast.jSerialComm.SerialPort;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import jssc.SerialPort;
@@ -33,7 +31,6 @@ public class MessagePageController implements Initializable {
 //    // declare var below
 //    private ConnectionPort connectorPort;
 //    private SerialPort connectionPort;
-        private SerialPort serialPort = new SerialPort("COM5");
 //    // end of declare var below
 
 
@@ -44,11 +41,6 @@ public class MessagePageController implements Initializable {
         // end of init class
 
         // init methods
-        try {
-            serialPort.openPort();//Open serial port
-        } catch (SerialPortException e) {
-            e.printStackTrace();
-        }
         // end of init methods
 
         // event buttons
@@ -62,6 +54,9 @@ public class MessagePageController implements Initializable {
             } catch (SerialPortException e) {
                 e.printStackTrace();
             }
+        });
+        resetBtn.setOnAction(event -> {
+            clearFields();
         });
         // end of envent buttons
 
@@ -80,20 +75,16 @@ public class MessagePageController implements Initializable {
         numberTxt.setText("");
     }
     public void sendTest(String cpnumber, String data) throws IOException, InterruptedException, SerialPortException {
-
-        if (serialPort.isOpened()) { // check if open
-            System.out.println("Port is open :)");
-        } else {
-            System.out.println("Failed to open port :(");
-            return;
-        }
-
+        SerialPort serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
         try {
-
+            serialPort.isOpened();
+            if(serialPort.isOpened()){
+                _pushNotification.get_PushNotification().success("Serial Port Connection Stablished","You can send message now");
+            }
             serialPort.setParams(SerialPort.BAUDRATE_9600,
                     SerialPort.DATABITS_8,
                     SerialPort.STOPBITS_1,
-                    SerialPort.PARITY_NONE);//Set params. Also you can set params by this string: serialPort.setParams(9600, 8, 1, 0);
+                    SerialPort.PARITY_NONE);
             String messageString1 = "AT";
 //            String messageString2 = "AT+CPIN=\"7078\"";
             String messageString3 = "AT+CSCS=\"GSM\"";
@@ -132,47 +123,13 @@ public class MessagePageController implements Initializable {
                 Thread.sleep(1000);
                 System.out.println("Wyslano wiadomosc");
                 Thread.sleep(3000);
-//            serialPort.closePort();
                 System.out.println("Port COM zamkniety");
             }
-//            for (Integer i = 0; i < 5; ++i) {
-//                serialPort.writeInt(i.byteValue());//Write data to port
-//                serialPort.closePort();//Close serial port
-////                connectionPort.getOutputStream().write(i.byteValue());
-////                connectionPort.getOutputStream().flush();
-//                System.out.println("Sent number: " + i);
-//                Thread.sleep(1000);
-//            }
-//            Platform.runLater(() -> {
-//                for(int z = 0; z <= 1; z++){
-//                    try {
-//                        serialPort.writeBytes(combineData.getBytes());//Write data to port
-//                    } catch (SerialPortException e) {
-//                        e.printStackTrace();
-//                    }
-////                serialPort.closePort();//Close serial port
-//                    System.out.println("Sent number: " + combineData);
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-
-
         }
         catch (SerialPortException ex) {
+            _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings " +ex);
             System.out.println(ex);
         }
-
-
-//        if (serialPort.isOpened()) {
-//            System.out.println("Port is open :)");
-//        } else {
-//            System.out.println(" close port :(");
-//            return;
-//        }
     }
     // end of custom methods
 }

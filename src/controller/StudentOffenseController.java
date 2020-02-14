@@ -254,8 +254,10 @@ public class StudentOffenseController implements Initializable {
                 dao.saveData(query);
             }catch (Exception e){
                 e.printStackTrace();
+                _pushNotification.get_PushNotification().failed("Delete Failed", "Failed To Delete ID Number: "+id+e);
             }finally {
                 refreshTable();
+                _pushNotification.get_PushNotification().success("Delete Success", "Successfully Deleted ID Number: "+id);
             }
         }
     }

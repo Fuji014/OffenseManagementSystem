@@ -11,16 +11,19 @@
    <children>
       <Label layoutX="31.0" layoutY="25.0" text="Send SMS">
          <font>
-            <Font name="Segoe UI Black" size="25.0" />
+            <Font name="Copperplate Gothic Light" size="25.0" />
          </font>
       </Label>
       <AnchorPane layoutX="152.0" layoutY="110.0" prefHeight="386.0" prefWidth="471.0" style="-fx-background-color: #d2d2d2; -fx-border-color: #fff;">
          <children>
-            <JFXTextField fx:id="numberTxt" layoutX="28.0" layoutY="52.0" prefHeight="43.0" prefWidth="414.0" promptText=" +639087118184" style="-jfx-unfocus-color: transparent; -fx-background-color: #fff; -fx-background-radius: 50px;" />
-            <JFXTextArea fx:id="messageTxt" layoutX="28.0" layoutY="120.0" prefHeight="185.0" prefWidth="414.0" promptText=" " style="-fx-background-color: #fff; -jfx-unfocus-color: transparent; -fx-background-radius: 20px;" />
+            <JFXTextField fx:id="numberTxt" layoutX="28.0" layoutY="52.0" prefHeight="43.0" prefWidth="414.0" promptText=" +639087118184" style="-jfx-unfocus-color: transparent; -fx-background-color: #fff; -fx-background-radius: 50px; -fx-padding: 10px;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font></JFXTextField>
+            <JFXTextArea fx:id="messageTxt" layoutX="28.0" layoutY="120.0" prefHeight="185.0" prefWidth="414.0" promptText="Message Content" style="-fx-background-color: #fff; -jfx-unfocus-color: transparent; -fx-background-radius: 20px; -fx-padding: 10px;" />
             <JFXButton fx:id="sendBtn" layoutX="229.0" layoutY="336.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 50px;" text="Send" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Copperplate Gothic Bold" size="14.0" />
                </font>
             </JFXButton>
             <JFXButton fx:id="resetBtn" layoutX="340.0" layoutY="336.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #e74c3c; -fx-background-radius: 50px;" text="Reset" textFill="WHITE">
@@ -30,11 +33,11 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="196.0" layoutY="82.0" prefHeight="57.0" prefWidth="393.0" style="-fx-background-color: #8e44ad; -fx-border-color: #fff; -fx-border-radius: 50px; -fx-background-radius: 50px;">
+      <AnchorPane layoutX="196.0" layoutY="82.0" prefHeight="57.0" prefWidth="393.0" style="-fx-background-color: #d2d2d2; -fx-border-color: #fff; -fx-border-radius: 50px; -fx-background-radius: 50px;">
          <children>
-            <Label layoutX="166.0" layoutY="14.0" text="SMS" textFill="WHITE">
+            <Label layoutX="166.0" layoutY="14.0" text="SMS" textFill="#5b5b5b">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="Copperplate Gothic Bold" size="20.0" />
                </font>
             </Label>
          </children></AnchorPane>

@@ -44,9 +44,6 @@ public class PolicyPageController implements Initializable {
     private JFXTextField cseriousdurationTxt;
 
     @FXML
-    private JFXButton cresetBtn;
-
-    @FXML
     private JFXButton csaveBtn;
 
     @FXML
@@ -78,9 +75,6 @@ public class PolicyPageController implements Initializable {
 
     @FXML
     private JFXTextField shsseriousdurationTxt;
-
-    @FXML
-    private JFXButton shsresetBtn;
 
     @FXML
     private JFXButton shssaveBtn;
@@ -116,9 +110,6 @@ public class PolicyPageController implements Initializable {
     private JFXTextField jhsseriousdurationTxt;
 
     @FXML
-    private JFXButton jhsresetBtn;
-
-    @FXML
     private JFXButton jhssaveBtn;
 
     @FXML
@@ -152,9 +143,6 @@ public class PolicyPageController implements Initializable {
     private JFXTextField gsseriousdurationTxt;
 
     @FXML
-    private JFXButton gsresetBtn;
-
-    @FXML
     private JFXButton gssaveBtn;
 
 
@@ -183,9 +171,6 @@ public class PolicyPageController implements Initializable {
         // event buttons
         csaveBtn.setOnAction(event -> {
             updateC();
-        });
-        cresetBtn.setOnAction(event -> {
-            eventResetC();
         });
 
         shssaveBtn.setOnAction(event -> {
@@ -514,17 +499,6 @@ public class PolicyPageController implements Initializable {
             e.printStackTrace();
         }
         // end of update serious
-    }
-    public void eventResetC(){
-        cminorcountTxt.setText("");
-        cminordurationTxt.setText("");
-        cminorremarksTxt.setText("");
-        cmajorcountTxt.setText("");
-        cmajordurationTxt.setText("");
-        cmajorremarksTxt.setText("");
-        cseriouscountTxt.setText("");
-        cseriousdurationTxt.setText("");
-        cseriousremarksTxt.setText("");
     }
     // end init
 

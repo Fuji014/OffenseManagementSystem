@@ -52,7 +52,7 @@ public class DatabaseAccessObject implements Initializable {
             connector.close(connection,prs,null);
         }
     }
-    public ResultSet selectAll(String query){
+    public ResultSet selectAll(String query) throws SQLException {
 
         try {
             connection = connector.getConnection();
@@ -65,6 +65,7 @@ public class DatabaseAccessObject implements Initializable {
         }catch (Exception e){
             e.printStackTrace();
         }finally {
+//             connector.close(connection,prs);
             return rs;
         }
     }

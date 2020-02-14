@@ -45,14 +45,9 @@
             </Label>
             <JFXTextArea fx:id="cseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
             <JFXTextField fx:id="cseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
-            <JFXButton fx:id="cresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="csaveBtn" layoutX="262.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Update" textFill="WHITE">
                <font>
-                  <Font size="8.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="csaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
-               <font>
-                  <Font size="8.0" />
+                  <Font name="Copperplate Gothic Light" size="8.0" />
                </font>
             </JFXButton>
          </children>
@@ -88,14 +83,9 @@
             </Label>
             <JFXTextArea fx:id="shsseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
             <JFXTextField fx:id="shsseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
-            <JFXButton fx:id="shsresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="shssaveBtn" layoutX="261.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Update" textFill="WHITE">
                <font>
-                  <Font size="8.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="shssaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
-               <font>
-                  <Font size="8.0" />
+                  <Font name="Copperplate Gothic Light" size="8.0" />
                </font>
             </JFXButton>
          </children>
@@ -131,14 +121,9 @@
             </Label>
             <JFXTextArea fx:id="jhsseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
             <JFXTextField fx:id="jhsseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
-            <JFXButton fx:id="jhsresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="jhssaveBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Update" textFill="WHITE">
                <font>
-                  <Font size="8.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="jhssaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
-               <font>
-                  <Font size="8.0" />
+                  <Font name="Copperplate Gothic Light" size="8.0" />
                </font>
             </JFXButton>
          </children>
@@ -174,14 +159,9 @@
             </Label>
             <JFXTextArea fx:id="gsseriousremarksTxt" layoutX="65.0" layoutY="211.0" prefHeight="38.0" prefWidth="277.0" promptText=" Remarks Offense" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
             <JFXTextField fx:id="gsseriousdurationTxt" labelFloat="true" layoutX="206.0" layoutY="178.0" prefHeight="27.0" prefWidth="134.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;" />
-            <JFXButton fx:id="gsresetBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="84.0" style="-fx-border-color: #CD241D; -fx-background-color: #CD241D;" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="gssaveBtn" layoutX="260.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Update" textFill="WHITE">
                <font>
-                  <Font size="8.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="gssaveBtn" layoutX="172.0" layoutY="4.0" prefHeight="15.0" prefWidth="78.0" style="-fx-border-color: #007E06; -fx-background-color: #007E06;" text="Save" textFill="WHITE">
-               <font>
-                  <Font size="8.0" />
+                  <Font name="Copperplate Gothic Light" size="8.0" />
                </font>
             </JFXButton>
          </children>

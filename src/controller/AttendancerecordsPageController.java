@@ -15,6 +15,8 @@ import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AttendancerecordsPageController implements Initializable {
@@ -127,7 +129,8 @@ public class AttendancerecordsPageController implements Initializable {
         logoutremarksCol.setCellValueFactory(cell -> cell.getValue().logoutremarksProperty());
     }
     public void refreshTable(){
-        query = "select r.* from record_tbl as r inner join student_tbl as s on r.student_key = s.student_id where s.student_department = "+departmentId+"";
+        query = "select r.* from record_tbl as r inner join student_tbl as s on r.student_key = s.student_id where s.student_department = "+departmentId+" and date = '"+getDate()+"'";
+        System.out.println(getDate());
         initTable();
         try {
             tableView.setItems(dao.getAttendancerecordsTable(query));
@@ -194,6 +197,11 @@ public class AttendancerecordsPageController implements Initializable {
             clearFields();
             _pushNotification.get_PushNotification().success("Update Success!","Update Success with id number "+id);
         }
+    }
+    public String getDate(){
+        Date date = new Date();
+        String logDate = new SimpleDateFormat("dd-MM-yyyy").format(date);
+        return logDate;
     }
     // end of init
 

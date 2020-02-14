@@ -158,15 +158,10 @@ public class StudentAddController implements Initializable {
     }
     // end of initializable
     public void initRfid() throws SerialPortException {
+        serialPort = new SerialPort(HomePageController.getHomePageController().rfidport);
         try {
-            serialPort = new SerialPort("COM3");
-
             serialPort.openPort();//Open port
-            if(serialPort.isOpened()){
-                System.out.println("open");
-            }else{
-                System.out.println("close");
-            }
+            _pushNotification.get_PushNotification().success("Serial Port Connection Stablished","You can scan now");
             serialPort.setParams(9600, 8, 1, 0);//Set params
             int mask = SerialPort.MASK_RXCHAR + SerialPort.MASK_CTS + SerialPort.MASK_DSR;//Prepare mask
             serialPort.setEventsMask(mask);//Set mask
@@ -176,6 +171,7 @@ public class StudentAddController implements Initializable {
 
         }
         catch (SerialPortException ex) {
+            _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings " +ex);
             System.out.println(ex);
         }
     }

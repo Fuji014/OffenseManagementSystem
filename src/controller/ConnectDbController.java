@@ -48,6 +48,7 @@ public class ConnectDbController implements Initializable {
     private Connection connection;
     private String server,port,database,username,password;
     private static ConnectDbController instance;
+    private _pushNotification _pushNotif;
     private DatabaseAccessObject dao = new DatabaseAccessObject();
 
     // create instance
@@ -65,6 +66,7 @@ public class ConnectDbController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mc = new MainController();
+        _pushNotif = new _pushNotification();
         connector = new ConnectionHandler();
         serverTxt.setText("localhost");
         portTxt.setText("3306");
@@ -77,7 +79,9 @@ public class ConnectDbController implements Initializable {
                 connection = connector.getConnection();
             } catch (Exception e) {
                 e.printStackTrace();
+                _pushNotification.get_PushNotification().failed("Error While Connecting To Database","Err "+e);
             } finally {
+                _pushNotif.success("Database Connection Established","Connection Success, Connected to: "+connection);
                 System.out.println(connection);
             }
         });

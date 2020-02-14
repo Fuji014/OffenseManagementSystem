@@ -19,6 +19,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import jssc.SerialPort;
 import model.ConnectionHandler;
 
 
@@ -99,6 +100,7 @@ public class HomePageController implements Initializable {
     private Image image;
     AnchorPane home;
     private int id;
+    public String rfidport,gsmport;
     public int departmentId = Integer.parseInt(AdminLoginController.getAdminLoginController().getInfo().get("department"));
     private static HomePageController instance;
 
@@ -127,7 +129,11 @@ public class HomePageController implements Initializable {
         // methods
         notificationLbl.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             notificationLbl.setText(Integer.toString(countNotification()));
-            _pushNotification.get_PushNotification().information("New Notification","Please Check your Notification");
+            if(Integer.parseInt(newV) > Integer.parseInt(oldV)){
+                _pushNotification.get_PushNotification().information("New Notification","Please Check your Notification");
+                NotificationManageController.getNotificationManageController().refreshTable();
+            }
+
         });
         initClock();
         try {
@@ -167,7 +173,8 @@ public class HomePageController implements Initializable {
             createPage(home, "/views/StudentPage.fxml");
         });
         portSettingsBtn.setOnAction(event -> {
-            createPage(home, "/views/PortSettingPage.fxml");
+            createPage(home, "/views/PortTest.fxml");
+//            createPage(home, "/views/PortSettingPage.fxml");
         });
         departmentBtn.setOnAction(event -> {
             createPage(home, "/views/DepartmentPage.fxml");

@@ -18,4 +18,11 @@ import java.sql.*;
             rs.close();
         }
     }
+            public void close(Connection connection, PreparedStatement prs) throws SQLException {
+                if(connection != null){
+                    connection.close();
+                }if(prs != null){
+                    prs.close();
+                }
+            }
 }
