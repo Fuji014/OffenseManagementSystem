@@ -73,6 +73,7 @@ public class StudentOffenseAddController implements Initializable {
     // declare var below;
     private DatabaseAccessObject dao;
     private MainController mc;
+    private _Gsm _gsm;
     private AdminLoginController alc;
     private static StudentOffenseAddController instance;
     private String query;
@@ -102,6 +103,7 @@ public class StudentOffenseAddController implements Initializable {
         mc = new MainController();
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
+        _gsm = new _Gsm();
         // end of initialize class
 
         // methods
@@ -161,7 +163,7 @@ public class StudentOffenseAddController implements Initializable {
         query = "insert into student_offense_tbl values (null,"+studentidTxt.getText()+","+offensenameTxt.getText()+","+offensecountTxt.getText()+",'"+severityTxt.getText()+"','"+durationTxt.getText()+"','00:00','not complete','"+remarksTxt.getText()+"','"+offensedateTxt.getText()+"')";
         try {
             dao.saveData(query);
-            _Gsm.get_Gsm().sendSMS(studentidTxt.getText(),severityTxt.getText(),offName,offSanction,remarksTxt.getText());
+            _gsm.sendSMS(studentidTxt.getText(),severityTxt.getText(),offName,offSanction,remarksTxt.getText());
             clearFields();
             StudentOffenseController.getStudentOffenseController().refreshTable();
             alc.alertSuccess(null,"Insert Successfully");

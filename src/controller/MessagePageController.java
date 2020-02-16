@@ -30,7 +30,7 @@ public class MessagePageController implements Initializable {
 //
 //    // declare var below
 //    private ConnectionPort connectorPort;
-//    private SerialPort connectionPort;
+    private SerialPort serialPort;
 //    // end of declare var below
 
 
@@ -74,10 +74,11 @@ public class MessagePageController implements Initializable {
         messageTxt.setText("");
         numberTxt.setText("");
     }
-    public void sendTest(String cpnumber, String data) throws IOException, InterruptedException, SerialPortException {
-        SerialPort serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
+    public void sendTest(String cpnumber, String data) throws InterruptedException {
+        serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
+        System.out.println(HomePageController.getHomePageController().gsmport);
         try {
-            serialPort.isOpened();
+            serialPort.openPort();
             if(serialPort.isOpened()){
                 _pushNotification.get_PushNotification().success("Serial Port Connection Stablished","You can send message now");
             }
@@ -96,7 +97,6 @@ public class MessagePageController implements Initializable {
 
             if(data.length() > 150){
                 int count = 0;
-
                 while(_Spliter.getSplit(data).size() > count) {
                     serialPort.writeBytes((messageString1 + enter).getBytes());
                     Thread.sleep(1000);

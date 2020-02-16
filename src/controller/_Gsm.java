@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class _Gsm implements Initializable {
     private SerialPort serialPort;
     private String query;
-    private DatabaseAccessObject dao;
+    private DatabaseAccessObject dao = new DatabaseAccessObject();
     private ResultSet rs;
     private static _Gsm instance;
 

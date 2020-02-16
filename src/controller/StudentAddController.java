@@ -158,7 +158,7 @@ public class StudentAddController implements Initializable {
     }
     // end of initializable
     public void initRfid() throws SerialPortException {
-        serialPort = new SerialPort(HomePageController.getHomePageController().rfidport);
+        serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
         try {
             serialPort.openPort();//Open port
             _pushNotification.get_PushNotification().success("Serial Port Connection Stablished","You can scan now");
