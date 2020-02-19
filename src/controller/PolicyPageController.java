@@ -412,6 +412,7 @@ public class PolicyPageController implements Initializable {
             e.printStackTrace();
         }
         // end of update serious
+        _pushNotification.get_PushNotification().success("Update Success","Successfully edited");
     }
     public void updateShs(){
         // update minor
@@ -420,6 +421,7 @@ public class PolicyPageController implements Initializable {
             dao.saveData(query);
         }catch (Exception e){
             e.printStackTrace();
+            _pushNotification.get_PushNotification().failed("Update Failed", "Failed To Update " +e);
         }
         // end update minor
 
@@ -441,6 +443,7 @@ public class PolicyPageController implements Initializable {
             e.printStackTrace();
         }
         // end of update serious
+        _pushNotification.get_PushNotification().success("Update Success","Successfully edited");
     }
     public void updateJhs(){
         // update minor
@@ -470,6 +473,7 @@ public class PolicyPageController implements Initializable {
             e.printStackTrace();
         }
         // end of update serious
+        _pushNotification.get_PushNotification().success("Update Success","Successfully edited");
     }
     public void updateGs(){
         // update minor
@@ -499,6 +503,7 @@ public class PolicyPageController implements Initializable {
             e.printStackTrace();
         }
         // end of update serious
+        _pushNotification.get_PushNotification().success("Update Success","Successfully edited");
     }
     // end init
 

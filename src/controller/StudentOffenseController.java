@@ -166,6 +166,7 @@ public class StudentOffenseController implements Initializable {
             try {
                 searchTxt.setStyle("-jfx-unfocus-color: #b1b1b1;");
                 refreshTable();
+                clearLabel();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -336,6 +337,15 @@ public class StudentOffenseController implements Initializable {
         }else{
             isConfirm = false;
         }
+    }
+
+    public void clearLabel(){
+        studentidLbl.setText("");
+        nameLbl.setText("");
+        yearLbl.setText("");
+        sectionLbl.setText("");
+        unservetimeLbl.setText("");
+        imageView.setImage(null);
     }
 
     // end of custom methods

@@ -153,6 +153,8 @@ public class StudentOffenseAddController implements Initializable {
             dao.saveData(query);
             clearFields();
             StudentOffenseController.getStudentOffenseController().refreshTable();
+            warningLbl.setVisible(false);
+            warningLbl1.setVisible(false);
             alc.alertSuccess(null,"Insert Successfully");
         }catch (Exception e){
             e.printStackTrace();
@@ -161,16 +163,20 @@ public class StudentOffenseAddController implements Initializable {
     }
     public void saveandsendsmsEvent() {
         query = "insert into student_offense_tbl values (null,"+studentidTxt.getText()+","+offensenameTxt.getText()+","+offensecountTxt.getText()+",'"+severityTxt.getText()+"','"+durationTxt.getText()+"','00:00','not complete','"+remarksTxt.getText()+"','"+offensedateTxt.getText()+"')";
-        try {
-            dao.saveData(query);
-            _gsm.sendSMS(studentidTxt.getText(),severityTxt.getText(),offName,offSanction,remarksTxt.getText());
-            clearFields();
-            StudentOffenseController.getStudentOffenseController().refreshTable();
-            alc.alertSuccess(null,"Insert Successfully");
-        }catch (Exception e){
-            e.printStackTrace();
-            alc.alertErr(null, "Error while Inserting "+e);
+        if(_gsm.sendSMS(studentidTxt.getText(),severityTxt.getText(),offName,offSanction,remarksTxt.getText())){
+            try {
+                dao.saveData(query);
+                clearFields();
+                StudentOffenseController.getStudentOffenseController().refreshTable();
+                warningLbl.setVisible(false);
+                warningLbl1.setVisible(false);
+                alc.alertSuccess(null,"Insert Successfully");
+            }catch (Exception e){
+                e.printStackTrace();
+                alc.alertErr(null, "Error while Inserting "+e);
+            }
         }
+
     }
 
 

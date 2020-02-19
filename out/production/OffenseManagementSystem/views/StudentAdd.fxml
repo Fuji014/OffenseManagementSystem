@@ -62,7 +62,7 @@
             <JFXTextArea fx:id="parentAddressTxt" labelFloat="true" layoutX="9.0" layoutY="96.0" prefHeight="51.0" prefWidth="275.0" promptText=" Parent Address" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2; -jfx-unfocus-color: transparent;" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="318.0" layoutY="216.0" prefHeight="114.0" prefWidth="153.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">
+      <AnchorPane layoutX="309.0" layoutY="216.0" prefHeight="114.0" prefWidth="153.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">
          <children>
             <ImageView fx:id="imagePreview" fitHeight="112.0" fitWidth="112.0" layoutX="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -71,8 +71,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="475.0" layoutY="216.0" prefHeight="114.0" prefWidth="153.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
-      <JFXButton fx:id="saveBtn" layoutX="477.0" layoutY="338.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
+      <AnchorPane layoutX="467.0" layoutY="216.0" prefHeight="114.0" prefWidth="162.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
+      <JFXButton fx:id="saveBtn" layoutX="467.0" layoutY="338.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -81,7 +81,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="cancelBtn" layoutX="554.0" layoutY="337.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
+      <JFXButton fx:id="cancelBtn" layoutX="546.0" layoutY="337.0" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #CD241D;" text="Cancel" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -90,10 +90,10 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Pane layoutX="415.0" layoutY="338.0" prefHeight="38.0" prefWidth="56.0" style="-fx-border-color: #D2D2D2; -fx-background-color: #F0F0F0;">
+      <Pane layoutX="404.0" layoutY="338.0" prefHeight="38.0" prefWidth="56.0" style="-fx-border-color: #D2D2D2; -fx-background-color: #F0F0F0;">
          <children>
             <Line endX="21.0" layoutX="32.0" layoutY="25.0" startX="-29.0" stroke="#d2d2d2" />
-            <JFXButton fx:id="uploaderBtn" contentDisplay="TOP" layoutY="-4.0" text="Choose image">
+            <JFXButton fx:id="uploaderBtn" contentDisplay="TOP" layoutX="3.0" layoutY="-4.0" prefHeight="46.0" prefWidth="51.0" text="Choose image">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>

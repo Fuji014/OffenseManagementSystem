@@ -98,7 +98,6 @@ public class AdminLoginController implements Initializable {
             clearText();
             _pushNotification.failed("Login Failed", "Username Or Password Is Not Correct!");
             loadingProg.setVisible(false);
-
         }
     }
 
@@ -107,7 +106,6 @@ public class AdminLoginController implements Initializable {
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
         alert.show();
-
     }
 
     public void alertConfirmation(String headerText, String content){
@@ -121,8 +119,8 @@ public class AdminLoginController implements Initializable {
         }else{
             isConfirm = false;
         }
-
     }
+
     public boolean getConfirmation(){
         return isConfirm;
     }

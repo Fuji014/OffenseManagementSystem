@@ -21,14 +21,14 @@
                   <Font name="Century Gothic" size="12.0" />
                </font></JFXTextField>
             <JFXTextArea fx:id="messageTxt" layoutX="28.0" layoutY="120.0" prefHeight="185.0" prefWidth="414.0" promptText="Message Content" style="-fx-background-color: #fff; -jfx-unfocus-color: transparent; -fx-background-radius: 20px; -fx-padding: 10px;" />
-            <JFXButton fx:id="sendBtn" layoutX="229.0" layoutY="336.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #2ecc71; -fx-background-radius: 50px;" text="Send" textFill="WHITE">
+            <JFXButton fx:id="sendBtn" layoutX="229.0" layoutY="337.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #2ecc71; -fx-border-color: #2ecc71;" text="Send" textFill="WHITE">
                <font>
-                  <Font name="Copperplate Gothic Bold" size="14.0" />
+                  <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="resetBtn" layoutX="340.0" layoutY="336.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #e74c3c; -fx-background-radius: 50px;" text="Reset" textFill="WHITE">
+            <JFXButton fx:id="resetBtn" layoutX="340.0" layoutY="336.0" prefHeight="30.0" prefWidth="102.0" style="-fx-background-color: #e74c3c; -fx-border-color: #e74c3c;" text="Reset" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
             </JFXButton>
          </children>

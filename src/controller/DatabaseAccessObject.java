@@ -810,4 +810,26 @@ public class DatabaseAccessObject implements Initializable {
         }
     }
 
+    // Dash Board
+    public int getCountsDashboard(String query) throws SQLException {
+        int count = 0;
+        try {
+            connection = connector.getConnection();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            prs = connection.prepareStatement(query);
+            rs = prs.executeQuery();
+            while (rs.next()){
+                count = rs.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            connector.close(connection,prs,rs);
+            return count;
+        }
+    }
+
 }

@@ -6,6 +6,8 @@ import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,6 +88,12 @@ public class HomePageController implements Initializable {
     @FXML
     private JFXButton recordsBtn;
 
+    @FXML
+    private JFXButton exitBtn;
+
+    @FXML
+    private JFXButton minimizeBtn;
+
 
 
 
@@ -101,6 +109,7 @@ public class HomePageController implements Initializable {
     AnchorPane home;
     private int id;
     public String rfidport,gsmport;
+    private _alert _alert;
     public int departmentId = Integer.parseInt(AdminLoginController.getAdminLoginController().getInfo().get("department"));
     private static HomePageController instance;
 
@@ -122,11 +131,18 @@ public class HomePageController implements Initializable {
         // initalize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
+        _alert = new _alert();
         connector = new ConnectionHandler();
         notificationLbl.setText(Integer.toString(countNotification()));
         // end of initalize class
 
         // methods
+        exitBtn.setOnAction(event -> {
+            if(_alert.alertConfirmation("Are you sure you want to close?","Please make sure you save your work before exit.")){
+                Platform.exit();
+            }
+        });
+
         notificationLbl.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             notificationLbl.setText(Integer.toString(countNotification()));
             if(Integer.parseInt(newV) > Integer.parseInt(oldV)){

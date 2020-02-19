@@ -111,7 +111,8 @@ public class StudentOffenseSearchOffenseController implements Initializable {
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
             initTable();
-            query = "select o.offense_description,o.offense_severity,d.dept_name,o.id from offense_tbl as o inner JOIN department_tbl as d on o.dept_key = d.id where "+forSearchComboxValue+" like '%"+newV+"%' where dept_key = "+departmentId+" order by o.id desc";
+            query = "select o.offense_description,o.offense_severity,d.dept_name,o.id,o.offense_sanction from offense_tbl as o inner JOIN department_tbl as d on o.dept_key = d.id where "+forSearchComboxValue+" like '%"+newV+"%' and dept_key = "+departmentId+" order by o.id desc";
+            System.out.println(query);
             try {
                 srchstudentTableView.setItems(dao.getStudentOffenseOffenseSearchData(query));
             } catch (SQLException e) {

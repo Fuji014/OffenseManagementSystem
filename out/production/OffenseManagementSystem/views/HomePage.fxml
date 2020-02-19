@@ -192,7 +192,7 @@
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-page-properties-report-50.png" />
+                        <Image url="@../resources/icons8-notification-center-50.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -210,7 +210,7 @@
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-schedule-50.png" />
+                        <Image url="@../resources/icons8-attendance-50.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -220,12 +220,12 @@
       </Pane>
       <Pane layoutX="245.0" prefHeight="26.0" prefWidth="756.0" style="-fx-background-color: #151928;">
          <children>
-            <JFXButton layoutX="727.0" layoutY="-2.0" text="X" textFill="#9e9e9e">
+            <JFXButton fx:id="exitBtn" layoutX="727.0" layoutY="-2.0" text="X" textFill="#9e9e9e">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="689.0" layoutY="-13.0" prefHeight="44.0" prefWidth="52.0" text="_" textFill="#9e9e9e">
+            <JFXButton fx:id="minimizeBtn" layoutX="689.0" layoutY="-13.0" prefHeight="44.0" prefWidth="52.0" text="_" textFill="#9e9e9e">
                <font>
                   <Font size="20.0" />
                </font>

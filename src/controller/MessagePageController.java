@@ -106,10 +106,10 @@ public class MessagePageController implements Initializable {
                     Thread.sleep(1000);
                     serialPort.writeBytes(( _Spliter.getSplit(data).get(count) + CTRLZ).getBytes());
                     Thread.sleep(1000);
-                    System.out.println("Wyslano wiadomosc");
+                    System.out.println("JEROMEee..");
                     Thread.sleep(3000);
 //            serialPort.closePort();
-                    System.out.println("Port COM zamkniety");
+                    System.out.println("JEROMEee... done");
                     count++;
                 }
             }else{
@@ -121,9 +121,9 @@ public class MessagePageController implements Initializable {
                 Thread.sleep(1000);
                 serialPort.writeBytes((messageString5 + CTRLZ).getBytes());
                 Thread.sleep(1000);
-                System.out.println("Wyslano wiadomosc");
-                Thread.sleep(3000);
-                System.out.println("Port COM zamkniety");
+                System.out.println("JEROMEEEeeeee...");
+                Thread.sleep(100);
+                System.out.println("JEROMEEEeeeee... complete");
             }
         }
         catch (SerialPortException ex) {

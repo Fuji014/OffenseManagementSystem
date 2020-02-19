@@ -14,16 +14,18 @@ public class _Gsm implements Initializable {
     private String query;
     private DatabaseAccessObject dao = new DatabaseAccessObject();
     private ResultSet rs;
+    private boolean isPort = false;
     private static _Gsm instance;
 
     public _Gsm(){this.instance = this;}
     public static _Gsm get_Gsm(){return instance;}
 
-    public void sendSMS(String student_key,String severity,String offense, String punishment,String remarks)  {
-        serialPort = new SerialPort("COM5");
+    public boolean sendSMS(String student_key,String severity,String offense, String punishment,String remarks)  {
+        serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
         try {
             serialPort.openPort();
             _pushNotification.get_PushNotification().success("Serial Port Status Connected!","You can now use this module");
+            isPort = true;
             String student_name="",parent_fullname="",parent_contact="",message="";
             query = "select student_id,student_name,parent_fullname,parent_contact from student_tbl where student_id = "+student_key+"";
             System.out.println(query);
@@ -38,7 +40,6 @@ public class _Gsm implements Initializable {
                 System.out.println("Port is open :)");
             } else {
                 System.out.println("Failed to open port :(");
-                return;
             }
             try {
                 serialPort.setParams(SerialPort.BAUDRATE_9600,
@@ -92,6 +93,9 @@ public class _Gsm implements Initializable {
         }catch (SerialPortException | SQLException e){
             e.printStackTrace();
             _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings");
+            isPort = false;
+        }finally {
+            return isPort;
         }
     }
 

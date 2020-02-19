@@ -20,7 +20,7 @@
          <children>
             <Label layoutX="10.0" layoutY="4.0" text="Search Offense" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
             </Label>
             <Label fx:id="closeBtn" layoutX="611.0" layoutY="-2.0" text="X" textFill="WHITE">
@@ -33,7 +33,10 @@
       <AnchorPane layoutX="9.0" layoutY="34.0" prefHeight="55.0" prefWidth="613.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
          <children>
             <JFXComboBox fx:id="searchComboBox" disable="true" layoutX="104.0" layoutY="14.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2; -fx-background-color: #f0f0f0;" />
-            <Label layoutX="14.0" layoutY="6.0" text="Search helper" textFill="#a19a9a" />
+            <Label layoutX="5.0" layoutY="18.0" text="Search helper" textFill="#a19a9a">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font></Label>
             <JFXTextField fx:id="searchTxt" disable="true" layoutX="262.0" layoutY="14.0" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
             <JFXButton fx:id="searchBtn" layoutX="412.0" layoutY="15.0" prefHeight="27.0" prefWidth="93.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
                <graphic>
@@ -44,14 +47,17 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font name="Century Gothic" size="12.0" />
+                  <Font name="Copperplate Gothic Light" size="11.0" />
                </font>
             </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="12.0" layoutY="110.0" prefHeight="253.0" prefWidth="426.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
          <children>
-            <Label layoutX="11.0" layoutY="8.0" text="Table View" textFill="#a19a9a" />
+            <Label layoutX="11.0" layoutY="8.0" text="Table View" textFill="#a19a9a">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font></Label>
             <TableView fx:id="srchstudentTableView" layoutX="14.0" layoutY="39.0" prefHeight="200.0" prefWidth="400.0" stylesheets="@../styles/TableStyle.css">
               <columns>
                 <TableColumn fx:id="descriptionCol" prefWidth="206.0" text="DESCRIPTION" />
@@ -72,7 +78,30 @@
       </AnchorPane>
       <AnchorPane layoutX="452.0" layoutY="110.0" prefHeight="253.0" prefWidth="169.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
          <children>
-            <Label layoutX="11.0" layoutY="9.0" text="Direction" textFill="#a19a9a" />
+            <Label layoutX="11.0" layoutY="9.0" text="Direction" textFill="#a19a9a">
+               <font>
+                  <Font name="Copperplate Gothic Bold" size="12.0" />
+               </font></Label>
+            <Label layoutX="23.0" layoutY="42.0" text="Click Search Button to ">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="7.0" layoutY="30.0" text=".">
+               <font>
+                  <Font name="Copperplate Gothic Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="23.0" layoutY="60.0" text="enable Search Filter">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="79.0" text="and Input Box">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
