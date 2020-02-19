@@ -74,6 +74,7 @@ public class StudentOffenseAddController implements Initializable {
     private DatabaseAccessObject dao;
     private MainController mc;
     private _Gsm _gsm;
+    private _pushNotification _pushNotification;
     private AdminLoginController alc;
     private static StudentOffenseAddController instance;
     private String query;
@@ -104,6 +105,7 @@ public class StudentOffenseAddController implements Initializable {
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
         _gsm = new _Gsm();
+        _pushNotification = new _pushNotification();
         // end of initialize class
 
         // methods
@@ -155,10 +157,12 @@ public class StudentOffenseAddController implements Initializable {
             StudentOffenseController.getStudentOffenseController().refreshTable();
             warningLbl.setVisible(false);
             warningLbl1.setVisible(false);
-            alc.alertSuccess(null,"Insert Successfully");
+            _pushNotification.success("Insert Success", "Successfully Inserted");
+//            alc.alertSuccess(null,"Insert Successfully");
         }catch (Exception e){
             e.printStackTrace();
-            alc.alertErr(null, "Err while Inserting"+e);
+            _pushNotification.failed("Insert Failed", "Failed to Insert Student Offense");
+//            alc.alertErr(null, "Err while Inserting"+e);
         }
     }
     public void saveandsendsmsEvent() {
@@ -170,10 +174,11 @@ public class StudentOffenseAddController implements Initializable {
                 StudentOffenseController.getStudentOffenseController().refreshTable();
                 warningLbl.setVisible(false);
                 warningLbl1.setVisible(false);
-                alc.alertSuccess(null,"Insert Successfully");
+                _pushNotification.success("Insert Success", "Successfully Inserted");
+
             }catch (Exception e){
                 e.printStackTrace();
-                alc.alertErr(null, "Error while Inserting "+e);
+                _pushNotification.failed("Insert Failed", "Failed to Insert Student Offense");
             }
         }
 

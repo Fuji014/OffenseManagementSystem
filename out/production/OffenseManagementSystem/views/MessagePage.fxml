@@ -16,7 +16,7 @@
       </Label>
       <AnchorPane layoutX="152.0" layoutY="110.0" prefHeight="386.0" prefWidth="471.0" style="-fx-background-color: #d2d2d2; -fx-border-color: #fff;">
          <children>
-            <JFXTextField fx:id="numberTxt" layoutX="28.0" layoutY="52.0" prefHeight="43.0" prefWidth="414.0" promptText=" +639087118184" style="-jfx-unfocus-color: transparent; -fx-background-color: #fff; -fx-background-radius: 50px; -fx-padding: 10px;">
+            <JFXTextField fx:id="numberTxt" layoutX="28.0" layoutY="52.0" prefHeight="43.0" prefWidth="414.0" promptText="9087118184" style="-jfx-unfocus-color: transparent; -fx-background-color: #fff; -fx-background-radius: 50px; -fx-padding: 10px;">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font></JFXTextField>
@@ -33,13 +33,5 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="196.0" layoutY="82.0" prefHeight="57.0" prefWidth="393.0" style="-fx-background-color: #d2d2d2; -fx-border-color: #fff; -fx-border-radius: 50px; -fx-background-radius: 50px;">
-         <children>
-            <Label layoutX="166.0" layoutY="14.0" text="SMS" textFill="#5b5b5b">
-               <font>
-                  <Font name="Copperplate Gothic Bold" size="20.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
    </children>
 </AnchorPane>

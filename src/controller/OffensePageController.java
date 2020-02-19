@@ -61,6 +61,7 @@ public class OffensePageController implements Initializable {
 
     // declare below
     private DatabaseAccessObject dao;
+    private _pushNotification _pushNotif;
     private MainController mc;
     private static OffensePageController instance;
     private String query,offenseDescription,offenseSeverity,deptName,offenseSanction;
@@ -86,6 +87,7 @@ public class OffensePageController implements Initializable {
         // initialize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
+        _pushNotif = new _pushNotification();
         // end of initialize class
 
         // methods
@@ -154,8 +156,10 @@ public class OffensePageController implements Initializable {
                 dao.saveData(query);
             }catch (Exception e){
                 e.printStackTrace();
+                _pushNotif.failed("Delete Failed", "Failed to Delete ID Number: "+id+" "+e);
             }finally {
                 refreshTable();
+                _pushNotif.success("Delete Success","Successfully Deleted ID Number: "+id);
             }
         }
     }

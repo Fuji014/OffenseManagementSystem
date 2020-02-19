@@ -16,7 +16,7 @@
          <children>
             <Label layoutX="9.0" layoutY="4.0" text="Edit Student Offense" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
             </Label>
             <Label fx:id="closeBtn" layoutX="614.0" layoutY="-1.0" text="X" textFill="WHITE">
@@ -34,23 +34,50 @@
                </font></Label>
             <AnchorPane layoutX="14.0" layoutY="51.0" prefHeight="92.0" prefWidth="230.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
-                  <Label layoutX="12.0" layoutY="10.0" text="Choose Student ID" textFill="#a19a9a" />
-                  <JFXTextField fx:id="studentidTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="43.0" prefHeight="27.0" prefWidth="195.0" promptText=" Student ID" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <Label layoutX="12.0" layoutY="10.0" text="Choose Student ID" textFill="#a19a9a">
+                     <font>
+                        <Font name="Copperplate Gothic Bold" size="12.0" />
+                     </font></Label>
+                  <JFXTextField fx:id="studentidTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="43.0" prefHeight="27.0" prefWidth="195.0" promptText=" Student ID" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="14.0" layoutY="150.0" prefHeight="92.0" prefWidth="230.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
-                  <Label layoutX="12.0" layoutY="10.0" text="Choose Offense" textFill="#a19a9a" />
-                  <JFXTextField fx:id="offensenameTxt" disable="true" layoutX="14.0" layoutY="43.0" prefHeight="27.0" prefWidth="195.0" promptText="Offense Name" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <Label layoutX="12.0" layoutY="10.0" text="Choose Offense" textFill="#a19a9a">
+                     <font>
+                        <Font name="Copperplate Gothic Bold" size="12.0" />
+                     </font></Label>
+                  <JFXTextField fx:id="offensenameTxt" disable="true" layoutX="14.0" layoutY="43.0" prefHeight="27.0" prefWidth="195.0" promptText="Offense Name" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="260.0" layoutY="52.0" prefHeight="190.0" prefWidth="341.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
-                  <Label layoutX="11.0" layoutY="10.0" text="Student Offense" textFill="#a19a9a" />
-                  <JFXTextField fx:id="offensecountTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="41.0" prefHeight="27.0" prefWidth="145.0" promptText="Offense Count" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextField fx:id="offensedateTxt" disable="true" labelFloat="true" layoutX="173.0" layoutY="8.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Date" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextArea fx:id="remarksTxt" layoutX="15.0" layoutY="78.0" prefHeight="92.0" prefWidth="313.0" promptText=" Remarks" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2; -jfx-unfocus-color: transparent;" />
-                  <JFXTextField fx:id="severityTxt" disable="true" labelFloat="true" layoutX="173.0" layoutY="41.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Severity" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <Label layoutX="11.0" layoutY="10.0" text="Student Offense" textFill="#a19a9a">
+                     <font>
+                        <Font name="Copperplate Gothic Bold" size="12.0" />
+                     </font></Label>
+                  <JFXTextField fx:id="offensecountTxt" disable="true" labelFloat="true" layoutX="14.0" layoutY="41.0" prefHeight="27.0" prefWidth="145.0" promptText="Offense Count" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
+                  <JFXTextField fx:id="offensedateTxt" disable="true" labelFloat="true" layoutX="173.0" layoutY="8.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Date" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
+                  <JFXTextArea fx:id="remarksTxt" layoutX="15.0" layoutY="78.0" prefHeight="92.0" prefWidth="313.0" promptText=" Remarks" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2; -jfx-unfocus-color: transparent;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextArea>
+                  <JFXTextField fx:id="severityTxt" disable="true" labelFloat="true" layoutX="173.0" layoutY="41.0" prefHeight="27.0" prefWidth="152.0" promptText="Offense Severity" style="-fx-background-color: #f0f0f0; -jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
                </children>
             </AnchorPane>
             <JFXButton fx:id="saveBtn" layoutX="426.0" layoutY="279.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06; -fx-border-color: #007E06;" text="Save" textFill="WHITE">
@@ -62,7 +89,7 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font name="Copperplate Gothic Light" size="12.0" />
+                  <Font name="Copperplate Gothic Light" size="11.0" />
                </font>
             </JFXButton>
             <JFXButton fx:id="cancelBtn" layoutX="509.0" layoutY="279.0" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #CD241D; -fx-border-color: #CD241D;" text="Cancel" textFill="WHITE">
@@ -79,10 +106,22 @@
             </JFXButton>
             <AnchorPane layoutX="15.0" layoutY="250.0" prefHeight="71.0" prefWidth="391.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d2d2d2;">
                <children>
-                  <Label layoutX="12.0" layoutY="10.0" text="Offense Info" textFill="#a19a9a" />
-                  <JFXTextField fx:id="durationTxt" labelFloat="true" layoutX="11.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextField fx:id="completedtimeTxt" labelFloat="true" layoutX="138.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Completed Time" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-                  <JFXTextField fx:id="statusTxt" disable="true" labelFloat="true" layoutX="261.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Status" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+                  <Label layoutX="12.0" layoutY="10.0" text="Offense Info" textFill="#a19a9a">
+                     <font>
+                        <Font name="Copperplate Gothic Bold" size="12.0" />
+                     </font></Label>
+                  <JFXTextField fx:id="durationTxt" labelFloat="true" layoutX="11.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Duration" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
+                  <JFXTextField fx:id="completedtimeTxt" labelFloat="true" layoutX="138.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Completed Time" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
+                  <JFXTextField fx:id="statusTxt" disable="true" labelFloat="true" layoutX="261.0" layoutY="34.0" prefHeight="27.0" prefWidth="116.0" promptText=" Offense Status" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font></JFXTextField>
                </children>
             </AnchorPane>
          </children>

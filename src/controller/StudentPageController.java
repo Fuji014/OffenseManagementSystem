@@ -90,6 +90,7 @@ public class StudentPageController implements Initializable {
     private boolean isConfirm;
     private int id,studId;
     private String rfid;
+    private _pushNotification _pushNotif;
     private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of declare var
 
@@ -110,6 +111,7 @@ public class StudentPageController implements Initializable {
         // initalize class
         mc = new MainController();
         dao = new DatabaseAccessObject();
+        _pushNotif= new _pushNotification();
         // end of initalize class
 
         // initialize method()
@@ -198,8 +200,11 @@ public class StudentPageController implements Initializable {
                 dao.saveData(query);
             }catch (Exception e){
                 e.printStackTrace();
+                _pushNotif.failed("Delete Failed", "Failed to Delete ID Number: "+id+" "+e);
             }finally {
                 refreshTable();
+                _pushNotif.success("Delete Success", "Successfully Deleted ID NUmber: "+id);
+
             }
         }
     }

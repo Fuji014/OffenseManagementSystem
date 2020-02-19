@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TruancyTestController">
+   <children>
+      <Label layoutX="23.0" layoutY="23.0" text="Truancy End Time ">
+         <font>
+            <Font name="Copperplate Gothic Light" size="25.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="capane" disable="true" layoutX="23.0" layoutY="93.0" prefHeight="88.0" prefWidth="717.0" style="-fx-border-color: #d2d2d2;">
+         <children>
+            <JFXTimePicker fx:id="cmon" layoutX="27.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="ctue" layoutX="123.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="cwed" layoutX="219.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="cthu" layoutX="315.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="cfri" layoutX="411.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="csat" layoutX="507.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="csun" layoutX="603.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <Label layoutX="27.0" layoutY="22.0" text="MON">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="22.0" text="TUE">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="22.0" text="WED">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="315.0" layoutY="22.0" text="THU">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="22.0" text="FRI">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="22.0" text="SAT">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="603.0" layoutY="22.0" text="SUN">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="23.0" layoutY="69.0" text="College Department" textFill="#b7b7b7">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="shsapane" disable="true" layoutX="23.0" layoutY="215.0" prefHeight="88.0" prefWidth="717.0" style="-fx-border-color: #d2d2d2;">
+         <children>
+            <JFXTimePicker fx:id="shsmon" layoutX="27.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="shstue" layoutX="123.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="shswed" layoutX="219.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="shsthu" layoutX="315.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="shsfri" layoutX="411.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="shssat" layoutX="507.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="shssun" layoutX="603.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <Label layoutX="27.0" layoutY="22.0" text="MON">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="22.0" text="TUE">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="22.0" text="WED">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="315.0" layoutY="22.0" text="THU">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="22.0" text="FRI">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="22.0" text="SAT">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="603.0" layoutY="22.0" text="SUN">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="23.0" layoutY="197.0" text="SHS Department" textFill="#b7b7b7">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="jhsapane" disable="true" layoutX="23.0" layoutY="336.0" prefHeight="88.0" prefWidth="717.0" style="-fx-border-color: #d2d2d2;">
+         <children>
+            <JFXTimePicker fx:id="jhsmon" layoutX="27.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="jhstue" layoutX="123.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="jhswed" layoutX="219.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="jhsthu" layoutX="315.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="jhsfri" layoutX="411.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="jhssat" layoutX="507.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="jhssun" layoutX="603.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <Label layoutX="27.0" layoutY="22.0" text="MON">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="22.0" text="TUE">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="22.0" text="WED">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="315.0" layoutY="22.0" text="THU">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="22.0" text="FRI">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="22.0" text="SAT">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="603.0" layoutY="22.0" text="SUN">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="23.0" layoutY="318.0" text="JHS Department" textFill="#b7b7b7">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="12.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="gsapane" disable="true" layoutX="23.0" layoutY="459.0" prefHeight="88.0" prefWidth="717.0" style="-fx-border-color: #d2d2d2;">
+         <children>
+            <JFXTimePicker fx:id="gsmon" layoutX="27.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="gstue" layoutX="123.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="gswed" layoutX="219.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="gsthu" layoutX="315.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="gsfri" layoutX="411.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="gssat" layoutX="507.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <JFXTimePicker fx:id="gssun" layoutX="603.0" layoutY="30.0" prefHeight="28.0" prefWidth="96.0" />
+            <Label layoutX="27.0" layoutY="22.0" text="MON">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="22.0" text="TUE">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="219.0" layoutY="22.0" text="WED">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="315.0" layoutY="22.0" text="THU">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="22.0" text="FRI">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="22.0" text="SAT">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="603.0" layoutY="22.0" text="SUN">
+               <font>
+                  <Font name="Copperplate Gothic Light" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="23.0" layoutY="441.0" text="GS Department" textFill="#b7b7b7">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="12.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="collegeBtn" disable="true" layoutX="370.0" layoutY="39.0" style="-fx-border-color: #d2d2d2;" text="Update College" />
+      <JFXButton fx:id="shsBtn" disable="true" layoutX="479.0" layoutY="39.0" style="-fx-border-color: #d2d2d2;" text="Update SHS" />
+      <JFXButton fx:id="jhsBtn" disable="true" layoutX="571.0" layoutY="39.0" style="-fx-border-color: #d2d2d2;" text="Update JHS" />
+      <JFXButton fx:id="gsBtn" disable="true" layoutX="661.0" layoutY="39.0" style="-fx-border-color: #d2d2d2;" text="Update GS" />
+   </children>
+</AnchorPane>

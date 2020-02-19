@@ -82,6 +82,7 @@ public class StudentAddController implements Initializable {
     // Declare var below
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
+    private _pushNotification _pushNotif;
     private FileChooser fileChooser;
     public File file;
     private Stage stage;
@@ -108,6 +109,7 @@ public class StudentAddController implements Initializable {
         // initialize class
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
+        _pushNotif = new _pushNotification();
 
         // end of initialize class
 
@@ -136,6 +138,7 @@ public class StudentAddController implements Initializable {
             initStudentDeptCombobox();
         });
         closeBtn.setOnMouseClicked(event -> {
+            this.closeBtn.getScene().getWindow().hide();
             try {
                 if(serialPort.isOpened()){
                     serialPort.closePort();
@@ -143,10 +146,17 @@ public class StudentAddController implements Initializable {
             } catch (SerialPortException e) {
                 e.printStackTrace();
             }
-            this.closeBtn.getScene().getWindow().hide();
+
         });
         cancelBtn.setOnAction(event -> {
             this.cancelBtn.getScene().getWindow().hide();
+            try {
+                if(serialPort.isOpened()){
+                    serialPort.closePort();
+                }
+            } catch (SerialPortException e) {
+                e.printStackTrace();
+            }
         });
         scanBtn.setOnAction(event -> {
             try {
@@ -186,9 +196,11 @@ public class StudentAddController implements Initializable {
                 StudentPageController.getStudentPageController().refreshTable();
                 clearFields();
             }catch (Exception e){
-                alc.alertErr(null,"Exception Err"+e);
+                _pushNotif.failed("Insert Failed","Failed to Insert Student "+e);
+//                alc.alertErr(null,"Exception Err"+e);
             }finally {
-                alc.alertSuccess(null, "User Added Successfully ");
+                _pushNotif.success("Insert Success", "Successfully Inserted");
+//                alc.alertSuccess(null, "User Added Successfully ");
             }
         }else{
             alc.alertErr(null, "RFID already registered!");

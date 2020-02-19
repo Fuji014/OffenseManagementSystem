@@ -22,15 +22,18 @@
             </Label>
             <Label layoutX="11.0" layoutY="4.0" text="Edit Offense" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
             </Label>
          </children>
       </Pane>
       <AnchorPane layoutX="10.0" layoutY="39.0" prefHeight="327.0" prefWidth="616.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Offense Information" />
-            <JFXButton fx:id="saveBtn" layoutX="439.0" layoutY="289.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06;" text="Save" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="14.0" text="Offense Information" textFill="#b7b7b7">
+               <font>
+                  <Font name="Copperplate Gothic Bold" size="12.0" />
+               </font></Label>
+            <JFXButton fx:id="saveBtn" layoutX="436.0" layoutY="289.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #007E06; -fx-border-color: #007E06;" text="Save" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,8 +41,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Copperplate Gothic Light" size="11.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="cancelBtn" layoutX="528.0" layoutY="289.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-color: #CD241D #CD241D;" text="Cancel" textFill="WHITE">
+            <JFXButton fx:id="cancelBtn" layoutX="517.0" layoutY="289.0" prefHeight="31.0" prefWidth="85.0" style="-fx-background-color: #CD241D; -fx-border-color: #CD241D;" text="Cancel" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,10 +53,22 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Copperplate Gothic Light" size="11.0" />
+               </font>
             </JFXButton>
-            <JFXTextField fx:id="severityTxt" layoutX="14.0" layoutY="168.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Severity" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
-            <JFXTextArea fx:id="descriptionTxt" layoutX="16.0" layoutY="47.0" prefHeight="109.0" prefWidth="587.0" promptText="Offense Description" style="-jfx-unfocus-color: transparent; -fx-border-color: #D2D2D2; -fx-background-color: #F0F0F0;" />
-            <JFXTextField fx:id="sanctionTxt" layoutX="14.0" layoutY="249.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Sanction" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
+            <JFXTextField fx:id="severityTxt" layoutX="14.0" layoutY="168.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Severity" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font></JFXTextField>
+            <JFXTextArea fx:id="descriptionTxt" layoutX="16.0" layoutY="47.0" prefHeight="109.0" prefWidth="587.0" promptText="Offense Description" style="-jfx-unfocus-color: transparent; -fx-border-color: #D2D2D2; -fx-background-color: #F0F0F0;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font></JFXTextArea>
+            <JFXTextField fx:id="sanctionTxt" layoutX="14.0" layoutY="249.0" prefHeight="27.0" prefWidth="587.0" promptText="Offense Sanction" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font></JFXTextField>
             <JFXComboBox fx:id="departmentComboBox" disable="true" layoutX="14.0" layoutY="209.0" prefHeight="25.0" prefWidth="587.0" promptText="Department Name" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #D2D2D2;" />
          </children>
       </AnchorPane>

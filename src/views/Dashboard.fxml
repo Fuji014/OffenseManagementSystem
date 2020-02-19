@@ -38,7 +38,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="43.0">
                <image>
-                  <Image url="@../resources/icons8-student-male-48.png" />
+                  <Image url="@../resources/icons8-notification-center-50.png" />
                </image>
             </ImageView>
          </graphic>
@@ -181,7 +181,7 @@
                <graphic>
                   <ImageView>
                      <image>
-                        <Image url="@../resources/icons8-add-list-48.png" />
+                        <Image url="@../resources/icons8-attendance-50.png" />
                      </image>
                   </ImageView>
                </graphic>

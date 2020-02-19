@@ -37,6 +37,7 @@ public class OffenseEditController implements Initializable {
     // declare var below
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
+    private _pushNotification _pushNotif;
     private String query;
     private int departmentId = HomePageController.getHomePageController().departmentId;
     // end of declare var
@@ -49,6 +50,7 @@ public class OffenseEditController implements Initializable {
         // initialize class
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
+        _pushNotif = new _pushNotification();
         // end of initialize class
 
         // methods
@@ -58,6 +60,7 @@ public class OffenseEditController implements Initializable {
         // event button
         saveBtn.setOnAction(event -> { saveEvent(); });
         closeBtn.setOnMouseClicked(event -> { this.closeBtn.getScene().getWindow().hide(); });
+        cancelBtn.setOnAction(event -> { this.cancelBtn.getScene().getWindow().hide(); });
         // end of event button
 
     }
@@ -81,9 +84,11 @@ public class OffenseEditController implements Initializable {
             dao.saveData(query);
             OffensePageController.getOffensePageController().refreshTable();
         }catch (Exception e){
-            alc.alertErr(null, "Err"+e);
+            _pushNotif.failed("Update Failed", "Failed to Update Offense "+e);
+//            alc.alertErr(null, "Err"+e);
         }finally {
-            alc.alertSuccess(null, "Successfully Updated!");
+            _pushNotif.success("Update Success", "Update Successfully");
+//            alc.alertSuccess(null, "Successfully Updated!");
         }
 
     }

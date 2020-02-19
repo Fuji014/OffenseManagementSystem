@@ -85,6 +85,7 @@ public class StudentEditController implements Initializable {
     private Connection connection;
     private PreparedStatement prs;
     private ResultSet rs;
+    private _pushNotification _pushNotif;
     private String query;
     private String firstname,lastname,mi,contact,username,datecreated;
     private int id;
@@ -114,6 +115,7 @@ public class StudentEditController implements Initializable {
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
         connector = new ConnectionHandler();
+        _pushNotif = new _pushNotification();
         // end of initialize class
 
         // initialize method
@@ -154,8 +156,10 @@ public class StudentEditController implements Initializable {
             dao.student("update");
         }catch (Exception e){
             e.printStackTrace();
+            _pushNotif.failed("Update Failed", "Failed to Update "+e);
         }finally {
-            alc.alertSuccess(null, "Successfully Updated!");
+            _pushNotif.success("Update Success", "Successfully Updated");
+//            alc.alertSuccess(null, "Successfully Updated!");
             StudentPageController.getStudentPageController().refreshTable();
         }
     }

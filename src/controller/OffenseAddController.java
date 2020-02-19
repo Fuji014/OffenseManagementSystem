@@ -38,6 +38,7 @@ public class OffenseAddController implements Initializable {
     // declare var below
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
+    private _pushNotification _pushNotif;
     private String query;
     private int departmentId = HomePageController.getHomePageController().departmentId;
     // end declare var below
@@ -51,6 +52,7 @@ public class OffenseAddController implements Initializable {
         // initialize class
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
+        _pushNotif = new _pushNotification();
         // end of initialize class
 
         // methods
@@ -72,7 +74,9 @@ public class OffenseAddController implements Initializable {
         closeBtn.setOnMouseClicked(event -> {
             this.closeBtn.getScene().getWindow().hide();
         });
-
+        cancelBtn.setOnAction(event -> {
+            this.cancelBtn.getScene().getWindow().hide();
+        });
         // end of event buttons
     }
 
@@ -95,9 +99,11 @@ public class OffenseAddController implements Initializable {
             OffensePageController.getOffensePageController().refreshTable();
             clearFields();
         }catch (Exception e){
-            alc.alertErr(null,"Exception Err"+e);
+            _pushNotif.failed("Insert Failed", "Failed To Insert Offense "+e);
+//            alc.alertErr(null,"Exception Err"+e);
         }finally {
-            alc.alertSuccess(null, "User Added Successfully ");
+            _pushNotif.success("Insert Success","Successfully Inserted Offense");
+//            alc.alertSuccess(null, "User Added Successfully ");
         }
     }
     // end of init

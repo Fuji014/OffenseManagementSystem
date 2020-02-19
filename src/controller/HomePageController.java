@@ -94,6 +94,9 @@ public class HomePageController implements Initializable {
     @FXML
     private JFXButton minimizeBtn;
 
+    @FXML
+    private JFXButton truancyendtimeBtn;
+
 
 
 
@@ -188,12 +191,16 @@ public class HomePageController implements Initializable {
         studentBtn.setOnAction(event -> { // event btn studentBtn
             createPage(home, "/views/StudentPage.fxml");
         });
+        truancyendtimeBtn.setOnAction(event -> {
+            createPage(home, "/views/TruancyTesting.fxml");
+        });
         portSettingsBtn.setOnAction(event -> {
             createPage(home, "/views/PortTest.fxml");
 //            createPage(home, "/views/PortSettingPage.fxml");
         });
         departmentBtn.setOnAction(event -> {
-            createPage(home, "/views/DepartmentPage.fxml");
+            createPage(home, "/views/DepartmentTest.fxml");
+//            createPage(home, "/views/DepartmentPage.fxml");
         });
         offenseListBtn.setOnAction(event -> {
             createPage(home, "/views/OffensePage.fxml");
