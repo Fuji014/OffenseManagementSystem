@@ -162,22 +162,28 @@ public class MessagePageController implements Initializable {
             if(event.isRXCHAR() && event.getEventValue() > 0){//If data is available
                     //Read data, if 10 bytes available
                     try {
+//                        byte buffer[] = serialPort.readBytes(event.getEventValue());
                         String receivedData = serialPort.readString(event.getEventValue());
                         String str = new String(receivedData).split("\n", 2)[0].replaceAll("\\s+", "");
-//                        byte buffer[] = serialPort.readBytes(event.getEventValue());
-//                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
-//                        if(receivedData.matches(".*\\bok\\b.*")){
-//                            _alertBox.alertSuccess("Sent","Message Sent Success");
-//                        }else{
-//                            _alertBox.alertErr("Failed","Message Failed to Sent");
-//                        }
-                        System.out.println(str);
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                response(str);
-                            }
-                        });
+
+                        int byteSize = 0;
+                        try {
+                            byteSize = str.getBytes("UTF-8").length;
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        if (byteSize == 12){
+                            System.out.println(str);
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    response(str);
+                                }
+                            });
+                        }
+
+                        System.out.println("test "+str);
+
                     }
                     catch (SerialPortException ex) {
                         System.out.println(ex);
