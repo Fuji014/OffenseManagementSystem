@@ -163,6 +163,7 @@ public class MessagePageController implements Initializable {
                     //Read data, if 10 bytes available
                     try {
                         String receivedData = serialPort.readString(event.getEventValue());
+                        String str = new String(receivedData).split("\n", 2)[0].replaceAll("\\s+", "");
 //                        byte buffer[] = serialPort.readBytes(event.getEventValue());
 //                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
 //                        if(receivedData.matches(".*\\bok\\b.*")){
@@ -170,11 +171,11 @@ public class MessagePageController implements Initializable {
 //                        }else{
 //                            _alertBox.alertErr("Failed","Message Failed to Sent");
 //                        }
-                        System.out.println(receivedData);
+                        System.out.println(str);
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                response(receivedData);
+                                response(str);
                             }
                         });
                     }
