@@ -148,7 +148,7 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.matches(".*\\bok\\b.*")){
+        if(data.contains("ok")){
             _pushNotification.get_PushNotification().success("Sent","Message Sent Success");
         }else{
             _pushNotification.get_PushNotification().failed("Failed","Message Failed to Sent");
