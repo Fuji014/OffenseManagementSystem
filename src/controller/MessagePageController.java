@@ -164,6 +164,7 @@ public class MessagePageController implements Initializable {
                     try {
                         String receivedData = serialPort.readString(event.getEventValue());
                             System.out.println(receivedData);
+                            System.out.println(receivedData.length());
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
