@@ -117,6 +117,7 @@ public class MessagePageController implements Initializable {
                     count++;
                     Thread.sleep(1000);
                     serialPort.addEventListener(new SerialPortReader());
+                    Thread.sleep(3000);
                 }
             }else{
                 serialPort.writeBytes((messageString1 + enter).getBytes());
@@ -132,7 +133,7 @@ public class MessagePageController implements Initializable {
                 System.out.println("JEROMEEEeeeee... complete");
                 Thread.sleep(1000);
                 serialPort.addEventListener(new SerialPortReader());
-
+                Thread.sleep(3000);
             }
         }
         catch (SerialPortException ex) {
@@ -145,24 +146,23 @@ public class MessagePageController implements Initializable {
     static class SerialPortReader implements SerialPortEventListener {
 
         public void serialEvent(SerialPortEvent event) {
-            if(event.isRXCHAR()){//If data is available
-                if(event.getEventValue() == 10){//Check bytes count in the input buffer
+            if(event.isRXCHAR() && event.getEventValue() > 0){//If data is available
                     //Read data, if 10 bytes available
                     try {
-                        byte buffer[] = serialPort.readBytes(10);
-                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
-                        int byteSize = 0;
-                        try {
-                            byteSize = str.getBytes("UTF-8").length;
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-                        System.out.println(str);
+                        String recieveData = serialPort.readString(event.getEventValue());
+//                        System.out.println(buffer);
+//                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
+//                        int byteSize = 0;
+//                        try {
+//                            byteSize = str.getBytes("UTF-8").length;
+//                        } catch (Exception ex) {
+//                            ex.printStackTrace();
+//                        }
+                        System.out.println(recieveData);
                     }
                     catch (SerialPortException ex) {
                         System.out.println(ex);
                     }
-                }
             }
             else if(event.isCTS()){//If CTS line has changed state
                 if(event.getEventValue() == 1){//If line is ON
