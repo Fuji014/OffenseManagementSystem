@@ -150,7 +150,7 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.contains("OK")){
+        if(data.length() == 62){
             _pushNotif.success("Sent","Message Sent Success");
         }else{
             _pushNotif.failed("Failed","Message Failed to Sent");
