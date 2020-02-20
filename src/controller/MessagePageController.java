@@ -149,11 +149,9 @@ public class MessagePageController implements Initializable {
     }
     public void response(String data){
         if(data.matches(".*\\bok\\b.*")){
-            _pushNotif.success("Sent","Message Sent Success");
-            _alertBox.alertSuccess("Sent","Message Sent Success");
+            _pushNotification.get_PushNotification().success("Sent","Message Sent Success");
         }else{
-            _pushNotif.failed("Failed","Message Failed to Sent");
-            _alertBox.alertErr("Failed","Message Failed to Sent");
+            _pushNotification.get_PushNotification().failed("Failed","Message Failed to Sent");
         }
     }
     class SerialPortReader implements SerialPortEventListener {
@@ -163,7 +161,6 @@ public class MessagePageController implements Initializable {
                     //Read data, if 10 bytes available
                     try {
                         String receivedData = serialPort.readString(event.getEventValue());
-                        receivedData = "asdasd";
 //                        byte buffer[] = serialPort.readBytes(event.getEventValue());
 //                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
 //                        if(receivedData.matches(".*\\bok\\b.*")){
@@ -171,13 +168,6 @@ public class MessagePageController implements Initializable {
 //                        }else{
 //                            _alertBox.alertErr("Failed","Message Failed to Sent");
 //                        }
-                        if(receivedData.matches(".*\\bok\\b.*")){
-                            _pushNotif.success("Sent","Message Sent Success");
-                            _alertBox.alertSuccess("Sent","Message Sent Success");
-                        }else{
-                            _pushNotif.failed("Failed","Message Failed to Sent");
-                            _alertBox.alertErr("Failed","Message Failed to Sent");
-                        }
                         response(receivedData);
                     }
                     catch (SerialPortException ex) {
