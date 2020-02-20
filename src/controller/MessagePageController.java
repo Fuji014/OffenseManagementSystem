@@ -150,7 +150,7 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.contains("OK")){
+        if(data.contains("OK\n")){
             _pushNotif.success("Sent","Message Sent Success");
         }else{
             _pushNotif.failed("Failed","Message Failed to Sent");
@@ -172,7 +172,7 @@ public class MessagePageController implements Initializable {
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
-                        if (byteSize == 12){
+//                        if (byteSize == 10){
                             System.out.println(str);
                             Platform.runLater(new Runnable() {
                                 @Override
@@ -180,7 +180,7 @@ public class MessagePageController implements Initializable {
                                     response(str);
                                 }
                             });
-                        }
+//                        }
 
 
 
