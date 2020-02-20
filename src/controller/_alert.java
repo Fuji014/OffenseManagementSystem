@@ -12,6 +12,18 @@ public class _alert {
     public static _alert get_alert(){
         return instance;
     }
+    public void alertErr(String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
+    }
+    public void alertSuccess(String headerText, String contentText){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.show();
+    }
     public boolean alertConfirmation(String headerText, String content){
         boolean isConfirm = false;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

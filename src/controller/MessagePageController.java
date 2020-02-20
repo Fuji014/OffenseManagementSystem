@@ -33,6 +33,8 @@ public class MessagePageController implements Initializable {
 //    // declare var below
 //    private ConnectionPort connectorPort;
     private static SerialPort serialPort;
+    private _alert _alertBox;
+    private _pushNotification _pushNotif;
 //    // end of declare var below
 
 
@@ -40,6 +42,8 @@ public class MessagePageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // init class
 //        connectorPort = new ConnectionPort();
+        _alertBox = new _alert();
+        _pushNotif = new _pushNotification();
         // end of init class
 
         // init methods
@@ -143,21 +147,40 @@ public class MessagePageController implements Initializable {
             serialPort.closePort();
         }
     }
-    static class SerialPortReader implements SerialPortEventListener {
+    public void response(String data){
+        if(data.matches(".*\\bok\\b.*")){
+            _pushNotif.success("Sent","Message Sent Success");
+            _alertBox.alertSuccess("Sent","Message Sent Success");
+        }else{
+            _pushNotif.failed("Failed","Message Failed to Sent");
+            _alertBox.alertErr("Failed","Message Failed to Sent");
+        }
+    }
+    class SerialPortReader implements SerialPortEventListener {
 
         public void serialEvent(SerialPortEvent event) {
             if(event.isRXCHAR() && event.getEventValue() > 0){//If data is available
                     //Read data, if 10 bytes available
                     try {
                         String receivedData = serialPort.readString(event.getEventValue());
+                        receivedData = "asdasd";
 //                        byte buffer[] = serialPort.readBytes(event.getEventValue());
 //                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
-                        if (receivedData.contains("ok") | receivedData.contains("error")){
-                            System.out.println(receivedData);
-                            Thread.sleep(1000);
+//                        if(receivedData.matches(".*\\bok\\b.*")){
+//                            _alertBox.alertSuccess("Sent","Message Sent Success");
+//                        }else{
+//                            _alertBox.alertErr("Failed","Message Failed to Sent");
+//                        }
+                        if(receivedData.matches(".*\\bok\\b.*")){
+                            _pushNotif.success("Sent","Message Sent Success");
+                            _alertBox.alertSuccess("Sent","Message Sent Success");
+                        }else{
+                            _pushNotif.failed("Failed","Message Failed to Sent");
+                            _alertBox.alertErr("Failed","Message Failed to Sent");
                         }
+                        response(receivedData);
                     }
-                    catch (SerialPortException | InterruptedException ex) {
+                    catch (SerialPortException ex) {
                         System.out.println(ex);
                     }
             }
