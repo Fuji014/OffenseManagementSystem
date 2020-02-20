@@ -150,10 +150,10 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.contains("ok")){
-            _alertBox.alertSuccess("Sent","Message Sent Success");
+        if(data.contains("OK")){
+            _pushNotif.success("Sent","Message Sent Success");
         }else{
-            _alertBox.alertErr("Failed","Message Failed to Sent");
+            _pushNotif.failed("Failed","Message Failed to Sent");
         }
     }
     class SerialPortReader implements SerialPortEventListener {
