@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -54,6 +55,10 @@ public class MainController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+        minimizeBtn.setOnAction(event -> {
+            Stage stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            stage.setIconified(true);
         });
 
         adminloginBtn.setOnAction(event -> { // event btn adminloginBtn

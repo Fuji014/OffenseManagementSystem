@@ -74,7 +74,7 @@ public class MessagePageController implements Initializable {
         messageTxt.setText("");
         numberTxt.setText("");
     }
-    public void sendTest(String cpnumber, String data) throws InterruptedException {
+    public void sendTest(String cpnumber, String data) throws InterruptedException, SerialPortException {
         serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
         System.out.println(HomePageController.getHomePageController().gsmport);
         try {
@@ -111,6 +111,9 @@ public class MessagePageController implements Initializable {
 //            serialPort.closePort();
                     System.out.println("JEROMEee... done");
                     count++;
+                    Thread.sleep(1000);
+                    byte[] gsmStatus = serialPort.readBytes(10);
+                    System.out.println(gsmStatus);
                 }
             }else{
                 serialPort.writeBytes((messageString1 + enter).getBytes());
@@ -124,11 +127,17 @@ public class MessagePageController implements Initializable {
                 System.out.println("JEROMEEEeeeee...");
                 Thread.sleep(100);
                 System.out.println("JEROMEEEeeeee... complete");
+                Thread.sleep(1000);
+                byte[] gsmStatus = serialPort.readBytes(10);
+                System.out.println(gsmStatus);
+
             }
         }
         catch (SerialPortException ex) {
             _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings " +ex);
             System.out.println(ex);
+        }finally {
+            serialPort.closePort();
         }
     }
     // end of custom methods

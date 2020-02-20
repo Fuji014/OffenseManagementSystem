@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +21,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import jssc.SerialPort;
 import model.ConnectionHandler;
@@ -163,6 +165,10 @@ public class HomePageController implements Initializable {
         // end of methods
 
         // click event
+        minimizeBtn.setOnAction(event -> {
+            Stage stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            stage.setIconified(true);
+        });
         dashboardBtn.setOnAction(event -> { // event btn dashboard
             createPage(home,"/views/Dashboard.fxml");
         });

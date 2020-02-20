@@ -12,6 +12,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
+import jssc.SerialPortException;
 import model.ConnectionHandler;
 
 import java.io.*;
@@ -91,6 +95,7 @@ public class StudentEditController implements Initializable {
     private int id;
     private DatabaseAccessObject dao;
     private AdminLoginController alc;
+    private SerialPort serialPort = new SerialPort(HomePageController.getHomePageController().rfidport);
     private FileChooser fileChooser;
     public File file;
     private Stage stage;
@@ -144,13 +149,52 @@ public class StudentEditController implements Initializable {
         });
         cancelBtn.setOnAction(event -> {
             this.cancelBtn.getScene().getWindow().hide();
+            if(serialPort.isOpened()){
+                try {
+                    serialPort.closePort();
+                } catch (SerialPortException e) {
+                    e.printStackTrace();
+                }
+            }
         });
         closeBtn.setOnMouseClicked(event -> {
             this.closeBtn.getScene().getWindow().hide();
+            if(serialPort.isOpened()){
+                try {
+                    serialPort.closePort();
+                } catch (SerialPortException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        scanBtn.setOnAction(event -> {
+            scanEvent();
         });
         // end of event buttons
     }
     // End of initializable
+    public void scanEvent(){
+        System.out.println(HomePageController.getHomePageController().rfidport);
+        try {
+            serialPort.openPort();//Open port
+            _pushNotification.get_PushNotification().success("Serial Port Connection Stablished","You can scan now");
+            serialPort.setParams(9600, 8, 1, 0);//Set params
+            int mask = SerialPort.MASK_RXCHAR + SerialPort.MASK_CTS + SerialPort.MASK_DSR;//Prepare mask
+            serialPort.setEventsMask(mask);//Set mask
+            serialPort.addEventListener(
+                    new SerialPortReader()
+            );//Add SerialPortEventListener
+        }
+        catch (SerialPortException ex) {
+
+            System.out.println(ex);
+            if(serialPort.isOpened()){
+                _pushNotification.get_PushNotification().information("Port is Already Open", "You can Scan now");
+            }else{
+                _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings " +ex);
+            }
+        }
+    }
     public void editEvent() throws FileNotFoundException, SQLException {
         try {
             dao.student("update");
@@ -241,6 +285,49 @@ public class StudentEditController implements Initializable {
         parentContactTxt.setText(StudentPageController.getStudentPageController().getParentContact());
         parentAddressTxt.setText(StudentPageController.getStudentPageController().getParentAddress());
         studContact.setText(StudentPageController.getStudentPageController().getStudentContact());
+    }
+    class SerialPortReader implements SerialPortEventListener {
+        public void serialEvent(SerialPortEvent event) {
+            if(event.isRXCHAR() && event.getEventValue()>0){//If data is available
+                if(event.getEventValue() == 10){//Check bytes count in the input buffer
+                    //Read data, if 10 bytes available
+                    try {
+                        byte buffer[] = serialPort.readBytes(event.getEventValue());
+                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
+                        int byteSize = 0;
+                        try {
+                            byteSize = str.getBytes("UTF-8").length;
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        if (byteSize == 8){
+                            System.out.println(str);
+                            Thread.sleep(1000);
+                            rfidTagIdTxt.setText(str);
 
+                        }
+                    }
+                    catch (SerialPortException | InterruptedException ex) {
+                        System.out.println(ex);
+                    }
+                }
+            }
+            else if(event.isCTS()){//If CTS line has changed state
+                if(event.getEventValue() == 1){//If line is ON
+                    System.out.println("CTS - ON");
+                }
+                else {
+                    System.out.println("CTS - OFF");
+                }
+            }
+            else if(event.isDSR()){///If DSR line has changed state
+                if(event.getEventValue() == 1){//If line is ON
+                    System.out.println("DSR - ON");
+                }
+                else {
+                    System.out.println("DSR - OFF");
+                }
+            }
+        }
     }
 }

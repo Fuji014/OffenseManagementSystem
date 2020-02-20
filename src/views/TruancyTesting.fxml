@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TruancyTestController">
    <children>
-      <Label layoutX="23.0" layoutY="23.0" text="Truancy End Time ">
+      <Label layoutX="23.0" layoutY="23.0" text="Tardiness End Time ">
          <font>
             <Font name="Copperplate Gothic Light" size="25.0" />
          </font>

@@ -89,8 +89,9 @@ public class StudentAddController implements Initializable {
     private Image image;
     private String query;
     private int departmentId = HomePageController.getHomePageController().departmentId;
-    static SerialPort serialPort;
+
     private static StudentAddController instance;
+    private SerialPort serialPort = new SerialPort(HomePageController.getHomePageController().rfidport);
     // end of var
 
     // create initialize itself
@@ -110,7 +111,6 @@ public class StudentAddController implements Initializable {
         dao = new DatabaseAccessObject();
         alc = new AdminLoginController();
         _pushNotif = new _pushNotification();
-
         // end of initialize class
 
         // initialize method
@@ -139,23 +139,22 @@ public class StudentAddController implements Initializable {
         });
         closeBtn.setOnMouseClicked(event -> {
             this.closeBtn.getScene().getWindow().hide();
-            try {
-                if(serialPort.isOpened()){
+            if(serialPort.isOpened()){
+                try {
                     serialPort.closePort();
+                } catch (SerialPortException e) {
+                    e.printStackTrace();
                 }
-            } catch (SerialPortException e) {
-                e.printStackTrace();
             }
-
         });
         cancelBtn.setOnAction(event -> {
             this.cancelBtn.getScene().getWindow().hide();
-            try {
-                if(serialPort.isOpened()){
+            if(serialPort.isOpened()){
+                try {
                     serialPort.closePort();
+                } catch (SerialPortException e) {
+                    e.printStackTrace();
                 }
-            } catch (SerialPortException e) {
-                e.printStackTrace();
             }
         });
         scanBtn.setOnAction(event -> {
@@ -165,12 +164,13 @@ public class StudentAddController implements Initializable {
                 e.printStackTrace();
             }
 
+
         });
-        // end of event  btn
+              // end of event  btn
     }
     // end of initializable
     public void initRfid() throws SerialPortException {
-        serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
+        System.out.println(HomePageController.getHomePageController().rfidport);
         try {
             serialPort.openPort();//Open port
             _pushNotification.get_PushNotification().success("Serial Port Connection Stablished","You can scan now");
@@ -180,11 +180,15 @@ public class StudentAddController implements Initializable {
             serialPort.addEventListener(
                     new SerialPortReader()
             );//Add SerialPortEventListener
-
         }
         catch (SerialPortException ex) {
-            _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings " +ex);
+
             System.out.println(ex);
+            if(serialPort.isOpened()){
+                _pushNotification.get_PushNotification().information("Port is Already Open", "You can Scan now");
+            }else{
+                _pushNotification.get_PushNotification().failed("Failed To Connect Serial Port","Please Check your port settings " +ex);
+            }
         }
     }
 
