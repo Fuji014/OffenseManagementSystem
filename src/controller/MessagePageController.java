@@ -150,10 +150,10 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.matches(".*\\bok\\b.*")){
-            _pushNotification.get_PushNotification().success("Sent","Message Sent Success");
+        if(data.contains("ok")){
+            _alertBox.alertSuccess("Sent","Message Sent Success");
         }else{
-            _pushNotification.get_PushNotification().failed("Failed","Message Failed to Sent");
+            _alertBox.alertErr("Failed","Message Failed to Sent");
         }
     }
     class SerialPortReader implements SerialPortEventListener {
@@ -170,6 +170,7 @@ public class MessagePageController implements Initializable {
 //                        }else{
 //                            _alertBox.alertErr("Failed","Message Failed to Sent");
 //                        }
+                        System.out.println(receivedData);
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
