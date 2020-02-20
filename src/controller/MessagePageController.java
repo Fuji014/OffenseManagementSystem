@@ -163,8 +163,10 @@ public class MessagePageController implements Initializable {
                     //Read data, if 10 bytes available
                     try {
                         String receivedData = serialPort.readString(event.getEventValue());
-                            System.out.println(receivedData);
-                            System.out.println(receivedData.length());
+//                            System.out.println(receivedData);
+
+                            Thread.sleep(3000);
+                             System.out.println(receivedData.length());
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
@@ -172,7 +174,7 @@ public class MessagePageController implements Initializable {
                                 }
                             });
                     }
-                    catch (SerialPortException ex) {
+                    catch (SerialPortException | InterruptedException ex) {
                         System.out.println(ex);
                     }
             }
