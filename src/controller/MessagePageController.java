@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortEventListener;
 import jssc.SerialPortException;
 //import model.ConnectionPort;
 
@@ -30,7 +32,7 @@ public class MessagePageController implements Initializable {
 //
 //    // declare var below
 //    private ConnectionPort connectorPort;
-    private SerialPort serialPort;
+    private static SerialPort serialPort;
 //    // end of declare var below
 
 
@@ -86,6 +88,8 @@ public class MessagePageController implements Initializable {
                     SerialPort.DATABITS_8,
                     SerialPort.STOPBITS_1,
                     SerialPort.PARITY_NONE);
+            int mask = SerialPort.MASK_RXCHAR + SerialPort.MASK_CTS + SerialPort.MASK_DSR;//Prepare mask
+            serialPort.setEventsMask(mask);//Set mask
             String messageString1 = "AT";
 //            String messageString2 = "AT+CPIN=\"7078\"";
             String messageString3 = "AT+CSCS=\"GSM\"";
@@ -112,8 +116,7 @@ public class MessagePageController implements Initializable {
                     System.out.println("JEROMEee... done");
                     count++;
                     Thread.sleep(1000);
-                    byte[] gsmStatus = serialPort.readBytes(10);
-                    System.out.println(gsmStatus);
+                    serialPort.addEventListener(new SerialPortReader());
                 }
             }else{
                 serialPort.writeBytes((messageString1 + enter).getBytes());
@@ -128,8 +131,7 @@ public class MessagePageController implements Initializable {
                 Thread.sleep(100);
                 System.out.println("JEROMEEEeeeee... complete");
                 Thread.sleep(1000);
-                byte[] gsmStatus = serialPort.readBytes(10);
-                System.out.println(gsmStatus);
+                serialPort.addEventListener(new SerialPortReader());
 
             }
         }
@@ -138,6 +140,46 @@ public class MessagePageController implements Initializable {
             System.out.println(ex);
         }finally {
             serialPort.closePort();
+        }
+    }
+    static class SerialPortReader implements SerialPortEventListener {
+
+        public void serialEvent(SerialPortEvent event) {
+            if(event.isRXCHAR()){//If data is available
+                if(event.getEventValue() == 10){//Check bytes count in the input buffer
+                    //Read data, if 10 bytes available
+                    try {
+                        byte buffer[] = serialPort.readBytes(10);
+                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
+                        int byteSize = 0;
+                        try {
+                            byteSize = str.getBytes("UTF-8").length;
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        System.out.println(str);
+                    }
+                    catch (SerialPortException ex) {
+                        System.out.println(ex);
+                    }
+                }
+            }
+            else if(event.isCTS()){//If CTS line has changed state
+                if(event.getEventValue() == 1){//If line is ON
+                    System.out.println("CTS - ON");
+                }
+                else {
+                    System.out.println("CTS - OFF");
+                }
+            }
+            else if(event.isDSR()){///If DSR line has changed state
+                if(event.getEventValue() == 1){//If line is ON
+                    System.out.println("DSR - ON");
+                }
+                else {
+                    System.out.println("DSR - OFF");
+                }
+            }
         }
     }
     // end of custom methods

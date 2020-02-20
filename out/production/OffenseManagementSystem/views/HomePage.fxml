@@ -216,14 +216,14 @@
                </graphic>
             </JFXButton>
             <Label layoutX="221.0" layoutY="448.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <JFXButton fx:id="truancyendtimeBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="413.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text="Truancy End Time" textFill="WHITE">
+            <JFXButton fx:id="truancyendtimeBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="413.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text="Tardiness End Time" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0">
                      <image>
-                        <Image url="@../resources/icons8-schedule-50.png" />
+                        <Image url="@../resources/icons8-admin-settings-male-50.png" />
                      </image>
                   </ImageView>
                </graphic>
