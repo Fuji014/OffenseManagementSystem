@@ -3,6 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import jssc.SerialPort;
@@ -35,6 +36,7 @@ public class MessagePageController implements Initializable {
     private static SerialPort serialPort;
     private _alert _alertBox;
     private _pushNotification _pushNotif;
+    private boolean status;
 //    // end of declare var below
 
 
@@ -148,7 +150,7 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.contains("ok")){
+        if(data.matches(".*\\bok\\b.*")){
             _pushNotification.get_PushNotification().success("Sent","Message Sent Success");
         }else{
             _pushNotification.get_PushNotification().failed("Failed","Message Failed to Sent");
@@ -168,7 +170,12 @@ public class MessagePageController implements Initializable {
 //                        }else{
 //                            _alertBox.alertErr("Failed","Message Failed to Sent");
 //                        }
-                        response(receivedData);
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                response(receivedData);
+                            }
+                        });
                     }
                     catch (SerialPortException ex) {
                         System.out.println(ex);
