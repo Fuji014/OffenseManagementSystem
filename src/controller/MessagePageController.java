@@ -149,18 +149,22 @@ public class MessagePageController implements Initializable {
             if(event.isRXCHAR() && event.getEventValue() > 0){//If data is available
                     //Read data, if 10 bytes available
                     try {
-                        String recieveData = serialPort.readString(event.getEventValue());
-//                        System.out.println(buffer);
-//                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
-//                        int byteSize = 0;
-//                        try {
-//                            byteSize = str.getBytes("UTF-8").length;
-//                        } catch (Exception ex) {
-//                            ex.printStackTrace();
-//                        }
-                        System.out.println(recieveData);
+//                        String recieveData = serialPort.readString(event.getEventValue());
+                        byte buffer[] = serialPort.readBytes(event.getEventValue());
+                        System.out.println(buffer);
+                        String str = new String(buffer).split("\n", 2)[0].replaceAll("\\s+", "");
+                        int byteSize = 0;
+                        try {
+                            byteSize = str.getBytes("UTF-8").length;
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+                        if (byteSize == 2 | byteSize == 4){
+                            System.out.println(str);
+                            Thread.sleep(1000);
+                        }
                     }
-                    catch (SerialPortException ex) {
+                    catch (SerialPortException | InterruptedException ex) {
                         System.out.println(ex);
                     }
             }

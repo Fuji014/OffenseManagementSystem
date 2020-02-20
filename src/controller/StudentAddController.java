@@ -282,7 +282,6 @@ public class StudentAddController implements Initializable {
                             System.out.println(str);
                             Thread.sleep(1000);
                             rfidTagIdTxt.setText(str);
-
                         }
                     }
                     catch (SerialPortException | InterruptedException ex) {
