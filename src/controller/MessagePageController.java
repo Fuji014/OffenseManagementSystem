@@ -14,6 +14,7 @@ import jssc.SerialPortException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
@@ -164,7 +165,7 @@ public class MessagePageController implements Initializable {
                     try {
                         byte buffer[] = serialPort.readBytes(event.getEventValue());
 //                        String receivedData = serialPort.readString(event.getEventValue());
-                        String receivedData = new String(buffer);
+                        String receivedData = new String(buffer, StandardCharsets.UTF_8);
 
                             Thread.sleep(4000);
                              System.out.println(receivedData.length());
