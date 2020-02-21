@@ -31,7 +31,7 @@ public class _Gsm implements Initializable {
             _pushNotification.get_PushNotification().success("Serial Port Status Connected!","You can now use this module");
             isPort = true;
             String student_name="",student_contact="",parent_fullname="",parent_contact="",message="";
-            query = "select student_id,student_name,parent_fullname,parent_contact from student_tbl where student_id = "+student_key+"";
+            query = "select student_id,student_name,student_contact,parent_fullname,parent_contact from student_tbl where student_id = "+student_key+"";
             System.out.println(query);
             rs = dao.getStudentInfoDetails(query);
             if(rs.next()){
