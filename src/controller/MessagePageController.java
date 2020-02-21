@@ -169,7 +169,7 @@ public class MessagePageController implements Initializable {
 
                             Thread.sleep(4000);
                              System.out.println(receivedData.length());
-                             System.out.println(buffer);
+                             System.out.println(receivedData);
                             Platform.runLater(new Runnable() {
                                 @Override
                                 public void run() {
