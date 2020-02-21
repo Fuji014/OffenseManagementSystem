@@ -151,10 +151,10 @@ public class MessagePageController implements Initializable {
         }
     }
     public void response(String data){
-        if(data.contains("OK")){
-            _pushNotif.success("Sent","Message Sent Success");
-        }else{
+        if(data.contains("ERROR")){
             _pushNotif.failed("Failed","Message Failed to Sent");
+        }else{
+            _pushNotif.success("Sent","Message Sent Success");
         }
     }
     class SerialPortReader implements SerialPortEventListener {
