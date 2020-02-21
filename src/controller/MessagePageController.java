@@ -31,28 +31,32 @@ public class MessagePageController implements Initializable {
 
     @FXML
     private JFXButton resetBtn;
-//
-//    // declare var below
+
+//    declare var below
 //    private ConnectionPort connectorPort;
+
     private static SerialPort serialPort;
     private _alert _alertBox;
     private _pushNotification _pushNotif;
     private boolean status;
-//    // end of declare var below
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         // init class
-//        connectorPort = new ConnectionPort();
+    
         _alertBox = new _alert();
+    
         _pushNotif = new _pushNotification();
+
         // end of init class
 
         // init methods
         // end of init methods
 
         // event buttons
+    
         sendBtn.setOnAction(event -> {
             try {
                 sendEvent();
@@ -67,15 +71,18 @@ public class MessagePageController implements Initializable {
         resetBtn.setOnAction(event -> {
             clearFields();
         });
+    
         // end of envent buttons
 
     }
 
     // init
+    
     public void sendEvent() throws IOException, InterruptedException, SerialPortException {
         sendTest(numberTxt.getText(),messageTxt.getText());
         clearFields();
     }
+
     // end of init
 
     // custom methods
@@ -83,6 +90,7 @@ public class MessagePageController implements Initializable {
         messageTxt.setText("");
         numberTxt.setText("");
     }
+
     public void sendTest(String cpnumber, String data) throws InterruptedException, SerialPortException {
         serialPort = new SerialPort(HomePageController.getHomePageController().gsmport);
         System.out.println(HomePageController.getHomePageController().gsmport);
@@ -101,7 +109,6 @@ public class MessagePageController implements Initializable {
             String messageString2 = "AT+CMGF=1";
 //            String messageString2 = "AT+CPIN=\"7078\"";
             String messageString3 = "AT+CSCS=\"GSM\"";
-//            
             String messageString4 = "AT+CMGS=\"+63"+cpnumber+"\"";
             String messageString5 = data;
             char enter = 13;
@@ -122,12 +129,11 @@ public class MessagePageController implements Initializable {
                     Thread.sleep(1000);
                     System.out.println("JEROMEee..");
                     Thread.sleep(3000);
-//            serialPort.closePort();
                     System.out.println("JEROMEee... done");
-                    count++;
                     Thread.sleep(1000);
                     serialPort.addEventListener(new SerialPortReader());
                     Thread.sleep(3000);
+                    count++;
                 }
             }else{
                 serialPort.writeBytes((messageString1 + enter).getBytes());
@@ -155,6 +161,7 @@ public class MessagePageController implements Initializable {
             serialPort.closePort();
         }
     }
+
     public void response(String data){
         if(data.contains("ERROR")){
             _pushNotif.failed("Failed","Message Failed to Sent");
@@ -162,14 +169,13 @@ public class MessagePageController implements Initializable {
             _pushNotif.success("Sent","Message Sent Success");
         }
     }
+
     class SerialPortReader implements SerialPortEventListener {
 
         public void serialEvent(SerialPortEvent event) {
-            if(event.isRXCHAR() && event.getEventValue() > 0){//If data is available
-                    //Read data, if 10 bytes available
+            if(event.isRXCHAR() && event.getEventValue() > 0){
                     try {
                         byte buffer[] = serialPort.readBytes(event.getEventValue());
-//                        String receivedData = serialPort.readString(event.getEventValue());
                         String receivedData = new String(buffer, StandardCharsets.UTF_8);
 
                             Thread.sleep(4000);

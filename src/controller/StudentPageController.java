@@ -182,6 +182,7 @@ public class StudentPageController implements Initializable {
 //        System.out.println(query);
         studentTableView.setItems(dao.getStudentData(query));
     }
+
     public void initSearch(){
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) ->{
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
@@ -190,6 +191,7 @@ public class StudentPageController implements Initializable {
             studentTableView.setItems(dao.getStudentSearch(query));
         });
     }
+
     public void deleteEvent() throws SQLException {
         alertConfirmation(null, "Are you sure you want to delete?");
         if(isConfirm){
@@ -226,6 +228,7 @@ public class StudentPageController implements Initializable {
         parentAddress = selected.parentAdressProperty().get();
 
     }
+    
     public void alertConfirmation(String headerText, String content){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(headerText);
