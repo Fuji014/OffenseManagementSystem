@@ -98,9 +98,10 @@ public class MessagePageController implements Initializable {
             int mask = SerialPort.MASK_RXCHAR + SerialPort.MASK_CTS + SerialPort.MASK_DSR;//Prepare mask
             serialPort.setEventsMask(mask);//Set mask
             String messageString1 = "AT";
+            String messageString2 = "AT+CMGF=1";
 //            String messageString2 = "AT+CPIN=\"7078\"";
             String messageString3 = "AT+CSCS=\"GSM\"";
-//            String messageString3 = "AT+CMGF=1";
+//            
             String messageString4 = "AT+CMGS=\"+63"+cpnumber+"\"";
             String messageString5 = data;
             char enter = 13;
@@ -110,6 +111,8 @@ public class MessagePageController implements Initializable {
                 int count = 0;
                 while(_Spliter.getSplit(data).size() > count) {
                     serialPort.writeBytes((messageString1 + enter).getBytes());
+                    Thread.sleep(1000);
+                    serialPort.writeBytes((messageString2 + enter).getBytes());
                     Thread.sleep(1000);
                     serialPort.writeBytes((messageString3 + enter).getBytes());
                     Thread.sleep(1000);
@@ -128,6 +131,8 @@ public class MessagePageController implements Initializable {
                 }
             }else{
                 serialPort.writeBytes((messageString1 + enter).getBytes());
+                Thread.sleep(1000);
+                serialPort.writeBytes((messageString2 + enter).getBytes());
                 Thread.sleep(1000);
                 serialPort.writeBytes((messageString3 + enter).getBytes());
                 Thread.sleep(1000);
@@ -171,7 +176,7 @@ public class MessagePageController implements Initializable {
                              System.out.println(receivedData.length());
                              System.out.println(receivedData);
                             Platform.runLater(new Runnable() {
-                                @Override
+                                @Override   
                                 public void run() {
                                     response(receivedData);
                                 }
