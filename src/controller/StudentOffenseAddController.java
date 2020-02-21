@@ -167,6 +167,7 @@ public class StudentOffenseAddController implements Initializable {
     }
     public void saveandsendsmsEvent() {
         query = "insert into student_offense_tbl values (null,"+studentidTxt.getText()+","+offensenameTxt.getText()+","+offensecountTxt.getText()+",'"+severityTxt.getText()+"','"+durationTxt.getText()+"','00:00','not complete','"+remarksTxt.getText()+"','"+offensedateTxt.getText()+"')";
+
         if(_gsm.sendSMS(studentidTxt.getText(),severityTxt.getText(),offName,offSanction,remarksTxt.getText())){
             try {
                 dao.saveData(query);
@@ -175,7 +176,6 @@ public class StudentOffenseAddController implements Initializable {
                 warningLbl.setVisible(false);
                 warningLbl1.setVisible(false);
                 _pushNotification.success("Insert Success", "Successfully Inserted");
-
             }catch (Exception e){
                 e.printStackTrace();
                 _pushNotification.failed("Insert Failed", "Failed to Insert Student Offense");
@@ -265,5 +265,6 @@ public class StudentOffenseAddController implements Initializable {
     public void getSeverityDeptKey(){
         query = "select offense_severity,dept_key from offense_tbl where id = "+offensenameTxt.getText()+" limit 1";
     }
+
     // end of custom methods
 }
