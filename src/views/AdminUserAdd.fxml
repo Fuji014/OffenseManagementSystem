@@ -80,6 +80,11 @@
                   <Font name="Copperplate Gothic Bold" size="12.0" />
                </font>
             </Label>
+            <Label layoutX="11.0" layoutY="73.0" text="Reminder" textFill="#979797">
+               <font>
+                  <Font name="Copperplate Gothic Bold" size="12.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
       <JFXButton fx:id="saveBtn" layoutX="465.0" layoutY="341.0" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: #007E06; -fx-border-color: #007E06;" text="Save" textFill="WHITE">
          <graphic>

@@ -26,18 +26,7 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton layoutX="128.0" layoutY="529.0" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #BE4003; -fx-border-color: #BE4003;" text="Search" textFill="WHITE">
-         <font>
-            <Font name="Copperplate Gothic Light" size="11.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/icons8-search-48.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
-      <Label layoutX="28.0" layoutY="54.0" text="Settings" textFill="#3f3f3f">
+      <Label layoutX="28.0" layoutY="54.0" text="Admin User" textFill="#3f3f3f">
          <font>
             <Font name="Copperplate Gothic Light" size="25.0" />
          </font>
@@ -69,8 +58,8 @@
                   <TableColumn fx:id="nameCol" prefWidth="122.0" text="NAME" />
                   <TableColumn fx:id="contactCol" prefWidth="94.0" text="CONTACT" />
                   <TableColumn fx:id="usernameCol" prefWidth="140.0" text="USERNAME" />
-                  <TableColumn fx:id="datecreatedCol" prefWidth="129.0" text="DATE CREATED" />
                   <TableColumn fx:id="deptCol" prefWidth="122.0" text="DEPARTMENT" />
+                  <TableColumn fx:id="datecreatedCol" prefWidth="129.0" text="DATE CREATED" />
                </columns>
             </TableView>
          </children>

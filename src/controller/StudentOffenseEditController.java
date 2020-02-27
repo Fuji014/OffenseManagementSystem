@@ -101,6 +101,7 @@ public class StudentOffenseEditController implements Initializable {
         }
 
         query = "update student_offense_tbl set offense_duration ='"+durationTxt.getText()+"',offense_completedTime ='"+completedtimeTxt.getText()+"', offense_status = '"+offenseStatus+"', student_offense_remarks = '"+remarksTxt.getText()+"' where std_offense_id = "+StudentOffenseController.getStudentOffenseController().getId()+"";
+        System.out.println(query);
         try {
             dao.saveData(query);
         }catch (Exception e){

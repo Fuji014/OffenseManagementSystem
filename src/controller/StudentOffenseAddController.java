@@ -70,6 +70,9 @@ public class StudentOffenseAddController implements Initializable {
     @FXML
     private JFXButton sendmessagesaveBtn;
 
+    @FXML
+    private Label closeBtn;
+
     // declare var below;
     private DatabaseAccessObject dao;
     private MainController mc;
@@ -113,6 +116,9 @@ public class StudentOffenseAddController implements Initializable {
         // end of methods
 
         // event buttons
+        closeBtn.setOnMouseClicked(event -> {
+            this.closeBtn.getScene().getWindow().hide();
+        });
         studentIdSearch.setOnAction(event -> {
             try {
                 mc.createPage(null, "/views/StudentOffenseSearchStudent.fxml");
@@ -149,6 +155,7 @@ public class StudentOffenseAddController implements Initializable {
 
     // init
     public void saveEvent() {
+        System.out.println(durationTxt.getText().getClass().getName());
         query = "insert into student_offense_tbl values (null,"+studentidTxt.getText()+","+offensenameTxt.getText()+","+offensecountTxt.getText()+",'"+severityTxt.getText()+"','"+durationTxt.getText()+"','00:00','not complete','"+remarksTxt.getText()+"','"+offensedateTxt.getText()+"')";
         System.out.println(query);
         try {

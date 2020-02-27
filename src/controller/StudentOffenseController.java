@@ -124,7 +124,7 @@ public class StudentOffenseController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchComBox.getItems().addAll("student_key","offense_key","s.offense_severity","offense_status");
+        searchComBox.getItems().addAll("ID NUMBER","OFFENSE NUMBER","OFFENSE SEVERITY");
         // initialize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
@@ -222,6 +222,17 @@ public class StudentOffenseController implements Initializable {
     public void initSearchTable(){
         searchtblTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) ->{
             String forSearchComboxValue = searchComBox.getSelectionModel().getSelectedItem();
+            switch(forSearchComboxValue){
+                case "ID NUMBER":
+                    forSearchComboxValue = "student_key";
+                    break;
+                case "OFFENSE NUMBER":
+                    forSearchComboxValue = "offense_key";
+                    break;
+                case "OFFENSE SEVERITY":
+                    forSearchComboxValue = "s.offense_severity";
+                    break;
+            }
             initTable();
                 query = "select s.* from student_offense_tbl as s inner join offense_tbl as o on s.offense_key = o.id where o.dept_key = "+departmentId+" and "+forSearchComboxValue+" like '%"+newV+"%'";
             try {
@@ -288,6 +299,7 @@ public class StudentOffenseController implements Initializable {
             while (rs.next()){
                 arrayList.add(rs.getString(1));
             }
+            System.out.println(arrayList);
             int total1 = 0;
             for(String test1 : arrayList){
                 total1 += getTotalMinutes(test1);
@@ -299,6 +311,7 @@ public class StudentOffenseController implements Initializable {
             while (rs.next()){
                 arrayList1.add(rs.getString(1));
             }
+            System.out.println(arrayList1);
             int total2 = 0;
             for(String test2 : arrayList1){
                 total2 += getTotalMinutes(test2);

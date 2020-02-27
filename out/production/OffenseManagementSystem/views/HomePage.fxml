@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="635.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <children>
-      <Pane prefHeight="687.0" prefWidth="245.0" style="-fx-background-color: #151928;">
+      <Pane prefHeight="649.0" prefWidth="245.0" style="-fx-background-color: #151928;">
          <children>
             <Label layoutX="103.0" layoutY="30.0" text="ATENEO DE " textFill="#fff3f3">
                <font>
@@ -79,7 +79,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="settingsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="549.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" ADMIN USER" textFill="WHITE">
+            <JFXButton fx:id="settingsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="509.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" ADMIN USER" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -91,12 +91,12 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Text fx:id="usernameTxt" fill="WHITE" layoutX="102.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hans Lim" underline="true">
+            <Text fx:id="usernameTxt" fill="WHITE" layoutX="102.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hans Lim" underline="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <JFXButton fx:id="portSettingsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="514.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" PORT SETTINGS" textFill="WHITE">
+            <JFXButton fx:id="portSettingsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="476.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" PORT SETTINGS" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -108,19 +108,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="departmentBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="344.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" DEPARTMENT" textFill="WHITE">
-               <font>
-                  <Font name="Copperplate Gothic Light" size="14.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="17.0" fitWidth="17.0">
-                     <image>
-                        <Image url="@../resources/icons8-shop-64.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="scheduleBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="379.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" SCHEDULE" textFill="WHITE">
+            <JFXButton fx:id="scheduleBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="343.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" SCHEDULE" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -137,10 +125,10 @@
                   <Image url="@../resources/logoAteneoDezam.png" />
                </image>
             </ImageView>
-            <Circle fx:id="myCircle" fill="DODGERBLUE" layoutX="68.0" layoutY="654.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="myCircle" fill="DODGERBLUE" layoutX="68.0" layoutY="618.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
             <Label layoutX="221.0" layoutY="137.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
             <Label layoutX="221.0" layoutY="241.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <JFXButton fx:id="logoutBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="583.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" LOGOUT" textFill="WHITE">
+            <JFXButton fx:id="logoutBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="543.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" LOGOUT" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -154,11 +142,10 @@
             </JFXButton>
             <Label layoutX="221.0" layoutY="276.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
             <Label layoutX="221.0" layoutY="311.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <Label layoutX="221.0" layoutY="346.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <Label layoutX="221.0" layoutY="381.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <Label layoutX="221.0" layoutY="516.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <Label layoutX="221.0" layoutY="551.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <Label layoutX="221.0" layoutY="585.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="345.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="478.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="511.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="545.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
             <JFXButton fx:id="policyBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="205.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753; -fx-border-color: #444753;" text=" POLICY" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
@@ -172,7 +159,7 @@
                </graphic>
             </JFXButton>
             <Label layoutX="221.0" layoutY="207.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <JFXButton fx:id="smsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="479.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text="SEND SMS" textFill="WHITE">
+            <JFXButton fx:id="smsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="443.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text="SEND SMS" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -184,7 +171,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="221.0" layoutY="481.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="445.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
             <JFXButton fx:id="notificationBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="170.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753; -fx-border-color: #444753;" text="NOTIFICATION" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
@@ -203,7 +190,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <JFXButton fx:id="recordsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="446.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" ATTENDANCE " textFill="WHITE">
+            <JFXButton fx:id="recordsBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="410.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text=" ATTENDANCE " textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -215,8 +202,8 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="221.0" layoutY="448.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <JFXButton fx:id="truancyendtimeBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="413.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text="Tardiness End Time" textFill="WHITE">
+            <Label layoutX="221.0" layoutY="412.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <JFXButton fx:id="truancyendtimeBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="377.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753;" text="Tardiness End Time" textFill="WHITE">
                <font>
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
@@ -228,7 +215,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="221.0" layoutY="415.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
+            <Label layoutX="221.0" layoutY="379.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
          </children>
       </Pane>
       <Pane layoutX="245.0" prefHeight="26.0" prefWidth="785.0" style="-fx-background-color: #151928;">
@@ -246,6 +233,6 @@
             <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="573.0" layoutY="1.0" />
          </children>
       </Pane>
-      <Pane fx:id="apaneHolder" layoutX="245.0" layoutY="26.0" prefHeight="659.0" prefWidth="781.0" style="-fx-background-color: #f0f0f0;" />
+      <Pane fx:id="apaneHolder" layoutX="245.0" layoutY="26.0" prefHeight="623.0" prefWidth="770.0" style="-fx-background-color: #f0f0f0;" />
    </children>
 </AnchorPane>

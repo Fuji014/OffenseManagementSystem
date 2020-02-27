@@ -41,16 +41,10 @@ public class NotificationManageController implements Initializable {
     private MenuItem viewBtn;
 
     @FXML
-    private JFXTextField studidTxt;
-
-    @FXML
     private JFXTextArea descriptionTxt;
 
     @FXML
     private JFXTextField searchTxt;
-
-    @FXML
-    private JFXTextField statusTxt;
 
     @FXML
     private TableView<notificationmanageTable> tableView;
@@ -125,9 +119,7 @@ public class NotificationManageController implements Initializable {
     public void displayNotificationInfo(){
         notificationmanageTable select = tableView.getSelectionModel().getSelectedItem();
         id = select.notifIDProperty().get();
-        studidTxt.setText(Integer.toString(select.notifIDProperty().get()));
         descriptionTxt.setText(select.notifDescriptionProperty().get());
-        statusTxt.setText(select.notifStatusProperty().get());
         NotifUpdate(id);
     }
 
@@ -188,9 +180,7 @@ public class NotificationManageController implements Initializable {
 
     // methods
     public void clearFields(){
-        studidTxt.setText("");
         descriptionTxt.setText("");
-        statusTxt.setText("");
     }
     // end methods
 }

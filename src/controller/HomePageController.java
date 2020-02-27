@@ -204,10 +204,10 @@ public class HomePageController implements Initializable {
             createPage(home, "/views/PortTest.fxml");
 //            createPage(home, "/views/PortSettingPage.fxml");
         });
-        departmentBtn.setOnAction(event -> {
-            createPage(home, "/views/DepartmentTest.fxml");
-//            createPage(home, "/views/DepartmentPage.fxml");
-        });
+//        departmentBtn.setOnAction(event -> {
+//            createPage(home, "/views/DepartmentTest.fxml");
+////            createPage(home, "/views/DepartmentPage.fxml");
+//        });
         offenseListBtn.setOnAction(event -> {
             createPage(home, "/views/OffensePage.fxml");
         });

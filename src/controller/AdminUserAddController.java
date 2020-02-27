@@ -102,7 +102,9 @@ public class AdminUserAddController implements Initializable {
         closeBtn.setOnMouseClicked(event -> {
             this.closeBtn.getScene().getWindow().hide();
         });
-
+        cancelBtn.setOnAction(event -> {
+            this.cancelBtn.getScene().getWindow().hide();
+        });
         saveBtn.setOnAction(event -> {
             try {
                 saveEvent();

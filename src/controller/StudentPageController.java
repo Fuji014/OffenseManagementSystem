@@ -107,7 +107,7 @@ public class StudentPageController implements Initializable {
     // initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchComboBox.getItems().addAll("STUDENT_ID","RFID_TAG_ID","STUDENT_NAME","STUDENT_YEAR","STUDENT_SECTION","STUDENT_COURSE","STUDENT_STRAND","DEPT_NAME","PARENT_FULLNAME","PARENT_CONTACT","PARENT_ADDRESS","STUDENT_CONTACT");
+        searchComboBox.getItems().addAll("STUDENT ID","RFID TAGID","STUDENT NAME","STUDENT YEAR","STUDENT SECTION","STUDENT COURSE","STUDENT STRAND","DEPT NAME","PARENT FULLNAME","PARENT CONTACT","PARENT ADDRESS","STUDENT CONTACT");
         // initalize class
         mc = new MainController();
         dao = new DatabaseAccessObject();
@@ -186,6 +186,44 @@ public class StudentPageController implements Initializable {
     public void initSearch(){
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) ->{
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
+            switch (forSearchComboxValue){
+                case "STUDENT ID":
+                    forSearchComboxValue = "STUDENT_ID";
+                    break;
+                case "RFID TAGID":
+                    forSearchComboxValue = "RFID_TAG_ID";
+                    break;
+                case "STUDENT NAME":
+                    forSearchComboxValue = "STUDENT_NAME";
+                    break;
+                case "STUDENT YEAR":
+                    forSearchComboxValue = "STUDENT_YEAR";
+                    break;
+                case "STUDENT SECTION":
+                    forSearchComboxValue = "STUDENT_SECTION";
+                    break;
+                case "STUDENT COURSE":
+                    forSearchComboxValue = "STUDENT_COURSE";
+                    break;
+                case "STUDENT STRAND":
+                    forSearchComboxValue = "STUDENT_STRAND";
+                    break;
+                case "DEPT NAME":
+                    forSearchComboxValue = "DEPT_NAME";
+                    break;
+                case "PARENT FULLNAME":
+                    forSearchComboxValue = "PARENT_FULLNAME";
+                    break;
+                case "PARENT CONTACT":
+                    forSearchComboxValue = "PARENT_CONTACT";
+                    break;
+                case "PARENT ADDRESS":
+                    forSearchComboxValue = "PARENT_ADDRESS";
+                    break;
+                case "STUDENT CONTACT":
+                    forSearchComboxValue = "STUDENT_CONTACT";
+                    break;
+            }
             initTable();
             query = "select s.id,s.rfid_tag_id,s.student_id,s.student_name,s.student_year,s.student_section,s.student_course,s.student_strand,d.dept_name,s.parent_fullname,s.parent_contact,s.student_contact,s.parent_address from student_tbl as s inner join department_tbl as d on s.student_department = d.id where "+forSearchComboxValue+" like '%"+newV+"%' and student_department = "+departmentId+"";
             studentTableView.setItems(dao.getStudentSearch(query));

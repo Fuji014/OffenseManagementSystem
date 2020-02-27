@@ -82,7 +82,7 @@ public class AdminUserPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // initialize object                                                                                  
-        searchComboBox.getItems().addAll("NAME","CONTACT","DEPARTMENT","USERNAME","CREATED_AT");
+        searchComboBox.getItems().addAll("NAME","CONTACT","DEPARTMENT","USERNAME");
         // initialize classes
         dao = new DatabaseAccessObject();
         mc = new MainController();

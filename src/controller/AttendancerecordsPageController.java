@@ -90,7 +90,7 @@ public class AttendancerecordsPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchfiltersComboBox.getItems().addAll("student_key","date");
+        searchfiltersComboBox.getItems().addAll("STUDENT KEY","DATE");
         // init class
         dao = new DatabaseAccessObject();
         // end of init class
@@ -142,6 +142,14 @@ public class AttendancerecordsPageController implements Initializable {
     public void initSearch(){
         searchtableTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchfiltersComboBox.getSelectionModel().getSelectedItem();
+            switch (forSearchComboxValue){
+                case "STUDENT KEY":
+                    forSearchComboxValue = "student_key";
+                    break;
+                case "DATE":
+                    forSearchComboxValue = "date";
+                    break;
+            }
             initTable();
             query = "select r.* from record_tbl as r inner join student_tbl as s on r.student_key = s.student_id where s.student_department = "+departmentId+" and "+forSearchComboxValue+" like '%"+newV+"%'";
            try {

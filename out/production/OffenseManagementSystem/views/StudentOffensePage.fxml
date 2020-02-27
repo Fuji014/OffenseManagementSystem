@@ -17,8 +17,8 @@
    <children>
       <TableView fx:id="studoffenseTableView" layoutX="28.0" layoutY="81.0" prefHeight="316.0" prefWidth="699.0" stylesheets="@../styles/TableStyle.css">
         <columns>
-          <TableColumn fx:id="idCol" prefWidth="40.0" text="ID" />
-          <TableColumn fx:id="studidCol" prefWidth="77.0" text="STUDENT ID" />
+          <TableColumn fx:id="idCol" minWidth="0.0" prefWidth="0.0" text="ID" />
+          <TableColumn fx:id="studidCol" prefWidth="117.0" text="STUDENT ID" />
             <TableColumn fx:id="offenseCol" prefWidth="61.0" text="OFFENSE" />
             <TableColumn fx:id="severityCol" prefWidth="82.0" text="SEVERITY" />
             <TableColumn fx:id="durationCol" text="DURATION" />

@@ -83,7 +83,7 @@ public class OffensePageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        searchComboBox.getItems().addAll("OFFENSE_DESCRIPTION","OFFENSE_SEVERITY","DEPT_NAME","OFFENSE_SANCTION");
+        searchComboBox.getItems().addAll("ID","OFFENSE SEVERITY","OFFENSE SANCTION");
         // initialize class
         dao = new DatabaseAccessObject();
         mc = new MainController();
@@ -174,6 +174,17 @@ public class OffensePageController implements Initializable {
     public void initSearch(){
         searchTxt.textProperty().addListener((ObservableValue<? extends String> ob, String oldV, String newV) -> {
             String forSearchComboxValue = searchComboBox.getSelectionModel().getSelectedItem();
+            switch (forSearchComboxValue){
+                case "ID":
+                    forSearchComboxValue = "o.id";
+                    break;
+                case "OFFENSE SEVERITY":
+                    forSearchComboxValue = "OFFENSE_SEVERITY";
+                    break;
+                case "OFFENSE SANCTION":
+                    forSearchComboxValue = "OFFENSE_SANCTION";
+                    break;
+            }
             initTable();
             query = "select o.id,o.offense_description,o.offense_severity,d.dept_name,o.offense_sanction from offense_tbl as o inner join department_tbl as d on o.dept_key = d.id  where "+forSearchComboxValue+" like '%"+newV+"%' and dept_key = "+departmentId+" order by id desc";
             try {
