@@ -19,7 +19,7 @@
                   <Font name="Copperplate Gothic Light" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="614.0" layoutY="-1.0" text="X" textFill="WHITE">
+            <Label fx:id="closeBtn" layoutX="614.0" layoutY="-1.0" text="X" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -96,7 +96,7 @@
                      <graphic>
                         <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/icons8-search-48.png" />
+                              <Image url="@../resources/icons8-countdown-clock-32.png" />
                            </image>
                         </ImageView>
                      </graphic>

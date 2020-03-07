@@ -14,7 +14,7 @@
             <Font name="Copperplate Gothic Light" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="19.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+      <AnchorPane layoutX="19.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;" visible="false">
          <children>
             <Label layoutX="21.0" layoutY="79.0" text="NOTIF CURRENTLY IN THE SYSTEM" textFill="#707070">
                <font>
@@ -34,7 +34,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="24.0" layoutY="107.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #8E44AD;">
+      <Label alignment="CENTER" layoutX="24.0" layoutY="107.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #8E44AD;" visible="false">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="43.0">
                <image>
@@ -43,7 +43,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <AnchorPane layoutX="203.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+      <AnchorPane layoutX="203.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;" visible="false">
          <children>
             <Label layoutX="26.0" layoutY="81.0" text="POLICY CURRENTLY IN THE SYSTEM" textFill="#707070">
                <font>
@@ -72,7 +72,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="188.0" layoutY="314.0" prefHeight="97.0" prefWidth="195.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+      <AnchorPane layoutX="272.0" layoutY="226.0" prefHeight="97.0" prefWidth="195.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
          <children>
             <Label layoutX="4.0" layoutY="80.0" text="REPORTED OFFENSE CURRENTLY IN THE SYSTEM" textFill="#707070">
                <font>
@@ -101,7 +101,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="571.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+      <AnchorPane layoutX="571.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;" visible="false">
          <children>
             <Label layoutX="11.0" layoutY="80.0" text="OFFENSE CURRENTLY IN THE SYSTEM" textFill="#707070">
                <font>
@@ -130,7 +130,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="387.0" layoutY="142.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+      <AnchorPane layoutX="71.0" layoutY="226.0" prefHeight="97.0" prefWidth="172.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
          <children>
             <Label layoutX="10.0" layoutY="80.0" text="STUDENT CURRENTLY IN THE SYSTEM" textFill="#707070">
                <font>
@@ -150,7 +150,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="392.0" layoutY="107.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #8E44AD;">
+      <Label alignment="CENTER" layoutX="76.0" layoutY="191.0" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: #8E44AD;">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="43.0">
                <image>
@@ -159,7 +159,7 @@
             </ImageView>
          </graphic>
       </Label>
-      <AnchorPane layoutX="403.0" layoutY="314.0" prefHeight="97.0" prefWidth="195.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
+      <AnchorPane layoutX="490.0" layoutY="226.0" prefHeight="97.0" prefWidth="195.0" style="-fx-background-color: #F0F0F0; -fx-border-color: #B1B1B1;">
          <children>
             <Label layoutX="18.0" layoutY="81.0" text="ATTENDANCE CURRENTLY IN THE SYSTEM" textFill="#707070">
                <font>

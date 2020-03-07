@@ -33,9 +33,9 @@
          </contextMenu>
       </TableView>
       <JFXComboBox fx:id="searchComboBox" layoutX="327.0" layoutY="34.0" prefHeight="26.0" prefWidth="148.0" style="-jfx-unfocus-color: transparent; -fx-background-color: #F0F0F0; -fx-border-color: #C1C1C1;" />
-      <Label layoutX="24.0" layoutY="28.0" text="Manage Offense">
+      <Label layoutX="24.0" layoutY="31.0" text="OFFENSE COUNT POLICY">
          <font>
-            <Font name="Copperplate Gothic Light" size="25.0" />
+            <Font name="Copperplate Gothic Light" size="20.0" />
          </font>
       </Label>
       <JFXButton fx:id="refreshBtn" layoutX="635.0" layoutY="34.0" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #1D7D7B; -fx-border-color: #1D7D7B;" text="Refresh" textFill="WHITE">

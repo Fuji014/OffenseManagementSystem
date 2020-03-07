@@ -15,29 +15,19 @@
             <Image url="@../resources/initGui2.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="29.0" layoutY="17.0" text="Ateneo de Zamboaga" textFill="WHITE">
-         <font>
-            <Font name="Copperplate Gothic Light" size="40.0" />
-         </font>
-      </Label>
-      <Label layoutX="139.0" layoutY="64.0" text="College of Engineering" textFill="WHITE">
-         <font>
-            <Font name="Copperplate Gothic Light" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="111.0" layoutY="132.0" prefHeight="58.0" prefWidth="557.0" text="College of Engineering">
+      <Label layoutX="29.0" layoutY="34.0" text="Ateneo de Zamboanga University" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="146.0" layoutY="188.0" text="&quot;Offense Management System&quot;" textFill="#63656f">
+      <Label layoutX="115.0" layoutY="149.0" prefHeight="58.0" prefWidth="693.0" text="Offense Management System">
          <font>
-            <Font name="Copperplate Gothic Light" size="25.0" />
+            <Font name="Copperplate Gothic Light" size="30.0" />
          </font>
       </Label>
       <JFXButton fx:id="adminloginBtn" layoutX="37.0" layoutY="405.0" prefHeight="72.0" prefWidth="190.0" style="-fx-background-color: #63656F; -fx-border-color: #63656F;" text="Admin Login" textFill="WHITE">
          <font>
-            <Font name="Copperplate Gothic Light" size="15.0" />
+            <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
          <graphic>
             <ImageView>
@@ -50,7 +40,7 @@
       <Line endX="106.0" layoutX="120.0" layoutY="457.0" startX="-3.0" stroke="WHITE" />
       <JFXButton fx:id="connectdbBtn" layoutX="250.0" layoutY="405.0" prefHeight="72.0" prefWidth="222.0" style="-fx-background-color: #63656F; -fx-border-color: #63656F;" text="Connect Database" textFill="WHITE">
          <font>
-            <Font name="Copperplate Gothic Light" size="14.0" />
+            <Font name="Copperplate Gothic Bold" size="14.0" />
          </font>
          <graphic>
             <ImageView fitHeight="45.0" fitWidth="43.0">
@@ -76,14 +66,14 @@
             <Image url="@../resources/logoAteneoDezam.png" />
          </image>
       </ImageView>
-      <Label layoutX="797.0" layoutY="554.0" text="OFFENSE MANAGEMENT SYSTEM V1.0" textFill="WHITE">
+      <Label layoutX="779.0" layoutY="554.0" text="OFFENSE MANAGEMENT SYSTEM V1.0" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Black" size="10.0" />
+            <Font name="Copperplate Gothic Light" size="10.0" />
          </font>
       </Label>
       <Label layoutX="847.0" layoutY="573.0" text="Copyright 2020 " textFill="WHITE">
          <font>
-            <Font name="Segoe UI Black" size="10.0" />
+            <Font name="Copperplate Gothic Light" size="11.0" />
          </font>
       </Label>
    </children>

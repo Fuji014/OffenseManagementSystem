@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="635.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
+<AnchorPane prefHeight="635.0" prefWidth="1001.0" style="-fx-background-color: #f0f0f0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <children>
       <Pane prefHeight="649.0" prefWidth="245.0" style="-fx-background-color: #151928;">
          <children>
@@ -146,9 +146,9 @@
             <Label layoutX="221.0" layoutY="478.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
             <Label layoutX="221.0" layoutY="511.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
             <Label layoutX="221.0" layoutY="545.0" prefHeight="26.0" prefWidth="9.0" style="-fx-background-color: #bbbbbb;" />
-            <JFXButton fx:id="policyBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="205.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753; -fx-border-color: #444753;" text=" POLICY" textAlignment="JUSTIFY" textFill="WHITE">
+            <JFXButton fx:id="policyBtn" alignment="TOP_LEFT" layoutX="17.0" layoutY="205.0" prefHeight="30.0" prefWidth="217.0" style="-fx-background-color: #444753; -fx-border-color: #444753;" text="OFFENSE COUNT POLICY" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
-                  <Font name="Copperplate Gothic Light" size="14.0" />
+                  <Font name="Copperplate Gothic Light" size="12.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="17.0" fitWidth="17.0">

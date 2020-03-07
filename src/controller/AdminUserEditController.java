@@ -122,6 +122,7 @@ public class AdminUserEditController implements Initializable {
         deptComboBox.getSelectionModel().select(AdminUserPageController.getSettingsPageController().getDeptname());
         usernameTxt.setText(AdminUserPageController.getSettingsPageController().getUsername());
     }
+
     public void uploaderEvent(){
         stage = (Stage) apaneEditUserId.getScene().getWindow();
         file = fileChooser.showOpenDialog(stage);
@@ -133,6 +134,7 @@ public class AdminUserEditController implements Initializable {
             imagePreview.setPreserveRatio(true);
         }
     }
+
     public void editEvent() throws FileNotFoundException, SQLException {
 
         try {
@@ -144,6 +146,7 @@ public class AdminUserEditController implements Initializable {
             HomePageController.getHomePageController().initShowImagePreview();
             AdminUserPageController.getSettingsPageController().refreshTable();
         }
+        
     }
 
     public void initShowImagePreview() throws SQLException {

@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="574.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AttendancerecordsPageController">
    <children>
-      <Label layoutX="24.0" layoutY="24.0" text="ATTENDANCE RECORDS">
+      <Label layoutX="24.0" layoutY="24.0" text="STUDENT LOGS">
          <font>
             <Font name="Copperplate Gothic Light" size="25.0" />
          </font>
@@ -67,7 +67,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="refreshBtn" contentDisplay="GRAPHIC_ONLY" layoutX="702.0" layoutY="53.0" style="-fx-background-color: #d2d2d2; -fx-border-color: #ccc;">
+      <JFXButton fx:id="refreshBtn" contentDisplay="GRAPHIC_ONLY" layoutX="702.0" layoutY="26.0" style="-fx-background-color: #d2d2d2; -fx-border-color: #ccc;">
          <graphic>
             <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -76,7 +76,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXComboBox fx:id="searchfiltersComboBox" layoutX="431.0" layoutY="53.0" prefHeight="27.0" prefWidth="130.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
-      <JFXTextField fx:id="searchtableTxt" layoutX="567.0" layoutY="49.0" prefHeight="31.0" prefWidth="123.0" style="-fx-padding: 7px;" />
+      <JFXComboBox fx:id="searchfiltersComboBox" layoutX="431.0" layoutY="26.0" prefHeight="27.0" prefWidth="130.0" style="-jfx-unfocus-color: transparent; -fx-border-color: #d2d2d2;" />
+      <JFXTextField fx:id="searchtableTxt" layoutX="567.0" layoutY="22.0" prefHeight="31.0" prefWidth="123.0" style="-fx-padding: 7px;" />
    </children>
 </AnchorPane>
